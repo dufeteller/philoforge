@@ -12,8 +12,8 @@ assert.equal(corpus.items.filter(i=>i.kind==='Proposition').length,259);
 assert.equal(corpus.items.filter(i=>i.kind==='Lemma').length,7);
 assert.equal(corpus.items.filter(i=>i.kind==='Definition of an emotion').length,48);
 assert.equal(corpus.items.filter(i=>i.kind==='Postulate').length,8);
-assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P3']);
-assert.equal(corpus.items.find(i=>i.id==='E1-P6').status,'source-only'); // only its alternative corollary is reconstructed
+assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P1','E1-P3','E1-P6']);
+assert.ok(corpus.items.find(i=>i.id==='E1-P6').formalScope.includes('historical')); // no claim of reproducing its historical proof
 for(const item of corpus.items){
  assert.ok(['source-only','lean-checked','encoded-premise'].includes(item.status));
  if(item.status==='lean-checked')assert.ok(item.theorem&&item.formalScope);

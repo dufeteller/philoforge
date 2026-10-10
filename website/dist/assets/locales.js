@@ -225,3 +225,26 @@ Object.assign(globalThis.PhiloLocales.fr, {
 "Select all: Definitions":"Tout sélectionner : Définitions",
 "Select all: Axioms":"Tout sélectionner : Axiomes"
 });
+
+Object.assign(globalThis.PhiloLocales.fr, {
+  "Modes of substance": "Modes de la substance",
+  "A mode exists in and is conceived through another entity.": "Un mode est en une autre entité et se conçoit par cette entité.",
+  "Ethics I, Definition V": "Éthique I, définition V",
+  "By mode, I mean the modifications of substance, or that which exists in, and is conceived through, something other than itself.": "Par mode, j’entends les affections de la substance, autrement dit ce qui est en autre chose et se conçoit par cette autre chose.",
+  "Formal convention: ModeOf names a distinct entity in which the mode exists and on which its conception depends. Priority in Proposition I is reconstructed as asymmetric conceptual dependence, not temporal precedence.": "Convention formelle : ModeOf désigne une entité distincte dans laquelle le mode existe et dont dépend sa conception. La priorité de la proposition I est reconstruite comme une dépendance conceptuelle asymétrique, pas comme une antériorité temporelle.",
+  "Substance is prior to its modes": "La substance est antérieure à ses modes",
+  "A mode depends conceptually on its substance; the substance does not depend on that distinct mode. This reconstructs priority as asymmetric conceptual dependence.": "Un mode dépend conceptuellement de sa substance ; la substance ne dépend pas de ce mode distinct. La priorité est ici reconstruite comme une dépendance conceptuelle asymétrique.",
+  "Ethics I, Proposition I — conceptual reconstruction": "Éthique I, proposition I — reconstruction conceptuelle",
+  "Definition V supplies a mode conceived through a distinct substance.": "La définition V fournit un mode conçu par une substance distincte.",
+  "Definition III excludes dependence of that substance on the distinct mode.": "La définition III exclut la dépendance de cette substance envers le mode distinct.",
+  "Conceptual dependence runs in one direction: this is the explicit interpretation of priority used here.": "La dépendance conceptuelle est à sens unique : c’est l’interprétation explicite de la priorité utilisée ici.",
+  "Distinct substances cannot cause each other": "Des substances distinctes ne peuvent se causer mutuellement",
+  "In the causal encoding, neither of two distinct substances causes the other. This uses the corollary’s alternative argument, not Spinoza’s full historical proof of Proposition VI.": "Dans l’encodage causal, aucune de deux substances distinctes ne cause l’autre. Ce résultat utilise l’argument alternatif du corollaire, pas la démonstration historique complète de la proposition VI.",
+  "Ethics I, Proposition VI — causal reconstruction": "Éthique I, proposition VI — reconstruction causale",
+  "The external-cause result excludes a cause distinct from a substance.": "Le résultat sur la cause extérieure exclut une cause distincte de la substance.",
+  "Apply it to the first substance with the second as the proposed external cause.": "On l’applique à la première substance, la seconde étant la cause extérieure proposée.",
+  "Apply it in the reverse direction. Both causal relations are excluded.": "On l’applique dans l’autre sens. Les deux relations causales sont exclues.",
+  "Limited reconstruction: priority means asymmetric conceptual dependence, not temporal precedence.": "Reconstruction limitée : la priorité signifie une dépendance conceptuelle asymétrique, pas une antériorité temporelle.",
+  "Limited reconstruction: distinct substances cannot cause one another. Uses the alternative corollary argument; the historical P2/P3/P5 proof and broader production vocabulary are not formalized.": "Reconstruction limitée : des substances distinctes ne peuvent se causer mutuellement. On utilise l’argument alternatif du corollaire ; la preuve historique utilisant P2/P3/P5 et les autres sens de la production ne sont pas formalisés.",
+  "Verified workshop: seven reconstructed results. Complete library: three of the 259 numbered propositions have Lean-checked reconstructions, with explicit limits.": "Atelier vérifié : sept résultats reconstruits. Bibliothèque complète : trois des 259 propositions numérotées disposent de reconstructions vérifiées par Lean, avec des limites explicites."
+});

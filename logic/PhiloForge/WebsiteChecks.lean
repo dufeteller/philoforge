@@ -23,6 +23,16 @@ import PhiloForge.SpinozaAffects
 #check @PhiloForge.Spinoza.Affects.active_not_passive
 #print axioms PhiloForge.Spinoza.Affects.active_not_passive
 
+-- Website node: E1-P1
+#check @PhiloForge.Spinoza.proposition1
+#print axioms PhiloForge.Spinoza.proposition1
+
+-- Website node: E1-P6
+#check @PhiloForge.Spinoza.proposition6_causal
+#print axioms PhiloForge.Spinoza.proposition6_causal
+
 -- The inline contradiction proof is also exposed by the website.
 #check @PhiloForge.Spinoza.proposition3_counterexample_conflict
 #print axioms PhiloForge.Spinoza.proposition3_counterexample_conflict
+#check @PhiloForge.Spinoza.fragment_has_model
+#print axioms PhiloForge.Spinoza.fragment_has_model

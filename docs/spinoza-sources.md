@@ -6,7 +6,7 @@ The five parts of Benedict de Spinoza's *Ethics* are indexed in `website/dist/da
 
 All 259 numbered propositions are present, with their following demonstrations, corollaries, scholia and notes: I (36), II (49), III (59), IV (73), V (42). Definitions, axioms, postulates, the seven physical lemmas, 48 definitions of emotions, prefaces and appendices are included. Supporting paragraphs follow the numbered item to which they belong in the edition. The physical interlude has repeated axiom numbering: unique `Phys-A` identifiers use encounter order and retain the printed number separately. Its unnumbered definition belongs to the surrounding interlude text.
 
-Five encoded starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
+Six encoded starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
 
 These are **source records**, not automatic proof rules. No unformalized proposition is promoted to an axiom. No dependency edges are guessed from textual citations. The deduction map uses only the separately maintained, proved reconstructions.
 
@@ -30,14 +30,22 @@ The optional P3 counterexample is a user hypothesis, not a Spinoza axiom. Its co
 
 ## French
 
-French passages are our translations, not quotations attributed to a historical French translator. Currently 23 statement translations are stored in the optional translation register. Their untranslated demonstrations are omitted in French, with a link to the English source. Whole entries without a French statement are hidden in French mode and retained in English. Interface translations are maintained in `locales.js`.
+French passages are our translations, not quotations attributed to a historical French translator. Currently 25 statement translations are stored in the optional translation register. Their untranslated demonstrations are omitted in French, with a link to the English source. Whole entries without a French statement are hidden in French mode and retained in English. Interface translations are maintained in `locales.js`.
 
 ## What remains to formalize
 
-Full machine verification of the *Ethics* is unfinished. There is no verified proof of God's existence or monism, the conatus propositions, the theory of knowledge, intellectual love, or blessedness. Those texts remain explicitly `source-only`. The source catalog's I P6 record remains unverified even though an alternative proof of its corollary is separately reconstructed.
+Full machine verification of the *Ethics* is unfinished. There is no verified proof of God's existence or monism, the conatus propositions, the theory of knowledge, intellectual love, or blessedness. Those texts remain explicitly `source-only`. I P6 now has a limited causal reconstruction using the alternative corollary argument; its historical proof via P2/P3/P5 remains unformalized.
 
 Further work must define and review the ontological, mental, physical and affective vocabularies, examine each historical proof's implicit bridges, then prove results without treating their conclusions as hypotheses. Update proof statuses only after the exact encoded theorem compiles and its scope is documented. The bibliographic corpus and its cardinality are not evidence that all 259 propositions have been formalized.
 
 ## Website proof registry
 
-`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is five reconstructed results, including one numbered proposition (I P3), an alternative corollary and intermediate/definitional consequences. It is not 259 verified propositions.
+`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is seven reconstructed results, including limited versions of three numbered propositions (I P1, P3, P6), an alternative corollary and intermediate/definitional consequences. It is not 259 verified propositions.
+
+## Extension: I P1 and I P6
+
+`ModeOf` encodes I D5 with a distinct containing entity and conceptual dependence. `proposition1` reconstructs "prior by nature" as asymmetric conceptual dependence: the mode depends on the substance; D3 excludes dependence in the reverse direction. This is a limited interpretation of priority, not a temporal theorem or a proof of every philosophical meaning of priority.
+
+`proposition6_causal` applies the already proved external-cause exclusion in both directions to two distinct substances. It is a causal specialization using the alternative corollary argument, not a reproduction of the historical P2/P3/P5 proof and not an identification of every meaning of production with causation.
+
+`fragment_has_model` gives a concrete Bool model with a substance, a mode and a nonempty causal relation satisfying A4 and A5. It establishes satisfiability of the encoded I D3/D5/A4/A5 fragment, not consistency of all the Ethics. This model also prevents interpreting these proofs as mere consequences of a contradictory global context.

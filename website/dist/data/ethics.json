@@ -121,7 +121,7 @@
       "paragraphs": [
         "[1] \"Affectiones\""
       ],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Par mode, j’entends les affections de la substance, autrement dit ce qui est en autre chose et se conçoit par cette autre chose.",
@@ -325,7 +325,15 @@
       "paragraphs": [
         "Proof.—This is clear from Deff. iii. and v."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "theorem": "PhiloForge.Spinoza.proposition1",
+      "formalScope": "Limited reconstruction: priority means asymmetric conceptual dependence, not temporal precedence.",
+      "translations": {
+        "fr": {
+          "statement": "La substance est par nature antérieure à ses modifications.",
+          "paragraphs": []
+        }
+      }
     },
     {
       "id": "E1-P2",
@@ -404,7 +412,15 @@
         "Proof.—It is impossible that there should be in the universe two substances with an identical attribute, i.e. which have anything common to them both (Prop. ii.), and, therefore (Prop. iii.), one cannot be the cause of the other, neither can one be produced by the other. Q.E.D.",
         "Corollary.—Hence it follows that a substance cannot be produced by anything external to itself. For in the universe nothing is granted, save substances and their modifications (as appears from Ax. i. and Deff. iii. and v.). Now (by the last Prop.) substance cannot be produced by another substance, therefore it cannot be produced by anything external to itself. Q.E.D. This is shown still more readily by the absurdity of the contradictory. For, if substance be produced by an external cause, the knowledge of it would depend on the knowledge of its cause (Ax. iv.), and (by Def. iii.) it would itself not be substance."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "theorem": "PhiloForge.Spinoza.proposition6_causal",
+      "formalScope": "Limited reconstruction: distinct substances cannot cause one another. Uses the alternative corollary argument; the historical P2/P3/P5 proof and broader production vocabulary are not formalized.",
+      "translations": {
+        "fr": {
+          "statement": "Une substance ne peut être produite par une autre substance.",
+          "paragraphs": []
+        }
+      }
     },
     {
       "id": "E1-P7",

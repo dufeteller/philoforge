@@ -7,7 +7,7 @@ assert.equal(derive(['E1-A5']).results[0].id,'conceptual-separation');
 assert.equal(derive(['E1-D3','E1-A4']).results[0].id,'E1-P6-C');
 for(const e of [...entries,...results])assert.ok(e.reference&&e.text);
 for(const r of results)for(const p of r.parents)assert.ok([...entries,...results].some(n=>n.id===p));
-console.log('All 64 source selections, proof dependencies and counterexample checks passed.');
+console.log('All 128 source selections, proof dependencies and counterexample checks passed.');
 
 assert.equal(derive(['E3-D1','E3-D2']).results.length,2);
 assert.equal(derive(['E3-D2']).results.length,0);
