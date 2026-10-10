@@ -22,3 +22,14 @@ jobs:
       - run: node --check website/dist/assets/forge.js
       - run: node website/tests/consequences.cjs
       - run: node website/tests/i18n.cjs
+      - run: node website/tests/preferences.cjs
+  lean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: logic
+      - run: |
+          if rg '\bsorry\b|\badmit\b|^axiom ' logic/PhiloForge; then exit 1; fi
