@@ -1,0 +1,114 @@
+{
+  "edition": {
+    "title": "Ethica ordine geometrico demonstrata",
+    "author": "Benedictus de Spinoza",
+    "language": "la",
+    "host": "ILIESI–CNR, Archivio Testi e Studi Spinoziani",
+    "bibliography": "Opera, ed. Carl Gebhardt, Heidelberg, 1972, vol. II, pp. 41–308 (as identified by the digital edition).",
+    "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html",
+    "sha256": "b34da2b4fc399a27e7a0685028a9a3735ac2db3d442f324c55d0f566bda792d6",
+    "normalization": "Excerpts checked against HTML text with whitespace collapsed; spelling and punctuation retained."
+  },
+  "passages": {
+    "E1-D1": {
+      "reference": "E1-D1",
+      "latin": "Per causam sui intelligo id, cujus essentia involvit existentiam, sive id, cujus natura non potest concipi, nisi existens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-D2": {
+      "reference": "E1-D2",
+      "latin": "Ea res dicitur in suo genere finita, quae alia ejusdem naturae terminari potest.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-D3": {
+      "reference": "E1-D3",
+      "latin": "Per substantiam intelligo id, quod in se est, et per se concipitur: hoc est id, cujus conceptus non indiget conceptu alterius rei, a quo formari debeat.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-D4": {
+      "reference": "E1-D4",
+      "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-D5": {
+      "reference": "E1-D5",
+      "latin": "Per modum intelligo substantiae affectiones, sive id, quod in alio est, per quod etiam concipitur.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-A4": {
+      "reference": "E1-A4",
+      "latin": "Effectus cognitio a cognitione causae dependet, et eandem involvit.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#46"
+    },
+    "E1-A5": {
+      "reference": "E1-A5",
+      "latin": "Quae nihil commune cum se invicem habent, etiam per se invicem intelligi non possunt, sive conceptus unius alterius conceptum non involvit.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#46"
+    },
+    "E1-P1": {
+      "reference": "E1-P1",
+      "latin": "Substantia prior est natura suis affectionibus.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit60"
+    },
+    "E1-P3": {
+      "reference": "E1-P3",
+      "latin": "Quae res nihil commune inter se habent, earum una alterius causa esse non potest.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit67"
+    },
+    "E1-P5": {
+      "reference": "E1-P5",
+      "latin": "In rerum natura non possunt dari duae, aut plures substantiae ejusdem naturae, sive attributi.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit84"
+    },
+    "E1-P6": {
+      "reference": "E1-P6",
+      "latin": "Una substantia non potest produci ab alia substantia.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit96"
+    },
+    "E1-P6-C": {
+      "reference": "E1-P6-C",
+      "latin": "Hinc sequitur substantiam ab alio produci non posse.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit96"
+    },
+    "E1-P7": {
+      "reference": "E1-P7",
+      "latin": "Ad naturam substantiae pertinet existere.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit113"
+    },
+    "E1-P8": {
+      "reference": "E1-P8",
+      "latin": "Omnis substantia est necessario infinita.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit119"
+    },
+    "E1-P8-S2-existence": {
+      "reference": "E1-P8-S2-existence",
+      "latin": "Notandum, dari necessario uniuscujusque rei existens certam aliquam causam, propter quam existit.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit119"
+    },
+    "E1-P8-S2-multiplicity": {
+      "reference": "E1-P8-S2-multiplicity",
+      "latin": "omne id, cujus naturae plura individua existere possunt, debere necessario, ut existant, causam externam habere.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit119"
+    },
+    "E1-P8-limiter-bridge": {
+      "reference": "E1-P8-limiter-bridge",
+      "latin": "deberet terminari ab alia ejusdem naturae, quae etiam necessario deberet existere",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit119"
+    },
+    "E3-D1": {
+      "reference": "E3-D1",
+      "latin": "Causam adaequatam appello eam, cujus effectus potest clare, et distincte per eandem percipi. Inadaequatam autem, seu partialem illam voco, cujus effectus per ipsam solam intelligi nequit.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def3196"
+    },
+    "E3-D2": {
+      "reference": "E3-D2",
+      "latin": "Nos tum agere dico, cum aliquid in nobis, aut extra nos fit, cujus adaequata sumus causa,",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def3196"
+    },
+    "E1-P8-S2-intrinsic": {
+      "reference": "E1-P8-S2 · IV",
+      "latin": "Denique notandum, hanc causam, propter quam aliqua res existit, vel debere contineri in ipsa natura, et definitione rei existentis ( nimirum quod ad ipsius naturam pertinet existere ). vel debere extra ipsam dari.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit119"
+    }
+  }
+}

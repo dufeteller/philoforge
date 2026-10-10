@@ -23,6 +23,9 @@ jobs:
       - run: node --check website/dist/assets/proof-map.js
       - run: node scripts/check-proof-registry.cjs
       - run: node scripts/check-ethics-coverage.cjs
+      - run: node scripts/check-spinoza-review.cjs
+      - run: node --check website/dist/assets/review.js
+      - run: node website/tests/review.cjs
       - run: node website/tests/spinoza.cjs
       - run: node website/tests/i18n.cjs
       - run: node --check website/dist/assets/ethics.js
