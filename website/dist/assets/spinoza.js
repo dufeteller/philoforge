@@ -22,7 +22,8 @@
  const test=document.querySelector('#test-counterexample');test.checked=selected.has('test-counterexample');test.addEventListener('change',()=>{test.checked?selected.add('test-counterexample'):selected.delete('test-counterexample');render();});
  function render(){
   const data=derive([...selected]);graph.replaceChildren();
-  graph.hidden=!data.conflict;graph.className=data.conflict?'contradiction-view':'proof-tree';
+  graph.hidden=!data.conflict;
+  document.querySelector('#map-link').hidden=true;graph.className=data.conflict?'contradiction-view':'proof-tree';
   document.querySelector('#spinoza-empty').hidden=data.roots.length>0;
   document.querySelector('#generate-map').disabled=data.roots.length===0;
   document.querySelector('.tree-caption').hidden=!!data.conflict;
