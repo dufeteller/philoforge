@@ -1,2 +1,3 @@
 import PhiloForge.Spinoza
 import PhiloForge.SpinozaAffects
+import PhiloForge.WebsiteChecks

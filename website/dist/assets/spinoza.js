@@ -20,13 +20,24 @@
  {id:'active-not-passive',title:'Activity excludes passivity for this event',text:'For one actor and one event, activity and passivity exclude one another in the reconstructed definitions.',reference:'Definitional consequence of Ethics III, Definitions I–II',requires:['E3-D1','E3-D2'],parents:['adequate-not-partial','E3-D2'],level:2,theorem:'active_not_passive',source:'https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap03',proofSource:'https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAffects.lean',steps:['Activity means being the adequate cause of this event.','Passivity means being its partial cause.','The adequate-not-partial result excludes simultaneous activity and passivity for this event.']}
  );
  function derive(ids){const set=new Set(ids);return {results:results.filter(r=>r.requires.every(id=>set.has(id))),conflict:set.has('E1-A4')&&set.has('E1-A5')&&set.has('test-counterexample'),roots:entries.filter(e=>set.has(e.id))};}
+ for(const result of results)result.leanName='PhiloForge.Spinoza.'+(result.proofSource?.includes('SpinozaAffects')?'Affects.':'')+result.theorem;
  root.SpinozaTheory={entries,results,derive};if(typeof module==='object'&&module.exports)module.exports=root.SpinozaTheory;
  if(typeof document==='undefined'||!document.querySelector('#spinoza-library'))return;
  const selected=new Set();try{const saved=JSON.parse(localStorage.getItem('philoforge.spinoza.v1'));if(Array.isArray(saved))for(const id of saved)if([...entries.map(e=>e.id),'test-counterexample'].includes(id))selected.add(id);}catch{}
  const library=document.querySelector('#spinoza-library'),graph=document.querySelector('#spinoza-tree');
  function add(parent,tag,text){const el=document.createElement(tag);el.textContent=text;parent.append(el);return el;}
  function cite(parent,entry){const a=add(parent,'a',entry.reference);a.href=entry.source||source;a.target='_blank';a.rel='noopener';a.className='source-citation';}
- for(const entry of entries){const card=add(library,'article','');card.className='source-axiom';const label=add(card,'label','');const input=document.createElement('input');input.type='checkbox';input.checked=selected.has(entry.id);input.dataset.axiom=entry.id;label.append(input);add(label,'strong',entry.title);add(card,'div',entry.type).className='eyebrow';add(card,'p',entry.text);cite(card,entry);const details=add(card,'details','');add(details,'summary','Source and formalization');add(details,'blockquote',entry.original);add(details,'p','English translation: R. H. M. Elwes. French text on this site is our translation.');add(details,'p',entry.mapping);input.addEventListener('change',()=>{input.checked?selected.add(entry.id):selected.delete(entry.id);render();});}
+ for(const type of ['Definition','Axiom']){
+  const group=add(library,'fieldset','');group.className='starting-point-group';add(group,'legend',type==='Definition'?'Definitions':'Axioms');
+  for(const entry of entries.filter(e=>e.type===type)){
+   const card=add(group,'article','');card.className='source-axiom compact-starting-point';
+   const label=add(card,'label','');const input=document.createElement('input');input.type='checkbox';input.checked=selected.has(entry.id);input.dataset.axiom=entry.id;label.append(input);add(label,'strong',entry.title);
+   const details=add(card,'details','');add(details,'summary','Source and formalization');
+   add(details,'p',entry.text);cite(details,entry);add(details,'blockquote',entry.original);add(details,'p','English translation: R. H. M. Elwes. French text on this site is our translation.');add(details,'p',entry.mapping);
+   input.addEventListener('change',()=>{input.checked?selected.add(entry.id):selected.delete(entry.id);render();});
+  }
+ }
+
  const test=document.querySelector('#test-counterexample');test.checked=selected.has('test-counterexample');test.addEventListener('change',()=>{test.checked?selected.add('test-counterexample'):selected.delete('test-counterexample');render();});
  function render(){
   const data=derive([...selected]);graph.replaceChildren();
