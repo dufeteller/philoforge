@@ -23,6 +23,7 @@ jobs:
       - run: node website/tests/consequences.cjs
       - run: node website/tests/i18n.cjs
       - run: node website/tests/preferences.cjs
+      - run: node website/tests/conflicts.cjs
   lean:
     runs-on: ubuntu-latest
     timeout-minutes: 15
