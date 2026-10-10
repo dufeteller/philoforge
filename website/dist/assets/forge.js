@@ -24,7 +24,7 @@ document.querySelector("#save").addEventListener("click",()=>{try{localStorage.s
 document.querySelector("#export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(universe(),null,2)+"\n"],{type:"application/json"}));const link=document.createElement("a");link.href=url;link.download="philoforge-universe.json";link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);feedback.textContent=PhiloI18n.t("Universe downloaded.");});
 function renderConsequences(){
  const result=PhiloConsequences.derive(selected().map(a=>a.id));
- const panel=document.querySelector("#consequences-list");panel.replaceChildren();panel.classList.remove("contradiction-view");
+ const panel=document.querySelector("#consequences-list");panel.replaceChildren();panel.classList.remove("contradiction-view","axiom-forest");
  document.querySelector("#analysis-summary").textContent=selected().length===0?"Select axioms to explore their consequences.":`${result.consequences.length} consequences · ${result.tensions.length} explicit conflicts`;
  const conflict=PhiloConflicts.detect(selected().map(a=>a.id),'alternatives');
  if(conflict){
@@ -32,14 +32,29 @@ function renderConsequences(){
   PhiloConflicts.render(panel,conflict,axioms,id=>{boxes.find(box=>box.value===id).checked=false;render();});
   document.querySelector("#analysis-questions").replaceChildren();return;
  }
- for(const [kind,items] of [["Consequence",result.consequences],["Conflict",result.tensions]])for(const item of items){
-  const article=document.createElement("article");article.className="deduction"+(kind==="Conflict"?" conflict":"");
-  const badge=document.createElement("div");badge.className="eyebrow";badge.textContent=kind;
-  const heading=document.createElement("h3");heading.textContent=item.title;
-  const text=document.createElement("p");text.textContent=item.statement;
-  const deps=document.createElement("p");deps.className="dependencies";deps.textContent="Depends on: "+item.requires.map(id=>axioms.find(a=>a.id===id).title).join(" + ");
-  const detail=document.createElement("details");const summary=document.createElement("summary");summary.textContent="Why does this follow?";detail.append(summary);
-  const steps=document.createElement("ol");for(const step of item.steps){const li=document.createElement("li");li.textContent=step;steps.append(li);}const method=document.createElement("p");method.textContent=item.method;detail.append(steps,method);article.append(badge,heading,text,deps,detail);panel.append(article);
+ panel.classList.add("axiom-forest");
+ for(const axiom of selected()){
+  const branch=document.createElement("section");branch.className="axiom-branch";
+  const root=document.createElement("div");root.className="axiom-root";
+  const label=document.createElement("div");label.className="eyebrow";label.textContent="Axiom";
+  const title=document.createElement("h3");title.textContent=axiom.title;
+  const statement=document.createElement("p");statement.textContent=axiom.statement;
+  root.append(label,title,statement);branch.append(root);
+  const results=result.consequences.filter(item=>item.requires.includes(axiom.id));
+  if(results.length){
+   const links=document.createElement("div");links.className="axiom-branches";
+   for(const item of results){
+    const article=document.createElement("article");article.className="deduction tree-result";
+    const badge=document.createElement("div");badge.className="eyebrow";badge.textContent="Consequence";
+    const heading=document.createElement("h3");heading.textContent=item.title;
+    const text=document.createElement("p");text.textContent=item.statement;
+    const deps=document.createElement("p");deps.className="dependencies";deps.textContent="Depends on: "+item.requires.map(id=>axioms.find(a=>a.id===id).title).join(" + ");
+    const detail=document.createElement("details");const summary=document.createElement("summary");summary.textContent="Why does this follow?";detail.append(summary);
+    const steps=document.createElement("ol");for(const step of item.steps){const li=document.createElement("li");li.textContent=step;steps.append(li);}const method=document.createElement("p");method.textContent=item.method;detail.append(steps,method);
+    article.append(badge,heading,text,deps,detail);links.append(article);
+   }branch.append(links);
+  }else{const pending=document.createElement("p");pending.className="tree-pending";pending.textContent="No additional result from this root with the current selection.";branch.append(pending);}
+  panel.append(branch);
  }
  if(selected().length&&!result.consequences.length&&!result.tensions.length){const p=document.createElement("p");p.textContent="No additional consequence is covered by the current rule library for this selection. This is not a proof that none exist.";panel.append(p);}
  const questions=document.querySelector("#analysis-questions");questions.replaceChildren();for(const question of result.questions){const li=document.createElement("li");li.textContent=question;questions.append(li);}
