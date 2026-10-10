@@ -27,3 +27,9 @@ English is the default language. The EN / FR selector is available on the journa
 English text remains canonical in HTML and rule data. French translations are maintained in `dist/assets/locales.js`, including axioms, consequence explanations, and interface text. Logical identifiers and dependencies remain identical in both languages; JSON exports retain canonical English content and record the selected display language. User-entered universe names are never automatically translated, except the initial default name.
 
 Pour modifier le français, mettez à jour les traductions dans `dist/assets/locales.js`. Lors de l’ajout d’un contenu anglais, ajoutez sa traduction française et lancez `node website/tests/i18n.cjs`.
+
+## Optional French content / Français facultatif
+
+French translations are optional. Missing or empty translations hide the affected content in French instead of falling back to English. An incomplete axiom or deduction card is hidden as a whole. Switching back to English restores it. Names, logical identifiers, mathematical notation, and user-entered names remain unchanged. Translation tests validate supplied entries without requiring full coverage.
+
+Une traduction française absente ou vide masque le contenu en français. La version anglaise reste disponible. Masquer un axiome ne le désélectionne pas : les choix logiques sont conservés lors du changement de langue.
