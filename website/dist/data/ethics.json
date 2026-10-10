@@ -399,7 +399,13 @@
       ],
       "status": "lean-checked",
       "formalScope": "Two existing substances of the same nature are identical, assuming the scholium’s multiplicity principle. This does not establish uniqueness from sharing only one attribute.",
-      "theorem": "PhiloForge.Spinoza.Ontology.proposition5_same_nature"
+      "theorem": "PhiloForge.Spinoza.Ontology.proposition5_same_nature",
+      "translations": {
+        "fr": {
+          "statement": "Il ne peut y avoir dans la nature deux ou plusieurs substances de même nature ou attribut.",
+          "paragraphs": []
+        }
+      }
     },
     {
       "id": "E1-P6",
@@ -438,7 +444,13 @@
       ],
       "status": "lean-checked",
       "formalScope": "An existing substance has essence involving existence, assuming the selected explanation principle. This does not prove that a substance exists.",
-      "theorem": "PhiloForge.Spinoza.Ontology.proposition7_existing_substance"
+      "theorem": "PhiloForge.Spinoza.Ontology.proposition7_existing_substance",
+      "translations": {
+        "fr": {
+          "statement": "Il appartient à la nature de la substance d’exister.",
+          "paragraphs": []
+        }
+      }
     },
     {
       "id": "E1-P8",
@@ -461,7 +473,13 @@
       ],
       "status": "lean-checked",
       "formalScope": "An existing substance has no distinct actual limiter of the same nature, under the selected multiplicity principle and limiter bridge. This is a limited sense of infinity, without modal necessity.",
-      "theorem": "PhiloForge.Spinoza.Ontology.proposition8_no_limiter"
+      "theorem": "PhiloForge.Spinoza.Ontology.proposition8_no_limiter",
+      "translations": {
+        "fr": {
+          "statement": "Toute substance est nécessairement infinie.",
+          "paragraphs": []
+        }
+      }
     },
     {
       "id": "E1-P9",

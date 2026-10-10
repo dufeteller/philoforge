@@ -98,5 +98,17 @@
   "E1-P6": {
     "statement": "Une substance ne peut être produite par une autre substance.",
     "paragraphs": []
+  },
+  "E1-P5": {
+    "statement": "Il ne peut y avoir dans la nature deux ou plusieurs substances de même nature ou attribut.",
+    "paragraphs": []
+  },
+  "E1-P7": {
+    "statement": "Il appartient à la nature de la substance d’exister.",
+    "paragraphs": []
+  },
+  "E1-P8": {
+    "statement": "Toute substance est nécessairement infinie.",
+    "paragraphs": []
   }
 }

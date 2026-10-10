@@ -1,0 +1,106 @@
+{
+  "conceptual-separation": {
+    "sourceIds": [
+      "E1-A5"
+    ],
+    "local": "Two arbitrary things with nothing in common.",
+    "limit": "Axiom V is interpreted as absence of conceptual dependence. This is an intermediate lemma, not a numbered proposition.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P3": {
+    "sourceIds": [
+      "E1-P3",
+      "E1-A4",
+      "E1-A5"
+    ],
+    "local": "Two arbitrary things with nothing in common.",
+    "limit": "Knowledge of a cause is represented by conceptual dependence. The logical implication is checked; this reading of knowledge still requires philosophical review.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P6-C": {
+    "sourceIds": [
+      "E1-P6-C",
+      "E1-D3",
+      "E1-A4"
+    ],
+    "local": "A substance and a distinct proposed cause.",
+    "limit": "The proof excludes the encoded causal relation. Production is not a separately formalized relation.",
+    "reviewStatus": "not-reviewed"
+  },
+  "adequate-not-partial": {
+    "sourceIds": [
+      "E3-D1"
+    ],
+    "local": "The same cause and the same effect.",
+    "limit": "A definitional consequence of the chosen adequate/partial cause encoding, not a numbered proposition.",
+    "reviewStatus": "not-reviewed"
+  },
+  "active-not-passive": {
+    "sourceIds": [
+      "E3-D1",
+      "E3-D2"
+    ],
+    "local": "The same actor and the same event.",
+    "limit": "Excludes simultaneous activity and passivity only for this actor-event pair, not every combination of action and passion in a person.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P1": {
+    "sourceIds": [
+      "E1-P1",
+      "E1-D3",
+      "E1-D5"
+    ],
+    "local": "A substance and its distinct mode.",
+    "limit": "Priority by nature is interpreted as asymmetric conceptual dependence. Other meanings of priority have not been proved equivalent.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P6": {
+    "sourceIds": [
+      "E1-P6",
+      "E1-D3",
+      "E1-A4"
+    ],
+    "local": "Two distinct substances.",
+    "limit": "Uses the alternative corollary argument. The original proof through P2/P3/P5 and the broader notion of production remain unformalized.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P5": {
+    "sourceIds": [
+      "E1-P5",
+      "E1-D3",
+      "E1-A4",
+      "E1-P8-S2-multiplicity",
+      "E1-P5-proof-reference"
+    ],
+    "local": "Two actually existing substances of the same nature.",
+    "limit": "The general multiplicity principle is assumed, not proved. The theorem says nothing about sharing a single attribute. It uses the later scholium instead of the original demonstration.",
+    "reviewStatus": "not-reviewed",
+    "textualNote": "The Latin proof cites Definition III and Axiom VI here; the imported Elwes proof prints Definitions III and VI. The library preserves that edition. This reference difference must be resolved against the Latin before reconstructing the original proof."
+  },
+  "E1-P7": {
+    "sourceIds": [
+      "E1-P7",
+      "E1-D1",
+      "E1-D3",
+      "E1-A4",
+      "E1-P8-S2-existence",
+      "E1-P8-S2-intrinsic"
+    ],
+    "local": "A substance already assumed to exist actually.",
+    "limit": "Essential existence remains a primitive predicate in this version. The intrinsic/external explanation alternative is assumed. No existing substance or God is thereby established.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P8": {
+    "sourceIds": [
+      "E1-P8",
+      "E1-D2",
+      "E1-D3",
+      "E1-A4",
+      "E1-P8-S2-multiplicity",
+      "E1-P8-limiter-bridge"
+    ],
+    "local": "A substance already assumed to exist actually.",
+    "limit": "Only distinct actual same-nature limiters are excluded. Modal necessity is absent. The limiter classification is used by this proof route but is not a minimal logical requirement of the stronger multiplicity premise.",
+    "reviewStatus": "not-reviewed"
+  }
+}

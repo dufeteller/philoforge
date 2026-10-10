@@ -1,0 +1,361 @@
+{
+  "reviewPolicy": "Compilation does not certify historical fidelity. Independent philosophical review is pending.",
+  "items": [
+    {
+      "sourceIds": [
+        "E1-A5"
+      ],
+      "local": "Two arbitrary things with nothing in common.",
+      "limit": "Axiom V is interpreted as absence of conceptual dependence. This is an intermediate lemma, not a numbered proposition.",
+      "reviewStatus": "not-reviewed",
+      "id": "conceptual-separation",
+      "title": "No conceptual dependence",
+      "formalStatement": "If two things have nothing in common, neither is conceived through the other.",
+      "exactLean": "theorem conceptual_separation {Entity : Type} (v : Vocabulary Entity)\n    (a5 : Axiom5 v) (x y : Entity) (h : ¬ v.common x y) :\n    ¬ v.depends x y ∧ ¬ v.depends y x",
+      "leanName": "PhiloForge.Spinoza.conceptual_separation",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean#L38",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E1-A5",
+          "title": "Nothing in common",
+          "type": "Axiom",
+          "interpretation": "Formal convention: absence of commonality excludes conceptual dependence in both directions."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P3",
+        "E1-A4",
+        "E1-A5"
+      ],
+      "local": "Two arbitrary things with nothing in common.",
+      "limit": "Knowledge of a cause is represented by conceptual dependence. The logical implication is checked; this reading of knowledge still requires philosophical review.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P3",
+      "title": "No causation without commonality",
+      "formalStatement": "Things with nothing in common cannot cause one another.",
+      "exactLean": "theorem proposition3 {Entity : Type} (v : Vocabulary Entity)\n    (a4 : Axiom4 v) (a5 : Axiom5 v) (x y : Entity)\n    (h : ¬ v.common x y) : ¬ v.causes x y ∧ ¬ v.causes y x",
+      "leanName": "PhiloForge.Spinoza.proposition3",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean#L43",
+      "sourceStatement": {
+        "en": "Things which have nothing in common cannot be one the cause of the other.",
+        "fr": "Les choses qui n’ont rien de commun ne peuvent être causes l’une de l’autre."
+      },
+      "premises": [
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        },
+        {
+          "id": "E1-A5",
+          "title": "Nothing in common",
+          "type": "Axiom",
+          "interpretation": "Formal convention: absence of commonality excludes conceptual dependence in both directions."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P6-C",
+        "E1-D3",
+        "E1-A4"
+      ],
+      "local": "A substance and a distinct proposed cause.",
+      "limit": "The proof excludes the encoded causal relation. Production is not a separately formalized relation.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P6-C",
+      "title": "No external cause of substance",
+      "formalStatement": "A substance cannot be produced by a cause external to itself, in the reconstructed causal vocabulary.",
+      "exactLean": "theorem external_cause_excluded {Entity : Type} (v : Vocabulary Entity)\n    (a4 : Axiom4 v) (s cause : Entity) (hs : Substance v s)\n    (external : cause ≠ s) : ¬ v.causes cause s",
+      "leanName": "PhiloForge.Spinoza.external_cause_excluded",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean#L55",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+        },
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E3-D1"
+      ],
+      "local": "The same cause and the same effect.",
+      "limit": "A definitional consequence of the chosen adequate/partial cause encoding, not a numbered proposition.",
+      "reviewStatus": "not-reviewed",
+      "id": "adequate-not-partial",
+      "title": "An adequate cause is not partial",
+      "formalStatement": "For the same effect, a cause cannot be both adequate and partial in this encoding.",
+      "exactLean": "theorem adequate_not_partial {Entity Event : Type} (v : Vocabulary Entity Event)\n    (x : Entity) (e : Event) (h : AdequateCause v x e) :\n    ¬ PartialCause v x e",
+      "leanName": "PhiloForge.Spinoza.Affects.adequate_not_partial",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAffects.lean#L26",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E3-D1",
+          "title": "Adequate and partial causes",
+          "type": "Definition",
+          "interpretation": "Formal convention: adequacy includes causation and intelligibility through this cause alone. Partial causation includes causation and excludes that intelligibility."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E3-D1",
+        "E3-D2"
+      ],
+      "local": "The same actor and the same event.",
+      "limit": "Excludes simultaneous activity and passivity only for this actor-event pair, not every combination of action and passion in a person.",
+      "reviewStatus": "not-reviewed",
+      "id": "active-not-passive",
+      "title": "Activity excludes passivity for this event",
+      "formalStatement": "For one actor and one event, activity and passivity exclude one another in the reconstructed definitions.",
+      "exactLean": "theorem active_not_passive {Entity Event : Type} (v : Vocabulary Entity Event)\n    (x : Entity) (e : Event) (h : Active v x e) : ¬ Passive v x e",
+      "leanName": "PhiloForge.Spinoza.Affects.active_not_passive",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAffects.lean#L33",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E3-D1",
+          "title": "Adequate and partial causes",
+          "type": "Definition",
+          "interpretation": "Formal convention: adequacy includes causation and intelligibility through this cause alone. Partial causation includes causation and excludes that intelligibility."
+        },
+        {
+          "id": "E3-D2",
+          "title": "Activity and passivity",
+          "type": "Definition",
+          "interpretation": "Formal convention: activity and passivity are relative to the same actor and event. This does not exclude a person being active in one respect and passive in another."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P1",
+        "E1-D3",
+        "E1-D5"
+      ],
+      "local": "A substance and its distinct mode.",
+      "limit": "Priority by nature is interpreted as asymmetric conceptual dependence. Other meanings of priority have not been proved equivalent.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P1",
+      "title": "Substance is prior to its modes",
+      "formalStatement": "A mode depends conceptually on its substance; the substance does not depend on that distinct mode. This reconstructs priority as asymmetric conceptual dependence.",
+      "exactLean": "theorem proposition1 {Entity : Type} (v : Vocabulary Entity)\n    (s m : Entity) (hs : Substance v s) (hm : ModeOf v m s) :\n    ConceptuallyPrior v s m",
+      "leanName": "PhiloForge.Spinoza.proposition1",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean#L25",
+      "sourceStatement": {
+        "en": "Substance is by nature prior to its modifications.",
+        "fr": "La substance est par nature antérieure à ses modifications."
+      },
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: ModeOf names a distinct entity in which the mode exists and on which its conception depends. Priority in Proposition I is reconstructed as asymmetric conceptual dependence, not temporal precedence."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P6",
+        "E1-D3",
+        "E1-A4"
+      ],
+      "local": "Two distinct substances.",
+      "limit": "Uses the alternative corollary argument. The original proof through P2/P3/P5 and the broader notion of production remain unformalized.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P6",
+      "title": "Distinct substances cannot cause each other",
+      "formalStatement": "In the causal encoding, neither of two distinct substances causes the other. This uses the corollary’s alternative argument, not Spinoza’s full historical proof of Proposition VI.",
+      "exactLean": "theorem proposition6_causal {Entity : Type} (v : Vocabulary Entity)\n    (a4 : Axiom4 v) (s t : Entity) (hs : Substance v s)\n    (ht : Substance v t) (distinct : s ≠ t) :\n    ¬ v.causes s t ∧ ¬ v.causes t s",
+      "leanName": "PhiloForge.Spinoza.proposition6_causal",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean#L64",
+      "sourceStatement": {
+        "en": "One substance cannot be produced by another substance.",
+        "fr": "Une substance ne peut être produite par une autre substance."
+      },
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+        },
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P5",
+        "E1-D3",
+        "E1-A4",
+        "E1-P8-S2-multiplicity",
+        "E1-P5-proof-reference"
+      ],
+      "local": "Two actually existing substances of the same nature.",
+      "limit": "The general multiplicity principle is assumed, not proved. The theorem says nothing about sharing a single attribute. It uses the later scholium instead of the original demonstration.",
+      "reviewStatus": "not-reviewed",
+      "textualNote": "The Latin proof cites Definition III and Axiom VI here; the imported Elwes proof prints Definitions III and VI. The library preserves that edition. This reference difference must be resolved against the Latin before reconstructing the original proof.",
+      "id": "E1-P5",
+      "title": "Uniqueness within the same nature",
+      "formalStatement": "Two existing substances of the same nature are identical, assuming the scholium’s multiplicity principle. This does not establish uniqueness from sharing only one attribute.",
+      "exactLean": "theorem proposition5_same_nature {E : Type} (v : Vocabulary E)\n    (a4 : Spinoza.Axiom4 v.toVocabulary) (multiplicity : MultiplicityExplanation v)\n    (x y : E) (hx : v.actual x) (hy : v.actual y)\n    (sx : Spinoza.Substance v.toVocabulary x)\n    (_sy : Spinoza.Substance v.toVocabulary y) (same : v.sameNature x y) : x = y",
+      "leanName": "PhiloForge.Spinoza.Ontology.proposition5_same_nature",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean#L45",
+      "sourceStatement": {
+        "en": "There cannot exist in the universe two or more substances having the same nature or attribute.",
+        "fr": "Il ne peut y avoir dans la nature deux ou plusieurs substances de même nature ou attribut."
+      },
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+        },
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        },
+        {
+          "id": "E1-P8-S2-multiplicity",
+          "title": "Multiplicity requires an external cause",
+          "type": "Scholium principle",
+          "interpretation": "Additional selected premise from the scholium, not a theorem proved here. It applies to same-nature individuals generally. The resulting Proposition V concerns same nature, not the sharing of just one attribute."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P7",
+        "E1-D1",
+        "E1-D3",
+        "E1-A4",
+        "E1-P8-S2-existence",
+        "E1-P8-S2-intrinsic"
+      ],
+      "local": "A substance already assumed to exist actually.",
+      "limit": "Essential existence remains a primitive predicate in this version. The intrinsic/external explanation alternative is assumed. No existing substance or God is thereby established.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P7",
+      "title": "Essential existence of an existing substance",
+      "formalStatement": "An existing substance has essence involving existence, assuming the selected explanation principle. This does not prove that a substance exists.",
+      "exactLean": "theorem proposition7_existing_substance {E : Type} (v : Vocabulary E)\n    (a4 : Spinoza.Axiom4 v.toVocabulary) (explanation : ExistenceExplanation v)\n    (x : E) (hx : v.actual x) (sx : Spinoza.Substance v.toVocabulary x) :\n    SelfCaused v x",
+      "leanName": "PhiloForge.Spinoza.Ontology.proposition7_existing_substance",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean#L58",
+      "sourceStatement": {
+        "en": "Existence belongs to the nature of substances.",
+        "fr": "Il appartient à la nature de la substance d’exister."
+      },
+      "premises": [
+        {
+          "id": "E1-D1",
+          "title": "Essential self-causation",
+          "type": "Definition",
+          "interpretation": "Essential self-causation is distinct from a thing causing itself in the causal relation. Actual existence is recorded separately."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+        },
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        },
+        {
+          "id": "E1-P8-S2-existence",
+          "title": "An explanation of existence",
+          "type": "Scholium principle",
+          "interpretation": "Additional selected premise from the scholium. The intrinsic explanation is interpreted as essence involving existence. This premise is not derived from the seven axioms."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P8",
+        "E1-D2",
+        "E1-D3",
+        "E1-A4",
+        "E1-P8-S2-multiplicity",
+        "E1-P8-limiter-bridge"
+      ],
+      "local": "A substance already assumed to exist actually.",
+      "limit": "Only distinct actual same-nature limiters are excluded. Modal necessity is absent. The limiter classification is used by this proof route but is not a minimal logical requirement of the stronger multiplicity premise.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P8",
+      "title": "No same-nature limiter of substance",
+      "formalStatement": "An existing substance has no distinct actual limiter of the same nature, under the selected multiplicity principle and limiter bridge. This is a limited sense of infinity, without modal necessity.",
+      "exactLean": "theorem proposition8_no_limiter {E : Type} (v : Vocabulary E)\n    (a4 : Spinoza.Axiom4 v.toVocabulary) (multiplicity : MultiplicityExplanation v)\n    (limiter : SubstanceLimiter v) (x : E) (hx : v.actual x)\n    (sx : Spinoza.Substance v.toVocabulary x) : InfiniteInKind v x",
+      "leanName": "PhiloForge.Spinoza.Ontology.proposition8_no_limiter",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean#L69",
+      "sourceStatement": {
+        "en": "Every substance is necessarily infinite.",
+        "fr": "Toute substance est nécessairement infinie."
+      },
+      "premises": [
+        {
+          "id": "E1-D2",
+          "title": "Finitude in its kind",
+          "type": "Definition",
+          "interpretation": "Limited reconstruction: a limiter is distinct and actually exists. Infinity in kind means absence of such a limiter; it is not cardinal infinity or modal necessity."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+        },
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        },
+        {
+          "id": "E1-P8-S2-multiplicity",
+          "title": "Multiplicity requires an external cause",
+          "type": "Scholium principle",
+          "interpretation": "Additional selected premise from the scholium, not a theorem proved here. It applies to same-nature individuals generally. The resulting Proposition V concerns same nature, not the sharing of just one attribute."
+        },
+        {
+          "id": "E1-P8-limiter-bridge",
+          "title": "A substance has a substance as limiter",
+          "type": "Interpretive premise",
+          "interpretation": "Explicit interpretive bridge, not one of Spinoza’s numbered axioms. Same nature and the limiting relation do not imply this classification automatically."
+        }
+      ]
+    }
+  ]
+}

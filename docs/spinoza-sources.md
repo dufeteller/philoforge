@@ -30,7 +30,7 @@ The optional P3 counterexample is a user hypothesis, not a Spinoza axiom. Its co
 
 ## French
 
-French passages are our translations, not quotations attributed to a historical French translator. Currently 25 statement translations are stored in the optional translation register. Their untranslated demonstrations are omitted in French, with a link to the English source. Whole entries without a French statement are hidden in French mode and retained in English. Interface translations are maintained in `locales.js`.
+French passages are our translations, not quotations attributed to a historical French translator. Currently 28 statement translations are stored in the optional translation register. Their untranslated demonstrations are omitted in French, with a link to the English source. Whole entries without a French statement are hidden in French mode and retained in English. Interface translations are maintained in `locales.js`.
 
 ## What remains to formalize
 
@@ -63,3 +63,8 @@ Three selectable extra premises have their own categories in the workshop:
 With D3/A4, the multiplicity principle proves the **same-nature version of P5** via the alternative scholium argument. It does not establish the version about sharing just one attribute. The explanation principle proves **P7 for an already existing substance**, not existence of any substance or God. P5 plus the limiting bridge proves **P8 as absence of a distinct actual same-nature limiter**. The formal model does not express its modal necessity. These are six numbered scoped reconstructions in total, not six fully faithful historical demonstrations.
 
 The concrete Boolean model in `example_principles` satisfies all the new premises together with A4/A5 and has an existing substance, an existing mode and nonempty causation. It checks satisfiability of this extension; it is not a model of the full Ethics. The website exposes ten results and keeps 253 numbered propositions unformalized.
+
+
+## Fidelity dossier and candidate foundations
+
+See [the candidate foundations and review criteria](spinoza-foundations.md). The site now exposes Latin source passages, exact generated Lean signatures, selected premises, local hypotheses and interpretation limits for every displayed result. All independent philosophical reviews remain pending. Corrected catalogue proof links resolve to the actual theorem file and declaration. The original six scoped reconstructions are retained as partial experiments; the new candidate foundations do not automatically certify or replace their interpretations.
