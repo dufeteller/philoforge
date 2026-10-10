@@ -13,7 +13,7 @@
  const colors=['#3d7056','#986036','#506f9b'];
  const outgoing=new Map();for(const n of data.results)for(const parent of n.parents){if(!outgoing.has(parent))outgoing.set(parent,[]);outgoing.get(parent).push(n.id);}
  for(const [index,n] of data.results.entries()){
-  const t=positions.get(n.id),tx=t.x+125,ty=t.y+185,jy=ty+35;
+  const t=positions.get(n.id),tx=t.x+125,ty=t.y+185,jy=ty+30+(index%3)*14;
   const group=document.createElementNS(svg.namespaceURI,'g');group.dataset.result=n.id;group.style.color=colors[index%colors.length];
   function line(d){const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',d);group.append(path);}
   for(const parent of n.parents){const source=positions.get(parent);if(!source)continue;
