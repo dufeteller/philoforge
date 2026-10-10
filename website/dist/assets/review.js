@@ -9,7 +9,7 @@
  function render(){
   const fr=PhiloI18n.language==='fr';select.replaceChildren();
   // Respect optional translation: hide an untranslated dossier as one unit.
-  const available=review.items.filter(r=>!fr||[r.title,r.formalStatement,r.local,r.limit].every(s=>PhiloI18n.canDisplay(s,'fr'))&&(!r.sourceStatement||r.sourceStatement.fr));
+  const available=review.items.filter(r=>!fr||[r.title,r.formalStatement,r.local,r.limit,...(r.textualNote?[r.textualNote]:[])].every(s=>PhiloI18n.canDisplay(s,'fr'))&&(!r.sourceStatement||r.sourceStatement.fr));
   if(!available.some(r=>r.id===chosen))chosen=available[0]?.id;
   for(const r of available){const option=add(select,'option',r.id+' · '+t(r.title));option.value=r.id;option.selected=r.id===chosen;}
   content.replaceChildren();content.dataset.localised='true';const r=available.find(r=>r.id===chosen);
@@ -25,6 +25,7 @@
   const first=sources.passages[r.sourceIds[0]];add(source,'p',t('Latin reference'));add(source,'blockquote',first.latin).lang='la';
   link(source,first.reference+' · ILIESI–CNR',first.url);
   add(source,'p',t('English: Elwes. French: our translation. The Latin text is shown for comparison.'));
+  if(r.textualNote){add(source,'h4',t('Textual reference note'));add(source,'p',t(r.textualNote));}
   const formal=add(columns,'article','');add(formal,'h3',t('What the encoded proof establishes'));add(formal,'p',t(r.formalStatement));
   add(formal,'h4',t('Local hypotheses'));add(formal,'p',t(r.local));
   const limit=add(formal,'div','');limit.className='review-limit';add(limit,'h4',t('Interpretation and limits'));add(limit,'p',t(r.limit));

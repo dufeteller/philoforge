@@ -69,11 +69,13 @@
       "E1-P5",
       "E1-D3",
       "E1-A4",
-      "E1-P8-S2-multiplicity"
+      "E1-P8-S2-multiplicity",
+      "E1-P5-proof-reference"
     ],
     "local": "Two actually existing substances of the same nature.",
     "limit": "The general multiplicity principle is assumed, not proved. The theorem says nothing about sharing a single attribute. It uses the later scholium instead of the original demonstration.",
-    "reviewStatus": "not-reviewed"
+    "reviewStatus": "not-reviewed",
+    "textualNote": "The Latin proof cites Definition III and Axiom VI here; the imported Elwes proof prints Definitions III and VI. The library preserves that edition. This reference difference must be resolved against the Latin before reconstructing the original proof."
   },
   "E1-P7": {
     "sourceIds": [
