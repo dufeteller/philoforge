@@ -41,10 +41,54 @@
  function fit(){highlight(null);scale=limit(Math.min((viewport.clientWidth-50)/width,(viewport.clientHeight-50)/height));x=(viewport.clientWidth-width*scale)/2;y=(viewport.clientHeight-height*scale)/2;apply();}
  document.querySelector('#zoom-in').onclick=()=>zoom(1.25);document.querySelector('#zoom-out').onclick=()=>zoom(.8);document.querySelector('#fit-map').onclick=fit;document.querySelector('#reset-map').onclick=()=>{scale=1;x=(viewport.clientWidth-width)/2;y=0;apply();};
  viewport.addEventListener('wheel',e=>{e.preventDefault();const rect=viewport.getBoundingClientRect();zoom(Math.exp(-e.deltaY*.002),e.clientX-rect.left,e.clientY-rect.top);},{passive:false});
- const pointers=new Map();let pinch=null;
- viewport.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;viewport.focus();viewport.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===2){const [a,b]=[...pointers.values()];pinch=Math.hypot(a.x-b.x,a.y-b.y);} });
- viewport.addEventListener('pointermove',e=>{const prev=pointers.get(e.pointerId);if(!prev)return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pointers.size===1){x+=e.clientX-prev.x;y+=e.clientY-prev.y;apply();}else if(pointers.size===2){const [a,b]=[...pointers.values()],distance=Math.hypot(a.x-b.x,a.y-b.y),rect=viewport.getBoundingClientRect();if(pinch>0)zoom(distance/pinch,(a.x+b.x)/2-rect.left,(a.y+b.y)/2-rect.top);pinch=distance;}});
- for(const event of ['pointerup','pointercancel'])viewport.addEventListener(event,e=>{pointers.delete(e.pointerId);pinch=null;});
+ // Delay capture until a real drag so a stationary press still clicks the node.
+ const pointers=new Map();const dragThreshold=6;let pinch=null,dragging=false,suppressClick=false;
+ function beginDrag(){
+  dragging=true;suppressClick=true;viewport.classList.add('map-dragging');
+  viewport.focus({preventScroll:true});
+  for(const id of pointers.keys())viewport.setPointerCapture(id);
+ }
+ viewport.addEventListener('pointerdown',e=>{
+  if(e.button!==0)return;
+  if(!pointers.size)suppressClick=false;
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY});
+  if(!e.target.closest('.map-node'))viewport.focus({preventScroll:true});
+  if(pointers.size===2){
+   beginDrag();const [a,b]=[...pointers.values()];pinch=Math.hypot(a.x-b.x,a.y-b.y);
+  }
+ });
+ viewport.addEventListener('pointermove',e=>{
+  const pointer=pointers.get(e.pointerId);if(!pointer)return;
+  const previousX=pointer.x,previousY=pointer.y;pointer.x=e.clientX;pointer.y=e.clientY;
+  if(pointers.size===1){
+   const wasDragging=dragging;
+   if(!dragging&&Math.hypot(pointer.x-pointer.startX,pointer.y-pointer.startY)<dragThreshold)return;
+   if(!dragging)beginDrag();
+   x+=pointer.x-(wasDragging?previousX:pointer.startX);
+   y+=pointer.y-(wasDragging?previousY:pointer.startY);apply();
+  }else if(pointers.size===2){
+   const [a,b]=[...pointers.values()],distance=Math.hypot(a.x-b.x,a.y-b.y),rect=viewport.getBoundingClientRect();
+   if(pinch>0)zoom(distance/pinch,(a.x+b.x)/2-rect.left,(a.y+b.y)/2-rect.top);pinch=distance;
+  }
+  e.preventDefault();
+ });
+ function endPointer(e){
+  // Ignore capture transferred from a touched node to the viewport.
+  if(e.type==='lostpointercapture'&&e.target!==viewport)return;
+  if(!pointers.delete(e.pointerId))return;
+  pinch=null;
+  if(!pointers.size){dragging=false;viewport.classList.remove('map-dragging');}
+ }
+ for(const event of ['pointerup','pointercancel','lostpointercapture'])viewport.addEventListener(event,endPointer);
+ viewport.addEventListener('pointerleave',e=>{
+  // A press that leaves before reaching the threshold must not stay active.
+  if(!viewport.hasPointerCapture(e.pointerId))endPointer(e);
+ });
+ viewport.addEventListener('click',e=>{
+  // Consume the synthetic click following a pan or pinch, but keep keyboard activation.
+  if(suppressClick&&e.detail!==0){e.preventDefault();e.stopImmediatePropagation();suppressClick=false;return;}
+  if(!e.target.closest('.map-node')){detail.hidden=true;highlight(null);viewport.focus({preventScroll:true});}
+ },true);
  viewport.addEventListener('keydown',e=>{if(e.target!==viewport)return;const moves={ArrowLeft:[40,0],ArrowRight:[-40,0],ArrowUp:[0,40],ArrowDown:[0,-40]};if(moves[e.key]){e.preventDefault();x+=moves[e.key][0];y+=moves[e.key][1];apply();}else if(['+','=','-','0'].includes(e.key)){e.preventDefault();e.key==='0'?fit():zoom(e.key==='-'?.8:1.25);}});
  document.querySelectorAll('[data-language]').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(apply)));
  window.addEventListener('resize',fit);PhiloI18n.apply();requestAnimationFrame(fit);
