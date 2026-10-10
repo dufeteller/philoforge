@@ -6,11 +6,11 @@ const notes=require('../docs/spinoza-review-notes.json');
 const sources=require('../website/dist/data/spinoza-sources.json');
 const corpus=require('../website/dist/data/ethics.json');
 assert.deepEqual(Object.keys(notes).sort(),results.map(r=>r.id).sort());
-const modules={Spinoza:'logic/PhiloForge/Spinoza.lean',Affects:'logic/PhiloForge/SpinozaAffects.lean',Ontology:'logic/PhiloForge/SpinozaOntology.lean'};
+const modules={Spinoza:'logic/PhiloForge/Spinoza.lean',Affects:'logic/PhiloForge/SpinozaAffects.lean',Ontology:'logic/PhiloForge/SpinozaOntology.lean',Attributes:'logic/PhiloForge/SpinozaAttributes.lean'};
 const items=results.map(result=>{
  const note=notes[result.id];assert.equal(note.reviewStatus,'not-reviewed');
  for(const id of note.sourceIds)assert.ok(sources.passages[id],`Missing Latin source: ${id}`);
- const module=result.leanName.includes('.Affects.')?'Affects':result.leanName.includes('.Ontology.')?'Ontology':'Spinoza';
+ const module=result.leanName.split('.').length===4?result.leanName.split('.')[2]:'Spinoza';
  const file=modules[module],content=fs.readFileSync(path.join(root,file),'utf8');
  const marker='theorem '+result.theorem+' ',start=content.indexOf(marker);assert.ok(start>=0,result.id);
  const end=content.indexOf(':=',start);assert.ok(end>start);const signature=content.slice(start,end).trim();

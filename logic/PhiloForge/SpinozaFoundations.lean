@@ -226,6 +226,49 @@ theorem foundations_have_substance_and_mode :
   · exact ⟨by decide, ⟨rfl, rfl⟩, ⟨rfl, rfl⟩⟩
   · exact ⟨rfl, rfl⟩
 
+-- P2 attempt: even disjoint attribute profiles do not connect the currently
+-- primitive commonality relation to D3/D4. A5 does not give its converse.
+def disjointAttributeModel : Model Bool Bool Bool := { profileModel with
+  perceivedAsEssence := fun a s => a = s }
+
+theorem disjoint_attributes_do_not_yet_exclude_commonality :
+    D3Explanation disjointAttributeModel ∧ ConceptionBridge disjointAttributeModel ∧
+    CausalKnowledge disjointAttributeModel ∧ NoCommonConcept disjointAttributeModel ∧
+    Substance disjointAttributeModel true true ∧ Substance disjointAttributeModel true false ∧
+    ¬ SharesAttribute disjointAttributeModel true true false ∧
+    disjointAttributeModel.common true false := by
+  refine ⟨?_, fun _ _ h => h, fun _ _ _ h => h, ?_,
+    ⟨True.intro, True.intro⟩, ⟨True.intro, True.intro⟩, ?_, True.intro⟩
+  · intro _
+    exact ⟨fun _ _ _ h => h, fun _ => True.intro⟩
+  · intro _ _ h
+    exact False.elim (h True.intro)
+  · intro ⟨a, left, right⟩
+    exact Bool.noConfusion (left.2.symm.trans right.2)
+
+-- P4 attempt: distinct things may have the same attribute and mode profiles
+-- in the primitive model. A principle about identity/discernibility is missing.
+def indiscernibleModel : Model Bool Bool Bool := { profileModel with
+  perceivedAsEssence := fun _ _ => True }
+
+theorem distinct_things_can_have_identical_profiles :
+    D3Explanation indiscernibleModel ∧ ConceptionBridge indiscernibleModel ∧
+    CausalKnowledge indiscernibleModel ∧ NoCommonConcept indiscernibleModel ∧
+    indiscernibleModel.existsAt true true ∧ indiscernibleModel.existsAt true false ∧
+    Substance indiscernibleModel true true ∧ Substance indiscernibleModel true false ∧
+    (true : Bool) ≠ false ∧ SameAttributes indiscernibleModel true true false ∧
+    (∀ z, ModeOf indiscernibleModel true z true ↔ ModeOf indiscernibleModel true z false) := by
+  refine ⟨?_, fun _ _ h => h, fun _ _ _ h => h, ?_, rfl, rfl,
+    ⟨True.intro, True.intro⟩, ⟨True.intro, True.intro⟩, by decide, fun _ => Iff.rfl, ?_⟩
+  · intro _
+    exact ⟨fun _ _ _ h => h, fun _ => True.intro⟩
+  · intro _ _ h
+    exact False.elim (h True.intro)
+  · intro _
+    exact ⟨fun h => False.elim h.2.1, fun h => False.elim h.2.1⟩
+
+#print axioms disjoint_attributes_do_not_yet_exclude_commonality
+#print axioms distinct_things_can_have_identical_profiles
 #print axioms foundations_have_substance_and_mode
 
 #print axioms substance_correspondence

@@ -114,6 +114,31 @@
       "reference": "E1-P5 · Demonstratio",
       "latin": "depositis ergo affectionibus, et in se considerata, hoc est ( per Defin. 3. et Axiom. 6. ) vere considerata",
       "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit84"
+    },
+    "E1-P9": {
+      "reference": "E1-P9",
+      "latin": "Quo plus realitatis, aut esse unaquaeque res habet, eo plura attributa ipsi competunt.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit216"
+    },
+    "E1-P10": {
+      "reference": "E1-P10",
+      "latin": "Unumquodque unius substantiae attributum per se concipi debet.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit219"
+    },
+    "E1-D4-representation": {
+      "reference": "E1-D4 · interpretation / interprétation",
+      "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-D4-coverage": {
+      "reference": "E1-D4 · interpretation / interprétation",
+      "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-D4-conception": {
+      "reference": "E1-D4 · interpretation / interprétation",
+      "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
     }
   }
 }

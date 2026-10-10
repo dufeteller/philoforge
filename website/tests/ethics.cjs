@@ -12,7 +12,7 @@ assert.equal(corpus.items.filter(i=>i.kind==='Proposition').length,259);
 assert.equal(corpus.items.filter(i=>i.kind==='Lemma').length,7);
 assert.equal(corpus.items.filter(i=>i.kind==='Definition of an emotion').length,48);
 assert.equal(corpus.items.filter(i=>i.kind==='Postulate').length,8);
-assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P1','E1-P3','E1-P5','E1-P6','E1-P7','E1-P8']);
+assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P1','E1-P3','E1-P5','E1-P6','E1-P7','E1-P8','E1-P9','E1-P10']);
 assert.ok(corpus.items.find(i=>i.id==='E1-P6').formalScope.includes('historical')); // no claim of reproducing its historical proof
 for(const item of corpus.items){
  assert.ok(['source-only','lean-checked','encoded-premise'].includes(item.status));

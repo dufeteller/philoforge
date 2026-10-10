@@ -13,11 +13,16 @@ assert.equal(derive(['E3-D1','E3-D2']).results.length,2);
 assert.equal(derive(['E3-D2']).results.length,0);
 
 // Removing a disclosed premise must remove its dependent result.
-for (const id of ['E1-P5','E1-P7','E1-P8']) {
+for (const id of ['E1-P5','E1-P7','E1-P8','attribute-inclusion','E1-P9','E1-P10']) {
  const result=results.find(r=>r.id===id);
  assert.ok(derive(result.requires).results.some(r=>r.id===id));
  for (const premise of result.requires) assert.ok(!derive(result.requires.filter(p=>p!==premise)).results.some(r=>r.id===id));
 }
+// Representation suffices for monotonicity, but cannot supply the extra attribute.
+const attributes=derive(['E1-D3','E1-D4','E1-D4-representation']);
+assert.deepEqual(attributes.results.map(r=>r.id),['attribute-inclusion']);
+assert.ok(!derive(['E1-D3','E1-D4']).results.length);
+assert.deepEqual(derive(['E1-D3','E1-D4','E1-D4-conception']).results.map(r=>r.id),['E1-P10']);
 for (const result of results) for (const parentId of result.parents) {
  const parent=results.find(r=>r.id===parentId);
  if (parent) assert.ok(parent.requires.every(id=>result.requires.includes(id)));

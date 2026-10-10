@@ -2,7 +2,7 @@
 
 ## Status
 
-This is an implemented research foundation, not a certification of the complete Ethics. `PhiloForge/SpinozaFoundations.lean` compiles alongside the existing reconstructions. The six numbered reconstructions retain their restricted scope; no new numbered proposition is counted. Independent philosophical review has not occurred.
+This is an implemented research foundation, not a certification of the complete Ethics. `PhiloForge/SpinozaFoundations.lean` compiles alongside the existing reconstructions. The earlier six numbered reconstructions retain their restricted scope. A separate attribute module now adds two scoped reconstructions (P9/P10); the foundations countermodels themselves do not count as historical propositions. Independent philosophical review has not occurred.
 
 The website's [comparison dossier](https://dufetelle.com/philoforge/review/) distinguishes the historical statement, the encoded conclusion, local hypotheses, selected definitions/premises, interpretation limits, and the exact Lean theorem declaration. The latter and its source link are generated from the actual Lean file, with CI detecting drift. Compilation does not validate the natural-language interpretation.
 
@@ -10,7 +10,7 @@ The website's [comparison dossier](https://dufetelle.com/philoforge/review/) dis
 
 Primary Latin: ILIESI–CNR, *Archivio Testi e Studi Spinoziani*, [Ethica ordine geometrico demonstrata](https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html). The digital edition identifies its source as *Opera*, ed. Carl Gebhardt, Heidelberg, 1972, vol. II, pp. 41–308. This is the selected reference, not a claim of a new critical edition.
 
-`website/dist/data/spinoza-sources.json` records that identification, the fetched HTML SHA-256 and 21 located Latin excerpts. The excerpts were checked against the downloaded text after collapsing whitespace, preserving spelling and punctuation. Punctuation or transcription problems remain subject to philological review. A concrete discrepancy is recorded for P5: its Latin proof cites Definition III and Axiom VI, whereas the imported Elwes paragraph says Definitions III and VI. The original imported edition is preserved; the dossier exposes the discrepancy rather than silently changing its text. The checksum identifies the downloaded version, not a guarantee about future remote contents. Reproduce the offline check with `python scripts/check-latin-sources.py /path/to/ethica_xhtml.html`.
+`website/dist/data/spinoza-sources.json` records that identification, the fetched HTML SHA-256 and 26 located Latin excerpt records. The excerpts were checked against the downloaded text after collapsing whitespace, preserving spelling and punctuation. Punctuation or transcription problems remain subject to philological review. A concrete discrepancy is recorded for P5: its Latin proof cites Definition III and Axiom VI, whereas the imported Elwes paragraph says Definitions III and VI. The original imported edition is preserved; the dossier exposes the discrepancy rather than silently changing its text. The checksum identifies the downloaded version, not a guarantee about future remote contents. Reproduce the offline check with `python scripts/check-latin-sources.py /path/to/ethica_xhtml.html`.
 
 English passages remain the public-domain Elwes translation already catalogued. French source statements and explanatory prose are our translations, never attributed to a historical translator. French entries remain optional and are hidden when the corresponding translation is absent. Latin is displayed deliberately as the comparison text, never as an unnoticed French fallback.
 
@@ -67,3 +67,9 @@ Each dossier records the premise origins and the actual theorem signature. This 
 6. Obtain attributable independent reviews of philosophical fidelity and formal reasoning, recording disagreements. A model-generated summary or a green CI result is not such a review.
 
 No dossier presently satisfies the independent-review criterion. No person has been contacted or represented as having approved the interpretation.
+
+## Attribute extension and remaining early propositions
+
+`SpinozaAttributes.lean` is a separate candidate vocabulary, not a silent replacement for this model. Its P9/P10 reconstructions and three explicit interpretive bridges are documented in [the source notes](spinoza-sources.md#extension-attributes-i-p9-and-i-p10).
+
+Two further checks in this foundations module guide the next steps: `disjoint_attributes_do_not_yet_exclude_commonality` for P2, and `distinct_things_can_have_identical_profiles` for P4. They establish insufficiency of the selected candidate assumptions, not failure of Spinoza’s full demonstrations. Neither target is presented as proved or counted in coverage.

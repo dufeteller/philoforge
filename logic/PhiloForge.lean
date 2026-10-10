@@ -6,3 +6,4 @@ import PhiloForge.SpinozaLimits
 import PhiloForge.SpinozaOntology
 
 import PhiloForge.SpinozaFoundations
+import PhiloForge.SpinozaAttributes

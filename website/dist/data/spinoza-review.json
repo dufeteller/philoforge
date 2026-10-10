@@ -79,7 +79,7 @@
           "id": "E1-D3",
           "title": "Substance",
           "type": "Definition",
-          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
         },
         {
           "id": "E1-A4",
@@ -166,7 +166,7 @@
           "id": "E1-D3",
           "title": "Substance",
           "type": "Definition",
-          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
         },
         {
           "id": "E1-D5",
@@ -200,7 +200,7 @@
           "id": "E1-D3",
           "title": "Substance",
           "type": "Definition",
-          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
         },
         {
           "id": "E1-A4",
@@ -237,7 +237,7 @@
           "id": "E1-D3",
           "title": "Substance",
           "type": "Definition",
-          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
         },
         {
           "id": "E1-A4",
@@ -286,7 +286,7 @@
           "id": "E1-D3",
           "title": "Substance",
           "type": "Definition",
-          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
         },
         {
           "id": "E1-A4",
@@ -335,7 +335,7 @@
           "id": "E1-D3",
           "title": "Substance",
           "type": "Definition",
-          "interpretation": "Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition."
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
         },
         {
           "id": "E1-A4",
@@ -354,6 +354,129 @@
           "title": "A substance has a substance as limiter",
           "type": "Interpretive premise",
           "interpretation": "Explicit interpretive bridge, not one of Spinoza’s numbered axioms. Same nature and the limiting relation do not imply this classification automatically."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-D4"
+      ],
+      "local": "A substance and another substance whose essential aspects it includes.",
+      "limit": "An intermediate lemma in the attribute vocabulary. Reality inclusion is defined on essential aspects. The selected representation principle connects perception to those aspects; completeness is not needed for this step.",
+      "reviewStatus": "not-reviewed",
+      "id": "attribute-inclusion",
+      "title": "Essential inclusion preserves attributes",
+      "formalStatement": "If a substance includes all the essential aspects of another, it has all of its attributes under the selected representation principle.",
+      "exactLean": "theorem attributes_monotone {T A R C : Type} (v : Vocabulary T A R C)\n    (representation : EssenceRepresentation v) (more less : T)\n    (substance : Substance v more) (includes : RealityIncludes v more less) :\n    ∀ a, AttributeOf v a less → AttributeOf v a more",
+      "leanName": "PhiloForge.Spinoza.Attributes.attributes_monotone",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean#L53",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable."
+        },
+        {
+          "id": "E1-D4-representation",
+          "title": "Attributes represent essential aspects",
+          "type": "Interpretive premise",
+          "interpretation": "Selected interpretation: each attribute expresses one aspect, and perception agrees with possession of that aspect. This is stronger than the primitive perception relation in Definition IV. More reality is interpreted as inclusion of essential aspects."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P9",
+        "E1-D4",
+        "E1-D4-representation",
+        "E1-D4-coverage"
+      ],
+      "local": "Two substances with strictly nested sets of essential aspects. Their existence is not established by this proof.",
+      "limit": "Restricted to substances and a structural reading of more reality. Strict set inclusion does not imply greater infinite cardinality. Representation and coverage are explicit interpretive premises, not the historical proof established from Definition IV alone. This attribute vocabulary has not been identified with the older causal or modal vocabulary.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P9",
+      "title": "More essential aspects, an additional attribute",
+      "formalStatement": "For two substances, strict inclusion of essential aspects implies strict inclusion of attributes, assuming representation and completeness. This is a structural reading of more reality, not a comparison of infinite cardinalities.",
+      "exactLean": "theorem proposition9_attribute_inclusion {T A R C : Type} (v : Vocabulary T A R C)\n    (representation : EssenceRepresentation v) (coverage : AttributeCoverage v)\n    (more less : T) (hm : Substance v more) (_hl : Substance v less)\n    (reality : MoreReality v more less) : MoreAttributes v more less",
+      "leanName": "PhiloForge.Spinoza.Attributes.proposition9_attribute_inclusion",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean#L63",
+      "sourceStatement": {
+        "en": "The more reality or being a thing has, the greater the number of its attributes (Def. iv.).",
+        "fr": "Plus une chose possède de réalité ou d’être, plus il lui appartient d’attributs (définition IV)."
+      },
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable."
+        },
+        {
+          "id": "E1-D4-representation",
+          "title": "Attributes represent essential aspects",
+          "type": "Interpretive premise",
+          "interpretation": "Selected interpretation: each attribute expresses one aspect, and perception agrees with possession of that aspect. This is stronger than the primitive perception relation in Definition IV. More reality is interpreted as inclusion of essential aspects."
+        },
+        {
+          "id": "E1-D4-coverage",
+          "title": "Every essential aspect has an attribute",
+          "type": "Interpretive premise",
+          "interpretation": "Selected completeness premise, not a numbered axiom. No finiteness or one-to-one correspondence is assumed. A Lean countermodel shows that representation without completeness does not ensure an additional attribute."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P10",
+        "E1-D3",
+        "E1-D4",
+        "E1-D4-conception"
+      ],
+      "local": "An attribute perceived as constituting the essence of a substance.",
+      "limit": "Conceived through itself means absence of external conceptual requirements in this vocabulary. Transferring a requirement from attribute to substance is an additional interpretation; a compiled countermodel shows that D3 and primitive D4 alone do not justify that transfer. The scholium is not formalized.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P10",
+      "title": "Attributes need no external concept",
+      "formalStatement": "An attribute of a substance has no external conceptual requirement, assuming the selected transfer of requirements to that substance. This is the encoded reading of conceived through itself.",
+      "exactLean": "theorem proposition10_attribute_independence {T A R C : Type} (v : Vocabulary T A R C)\n    (inheritance : ConceptualInheritance v) (s : T) (a : A)\n    (ha : AttributeOf v a s) : ConceivedThroughItself v a",
+      "leanName": "PhiloForge.Spinoza.Attributes.proposition10_attribute_independence",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean#L81",
+      "sourceStatement": {
+        "en": "Each particular attribute of the one substance must be conceived through itself.",
+        "fr": "Chaque attribut d’une même substance doit se concevoir par soi."
+      },
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable."
+        },
+        {
+          "id": "E1-D4-conception",
+          "title": "Transfer of conceptual requirements",
+          "type": "Interpretive premise",
+          "interpretation": "Selected interpretation of the step from Definition IV to Definition III in P10. External requirements are relative to each conception. Their transfer is assumed explicitly; it is not proved by the perception relation alone."
         }
       ]
     }

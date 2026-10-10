@@ -2,7 +2,7 @@
  const source='https://www.gutenberg.org/cache/epub/919/pg919.html';
  const proofSource='https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean';
  const entries=[
- {id:'E1-D3',type:'Definition',title:'Substance',text:'A substance is in itself and conceived through itself.',reference:'Ethics I, Definition III',original:'By substance I mean that which is in itself, and is conceived through itself.',mapping:'Formal convention: conceptual independence means no conceptual dependence on a distinct entity. This makes explicit a stronger reading of the prose definition.'},
+ {id:'E1-D3',type:'Definition',title:'Substance',text:'A substance is in itself and conceived through itself.',reference:'Ethics I, Definition III',original:'By substance I mean that which is in itself, and is conceived through itself.',mapping:'Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified.'},
  {id:'E1-A4',type:'Axiom',title:'Knowledge of effect and cause',text:'Knowing an effect depends on knowing its cause.',reference:'Ethics I, Axiom IV',original:'The knowledge of an effect depends on and involves the knowledge of a cause.',mapping:'Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded.'},
  {id:'E1-A5',type:'Axiom',title:'Nothing in common',text:'Things with nothing in common cannot be conceived through one another.',reference:'Ethics I, Axiom V',original:'Things which have nothing in common cannot be understood, the one by means of the other.',mapping:'Formal convention: absence of commonality excludes conceptual dependence in both directions.'}
  ];
@@ -27,8 +27,131 @@
 
  entries.push(...[{"id": "E1-D1", "type": "Definition", "title": "Essential self-causation", "text": "Self-caused means that essence involves existence.", "reference": "Ethics I, Definition I", "original": "By that which is self-caused, I mean that of which the essence involves existence.", "mapping": "Essential self-causation is distinct from a thing causing itself in the causal relation. Actual existence is recorded separately.", "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}, {"id": "E1-D2", "type": "Definition", "title": "Finitude in its kind", "text": "A finite thing can be limited by another thing of the same nature.", "reference": "Ethics I, Definition II", "original": "A thing is called finite after its kind, when it can be limited by another thing of the same nature.", "mapping": "Limited reconstruction: a limiter is distinct and actually exists. Infinity in kind means absence of such a limiter; it is not cardinal infinity or modal necessity.", "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}, {"id": "E1-P8-S2-existence", "type": "Scholium principle", "title": "An explanation of existence", "text": "An existing thing has an explanation in its own nature or an external cause.", "reference": "Ethics I, Proposition VIII, Scholium II — principles 3–4", "original": "There is necessarily for each individual existent thing a cause why it should exist.", "mapping": "Additional selected premise from the scholium. The intrinsic explanation is interpreted as essence involving existence. This premise is not derived from the seven axioms.", "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}, {"id": "E1-P8-S2-multiplicity", "type": "Scholium principle", "title": "Multiplicity requires an external cause", "text": "Distinct existing individuals of the same nature require an external cause.", "reference": "Ethics I, Proposition VIII, Scholium II — multiplicity argument", "original": "Everything which may consist of several individuals must have an external cause.", "mapping": "Additional selected premise from the scholium, not a theorem proved here. It applies to same-nature individuals generally. The resulting Proposition V concerns same nature, not the sharing of just one attribute.", "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}, {"id": "E1-P8-limiter-bridge", "type": "Interpretive premise", "title": "A substance has a substance as limiter", "text": "A same-nature limiter of a substance is itself a substance.", "reference": "Interpretation of Ethics I, Proposition VIII — demonstration", "original": "It would then be limited by something else of the same kind, which would also necessarily exist.", "mapping": "Explicit interpretive bridge, not one of Spinoza’s numbered axioms. Same nature and the limiting relation do not imply this classification automatically.", "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}]);
  results.push(...[{"id": "E1-P5", "title": "Uniqueness within the same nature", "text": "Two existing substances of the same nature are identical, assuming the scholium’s multiplicity principle. This does not establish uniqueness from sharing only one attribute.", "reference": "Ethics I, Proposition V — alternative same-nature reconstruction", "requires": ["E1-D3", "E1-A4", "E1-P8-S2-multiplicity"], "parents": ["E1-D3", "E1-A4", "E1-P8-S2-multiplicity"], "level": 1, "theorem": "proposition5_same_nature", "steps": ["Suppose two existing substances of the same nature are distinct.", "The selected multiplicity principle supplies an external cause.", "Axiom IV and Definition III exclude that cause. The two substances cannot be distinct."], "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}, {"id": "E1-P7", "title": "Essential existence of an existing substance", "text": "An existing substance has essence involving existence, assuming the selected explanation principle. This does not prove that a substance exists.", "reference": "Ethics I, Proposition VII — conditional reconstruction", "requires": ["E1-D1", "E1-D3", "E1-A4", "E1-P8-S2-existence"], "parents": ["E1-P6-C", "E1-D1", "E1-P8-S2-existence"], "level": 2, "theorem": "proposition7_existing_substance", "steps": ["For an existing substance, the selected principle gives an intrinsic explanation or an external cause.", "The external-cause result excludes the second possibility.", "The intrinsic explanation is interpreted as essence involving existence, the sense of self-causation in Definition I."], "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}, {"id": "E1-P8", "title": "No same-nature limiter of substance", "text": "An existing substance has no distinct actual limiter of the same nature, under the selected multiplicity principle and limiter bridge. This is a limited sense of infinity, without modal necessity.", "reference": "Ethics I, Proposition VIII — limited infinity-in-kind reconstruction", "requires": ["E1-D2", "E1-D3", "E1-A4", "E1-P8-S2-multiplicity", "E1-P8-limiter-bridge"], "parents": ["E1-P5", "E1-D2", "E1-P8-limiter-bridge"], "level": 2, "theorem": "proposition8_no_limiter", "steps": ["Suppose a distinct actual thing of the same nature limits the substance.", "The selected bridge identifies that limiter as another substance.", "The same-nature uniqueness result identifies both substances, contradicting the distinctness required by Definition II."], "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01", "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaOntology.lean"}]);
+ entries.push(...[
+  {
+    "id": "E1-D4",
+    "type": "Definition",
+    "title": "Attribute",
+    "text": "An attribute is what the intellect perceives as constituting the essence of substance.",
+    "reference": "Ethics I, Definition IV",
+    "original": "By attribute, I mean that which the intellect perceives as constituting the essence of substance.",
+    "mapping": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable.",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  },
+  {
+    "id": "E1-D4-representation",
+    "type": "Interpretive premise",
+    "title": "Attributes represent essential aspects",
+    "text": "An attribute is perceived as constituting an essence exactly when the substance has the aspect it expresses.",
+    "reference": "Interpretation of Ethics I, Definition IV — representation",
+    "original": "By attribute, I mean that which the intellect perceives as constituting the essence of substance.",
+    "mapping": "Selected interpretation: each attribute expresses one aspect, and perception agrees with possession of that aspect. This is stronger than the primitive perception relation in Definition IV. More reality is interpreted as inclusion of essential aspects.",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  },
+  {
+    "id": "E1-D4-coverage",
+    "type": "Interpretive premise",
+    "title": "Every essential aspect has an attribute",
+    "text": "Every essential aspect possessed by a substance is expressed by at least one attribute.",
+    "reference": "Interpretation of Ethics I, Definition IV — completeness",
+    "original": "By attribute, I mean that which the intellect perceives as constituting the essence of substance.",
+    "mapping": "Selected completeness premise, not a numbered axiom. No finiteness or one-to-one correspondence is assumed. A Lean countermodel shows that representation without completeness does not ensure an additional attribute.",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  },
+  {
+    "id": "E1-D4-conception",
+    "type": "Interpretive premise",
+    "title": "Transfer of conceptual requirements",
+    "text": "An external conceptual requirement of an attribute is also an external requirement of the substance whose essence it constitutes.",
+    "reference": "Interpretation of Ethics I, Proposition X — conceptual bridge",
+    "original": "An attribute is that which the intellect perceives of substance, as constituting its essence.",
+    "mapping": "Selected interpretation of the step from Definition IV to Definition III in P10. External requirements are relative to each conception. Their transfer is assumed explicitly; it is not proved by the perception relation alone.",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  }
+]);
+ results.push(...[
+  {
+    "id": "attribute-inclusion",
+    "title": "Essential inclusion preserves attributes",
+    "text": "If a substance includes all the essential aspects of another, it has all of its attributes under the selected representation principle.",
+    "reference": "Intermediate step in Ethics I, Proposition IX",
+    "requires": [
+      "E1-D3",
+      "E1-D4",
+      "E1-D4-representation"
+    ],
+    "parents": [
+      "E1-D3",
+      "E1-D4",
+      "E1-D4-representation"
+    ],
+    "level": 1,
+    "theorem": "attributes_monotone",
+    "steps": [
+      "Take an attribute of the substance with fewer essential aspects.",
+      "The representation principle gives its expressed aspect; the inclusion hypothesis transfers that aspect to the other substance.",
+      "Apply the representation principle in reverse to recover the same attribute."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  },
+  {
+    "id": "E1-P9",
+    "title": "More essential aspects, an additional attribute",
+    "text": "For two substances, strict inclusion of essential aspects implies strict inclusion of attributes, assuming representation and completeness. This is a structural reading of more reality, not a comparison of infinite cardinalities.",
+    "reference": "Ethics I, Proposition IX — inclusion reconstruction",
+    "requires": [
+      "E1-D3",
+      "E1-D4",
+      "E1-D4-representation",
+      "E1-D4-coverage"
+    ],
+    "parents": [
+      "attribute-inclusion",
+      "E1-D4-coverage"
+    ],
+    "level": 2,
+    "theorem": "proposition9_attribute_inclusion",
+    "steps": [
+      "The intermediate result preserves every attribute of the substance with fewer essential aspects.",
+      "Strict reality inclusion supplies an additional essential aspect. Completeness supplies an attribute expressing it.",
+      "That attribute cannot belong to the other substance: representation would give it the supposedly absent aspect."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  },
+  {
+    "id": "E1-P10",
+    "title": "Attributes need no external concept",
+    "text": "An attribute of a substance has no external conceptual requirement, assuming the selected transfer of requirements to that substance. This is the encoded reading of conceived through itself.",
+    "reference": "Ethics I, Proposition X — conceptual reconstruction",
+    "requires": [
+      "E1-D3",
+      "E1-D4",
+      "E1-D4-conception"
+    ],
+    "parents": [
+      "E1-D3",
+      "E1-D4",
+      "E1-D4-conception"
+    ],
+    "level": 1,
+    "theorem": "proposition10_attribute_independence",
+    "steps": [
+      "Suppose that conceiving an attribute requires an external concept.",
+      "The selected bridge transfers this external requirement to the substance whose essence the attribute constitutes.",
+      "Definition III excludes that requirement for the substance. The initial supposition is impossible."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
+  }
+]);
  function derive(ids){const set=new Set(ids);return {results:results.filter(r=>r.requires.every(id=>set.has(id))),conflict:set.has('E1-A4')&&set.has('E1-A5')&&set.has('test-counterexample'),roots:entries.filter(e=>set.has(e.id))};}
- for(const result of results)result.leanName='PhiloForge.Spinoza.'+(result.proofSource?.includes('SpinozaAffects')?'Affects.':result.proofSource?.includes('SpinozaOntology')?'Ontology.':'')+result.theorem;
+ for(const result of results)result.leanName='PhiloForge.Spinoza.'+(result.proofSource?.includes('SpinozaAffects')?'Affects.':result.proofSource?.includes('SpinozaOntology')?'Ontology.':result.proofSource?.includes('SpinozaAttributes')?'Attributes.':'')+result.theorem;
  root.SpinozaTheory={entries,results,derive};if(typeof module==='object'&&module.exports)module.exports=root.SpinozaTheory;
  if(typeof document==='undefined'||!document.querySelector('#spinoza-library'))return;
  const selected=new Set();try{const saved=JSON.parse(localStorage.getItem('philoforge.spinoza.v1'));if(Array.isArray(saved))for(const id of saved)if([...entries.map(e=>e.id),'test-counterexample'].includes(id))selected.add(id);}catch{}
