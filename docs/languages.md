@@ -2,7 +2,7 @@
 
 English is the primary project and website language. French is a supported display language, maintained in the same repository.
 
-The website translation catalogue is `website/dist/assets/locales.js`. Optionally add French translations for visible English strings, including axiom statements, deduction steps, messages, and accessibility labels. Untranslated content stays English-only. Keep logical IDs and dependencies language-independent. Run `node website/tests/i18n.cjs` and `node website/tests/consequences.cjs` before publishing.
+The website translation catalogue is `website/dist/assets/locales.js`. Optionally add French translations for visible English strings, including axiom statements, deduction steps, messages, and accessibility labels. Untranslated content stays English-only. Keep logical IDs and dependencies language-independent. Run `node website/tests/i18n.cjs` and `node website/tests/spinoza.cjs` before publishing.
 
 ## Contribuer en français
 

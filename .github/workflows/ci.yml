@@ -19,11 +19,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
-      - run: node --check website/dist/assets/forge.js
-      - run: node website/tests/consequences.cjs
+      - run: node --check website/dist/assets/spinoza.js
+      - run: node website/tests/spinoza.cjs
       - run: node website/tests/i18n.cjs
-      - run: node website/tests/preferences.cjs
-      - run: node website/tests/conflicts.cjs
   lean:
     runs-on: ubuntu-latest
     timeout-minutes: 15
