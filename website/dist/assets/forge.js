@@ -24,8 +24,14 @@ document.querySelector("#save").addEventListener("click",()=>{try{localStorage.s
 document.querySelector("#export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(universe(),null,2)+"\n"],{type:"application/json"}));const link=document.createElement("a");link.href=url;link.download="philoforge-universe.json";link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);feedback.textContent=PhiloI18n.t("Universe downloaded.");});
 function renderConsequences(){
  const result=PhiloConsequences.derive(selected().map(a=>a.id));
- const panel=document.querySelector("#consequences-list");panel.replaceChildren();
+ const panel=document.querySelector("#consequences-list");panel.replaceChildren();panel.classList.remove("contradiction-view");
  document.querySelector("#analysis-summary").textContent=selected().length===0?"Select axioms to explore their consequences.":`${result.consequences.length} consequences · ${result.tensions.length} explicit conflicts`;
+ const conflict=PhiloConflicts.detect(selected().map(a=>a.id),'alternatives');
+ if(conflict){
+  document.querySelector("#analysis-summary").textContent="Known contradiction: inspect the proof below.";
+  PhiloConflicts.render(panel,conflict,axioms,id=>{boxes.find(box=>box.value===id).checked=false;render();});
+  document.querySelector("#analysis-questions").replaceChildren();return;
+ }
  for(const [kind,items] of [["Consequence",result.consequences],["Conflict",result.tensions]])for(const item of items){
   const article=document.createElement("article");article.className="deduction"+(kind==="Conflict"?" conflict":"");
   const badge=document.createElement("div");badge.className="eyebrow";badge.textContent=kind;

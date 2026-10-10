@@ -20,9 +20,14 @@
  root.PreferenceTheory={nodes,analyze};if(typeof module==='object'&&module.exports)module.exports=root.PreferenceTheory;
  if(typeof document==='undefined')return;
  const graph=document.querySelector('#preference-tree');if(!graph)return;
- const selected=()=>['transitivity','completeness'].filter(id=>document.querySelector('#pref-'+id).checked);
+ const selected=()=>['transitivity','completeness','cycle'].filter(id=>document.querySelector('#pref-'+id).checked);
  function render(){
   const choices=selected();graph.replaceChildren();
+  const conflict=PhiloConflicts.detect(choices,'preference');
+  document.querySelector('.tree-caption').hidden=!!conflict;
+  graph.classList.toggle('proof-tree',!conflict);graph.classList.remove('contradiction-view');
+  if(conflict){PhiloConflicts.render(graph,conflict,[...nodes,{id:'cycle',title:'A strict three-option cycle exists.',text:'There are A, B, and C such that A ≻ B, B ≻ C, and C ≻ A.'}],id=>{document.querySelector('#pref-'+id).checked=false;render();});PhiloI18n.apply();renderModel();return;}
+
   for(let level=2;level>=0;level--){const row=document.createElement('div');row.className='proof-level';
    for(const node of nodes.filter(n=>n.level===level)){
     const active=node.requires.every(id=>choices.includes(id));
@@ -39,6 +44,7 @@
   PhiloI18n.apply();requestAnimationFrame(drawEdges);renderModel();
  }
  function drawEdges(){
+  if(PhiloConflicts.detect(selected(),'preference'))return;
   graph.querySelector('svg')?.remove();const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('proof-edges');svg.setAttribute('aria-hidden','true');
   const origin=graph.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${graph.clientWidth} ${graph.scrollHeight}`);
   const choices=selected();for(const node of nodes){if(!node.parents||!node.requires.every(id=>choices.includes(id)))continue;
@@ -60,7 +66,7 @@
   if(result.witness){const [a,b,c]=result.witness;add(`${'ABC'[a]} ≽ ${'ABC'[b]} · ${'ABC'[b]} ≽ ${'ABC'[c]} · ¬(${'ABC'[a]} ≽ ${'ABC'[c]})`);}
   add(result.cycle?'A strict three-option cycle exists.':'No strict three-option cycle in this example.');
   const greatest=document.createElement('p');const label=document.createElement('span');label.textContent='Greatest options: ';greatest.append(label,document.createTextNode(result.greatest.length?result.greatest.map(i=>'ABC'[i]).join(', '):'—'));out.append(greatest);
-  const valid=(!selected().includes('transitivity')||result.transitive)&&(!selected().includes('completeness')||result.complete);
+  const valid=(!selected().includes('transitivity')||result.transitive)&&(!selected().includes('completeness')||result.complete)&&(!selected().includes('cycle')||result.cycle);
   add(valid?'This example satisfies the selected axioms.':'This example violates a selected axiom; it is not a model of that theory.');PhiloI18n.apply();
  }
  document.querySelectorAll('[id^="pref-"]').forEach(input=>input.addEventListener('change',render));
