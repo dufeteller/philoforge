@@ -6,7 +6,7 @@ The five parts of Benedict de Spinoza's *Ethics* are indexed in `website/dist/da
 
 All 259 numbered propositions are present, with their following demonstrations, corollaries, scholia and notes: I (36), II (49), III (59), IV (73), V (42). Definitions, axioms, postulates, the seven physical lemmas, 48 definitions of emotions, prefaces and appendices are included. Supporting paragraphs follow the numbered item to which they belong in the edition. The physical interlude has repeated axiom numbering: unique `Phys-A` identifiers use encounter order and retain the printed number separately. Its unnumbered definition belongs to the surrounding interlude text.
 
-Eight catalogue starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
+Ten catalogue starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
 
 These are **source records**, not automatic proof rules. No unformalized proposition is promoted to an axiom. No dependency edges are guessed from textual citations. The deduction map uses only the separately maintained, proved reconstructions.
 
@@ -30,17 +30,17 @@ The optional P3 counterexample is a user hypothesis, not a Spinoza axiom. Its co
 
 ## French
 
-French passages are our translations, not quotations attributed to a historical French translator. Currently 28 statement translations are stored in the optional translation register. Their untranslated demonstrations are omitted in French, with a link to the English source. Whole entries without a French statement are hidden in French mode and retained in English. Interface translations are maintained in `locales.js`.
+French passages are our translations, not quotations attributed to a historical French translator. Currently 32 statement translations are stored in the optional translation register. Their untranslated demonstrations are omitted in French, with a link to the English source. Whole entries without a French statement are hidden in French mode and retained in English. Interface translations are maintained in `locales.js`.
 
 ## What remains to formalize
 
-Full machine verification of the *Ethics* is unfinished. There is no verified proof of God's existence or monism, the conatus propositions, the theory of knowledge, intellectual love, or blessedness. Those texts remain explicitly `source-only`. I P6 now has a limited causal reconstruction using the alternative corollary argument; its historical proof via P2/P3/P5 remains unformalized.
+Full machine verification of the *Ethics* is unfinished. There is no verified proof of God's existence or monism, the conatus propositions, the theory of knowledge, intellectual love, or blessedness. Those texts remain explicitly `source-only`. I P6 has both the earlier causal reconstruction using the alternative corollary argument and a new conditional route via P2/P3/P5. Neither is certified as a complete historical proof.
 
 Further work must define and review the ontological, mental, physical and affective vocabularies, examine each historical proof's implicit bridges, then prove results without treating their conclusions as hypotheses. Update proof statuses only after the exact encoded theorem compiles and its scope is documented. The bibliographic corpus and its cardinality are not evidence that all 259 propositions have been formalized.
 
 ## Website proof registry
 
-`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is thirteen reconstructed results, including limited versions of eight numbered propositions (I P1, P3, P5, P6, P7, P8, P9, P10), an alternative corollary and intermediate/definitional consequences. The ontology and attribute extensions depend on additional selectable scholium principles or interpretive premises. It is not 259 verified propositions.
+`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is twenty reconstructed results: limited versions of ten numbered propositions (I P1–P10), alternative routes, intermediate/definitional consequences, and preparatory conditional steps toward P14/P15. The latter two do not count as numbered reconstructions. The ontology and attribute extensions depend on additional selectable scholium principles or interpretive premises. It is not 259 verified propositions.
 
 ## Extension: I P1 and I P6
 
@@ -62,7 +62,7 @@ Three selectable extra premises have their own categories in the workshop:
 
 With D3/A4, the multiplicity principle proves the **same-nature version of P5** via the alternative scholium argument. It does not establish the version about sharing just one attribute. The explanation principle proves **P7 for an already existing substance**, not existence of any substance or God. P5 plus the limiting bridge proves **P8 as absence of a distinct actual same-nature limiter**. The formal model does not express its modal necessity. The causal and ontology fragments provide six numbered scoped reconstructions, not six fully faithful historical demonstrations.
 
-The concrete Boolean model in `example_principles` satisfies all the new premises together with A4/A5 and has an existing substance, an existing mode and nonempty causation. It checks satisfiability of this extension; it is not a model of the full Ethics. With the attribute extension below, the website exposes thirteen results and keeps 251 numbered propositions unformalized.
+The concrete Boolean model in `example_principles` satisfies all the new premises together with A4/A5 and has an existing substance, an existing mode and nonempty causation. It checks satisfiability of this extension; it is not a model of the full Ethics. With the extensions below, the website exposes twenty results and keeps 249 numbered propositions unformalized.
 
 
 ## Fidelity dossier and candidate foundations
@@ -83,3 +83,33 @@ See [the candidate foundations and review criteria](spinoza-foundations.md). The
 The historical source and encoded result remain distinct in the bilingual dossiers. The Latin references are I P9 (`sit216`) and I P10 (`sit219`) in the identified ILIESI–CNR edition; the interpretive premises cite D4 as their source context, not as a verbatim statement of those premises.
 
 The module includes a non-vacuous model of the attribute fragment, with strictly nested reality and attribute profiles. It also proves two independence checks: omitting coverage can leave more reality without more attributes; omitting conceptual inheritance can leave an attribute requiring an external concept despite its substance’s independence. These diagnose the encoding, not errors in Spinoza. The model is not asserted to satisfy all other selectable fragments simultaneously.
+
+
+## Extension: qualitative distinction and the attribute route
+
+`SpinozaDistinctions.lean` extends the causal vocabulary with typed attributes, modifications, qualities and an abstraction operation. It reuses the old D3/D5/A4/A5 encodings. Qualitative modification profiles are an additional primitive relation, not automatically derived from `ModeOf`; it does not equate its attribute profiles with the aspect semantics of `SpinozaAttributes.lean` or the modal situations of `SpinozaFoundations.lean`.
+
+| Result | What Lean establishes | Additional interpretation |
+| --- | --- | --- |
+| I P2 | Disjoint attribute profiles exclude commonality between substances. | Commonality means sharing an attribute. Unequal profiles alone do not suffice. |
+| I P4 | Distinct entities have a distinguishing attribute or modification. | Qualitative identity and representation of every quality by an attribute or modification. |
+| I P5, attribute route | Sharing one attribute identifies two substances. | A shared attribute determines the complete profile; abstraction removes modifications, preserves attributes and is injective on substances. |
+| I P6, attribute route | Distinct substances cannot cause each other, via P5, P2 and P3. | Inherits all of the preceding bridges and the causal reading of production. |
+| Conditional step toward I P14 | A given substance possessing every instantiated substance attribute is the only substance. | Each substance has an attribute; the universal substance is a **local premise**, not an existence theorem. |
+| Substance/mode classification | Every entity is a substance or a mode of some substance. | A1 plus two explicit bridges from in-itself/in-another to the conceptual conditions of D3/D5. |
+| Conditional step toward I P15 | Given the universal substance, every entity is it or its mode. | Combines conditional uniqueness and classification; no divine existence or modal necessity established. |
+
+The qualitative proof of P4 obtains actual existential witnesses rather than merely sorting entities into substance and mode. Its assumption of qualitative identity is substantive; the source’s ontological classification alone does not supply it. The Latin proof cites D4 where the imported Elwes text has A4; the dossier documents this discrepancy without editing the English source.
+
+The P5 attribute route now handles one shared attribute. Its abstraction principle is not derived from the earlier P1 theorem: preserving substance distinctions after setting modifications aside is explicitly assumed. Likewise the complete-essence reading is stronger than simply allowing attribute profiles to overlap. These choices are separately selectable and their limits appear in the bilingual dossier. The graph represents the registered argument, not a claim of logically minimal premises: for example the older P6 argument already establishes causal exclusion from D3/A4.
+
+Four compiled model checks accompany this extension:
+
+- `substance_mode_bridges`: a joint nonempty model of all new bridges, A4/A5, a substance with two attributes, a mode and nonempty causation.
+- `all_bridges_do_not_supply_universal_substance`: a model satisfying all bridges and A4/A5 with two distinct substances and no universal substance. P11 has not been smuggled in.
+- `abstraction_is_needed`: qualitative identity, quality exhaustion and complete attributes still allow distinct substances sharing an attribute when the abstraction commitment is removed.
+- `complete_attribute_is_needed`: qualitative identity, quality exhaustion and abstraction allow distinct substances with overlapping profiles when the complete-essence commitment is removed.
+
+These finite models test the stated encodings, not the full Ethics. No global philosophical axiom or missing-proof placeholder is introduced. Foundational classical axioms used by some proofs are printed by Lean. The site offers twenty results but counts only ten numbered, scoped reconstructions; P11, P14 and P15 remain source-only. All 249 remaining numbered propositions still require formalization, and historical fidelity of the ten reconstructions still requires review.
+
+The dependency map now computes its depth from the graph (currently four result levels). Tests exhaust each theorem’s own input subsets, verify graph ancestry against selected premises, and cover mixed selections and contradiction cases without claiming to exhaust every global combination.

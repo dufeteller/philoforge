@@ -1,6 +1,6 @@
 # What remains to formalize in Spinoza's Ethics
 
-The catalogue contains 259 numbered propositions. E1 P1, P3, P5, P6, P7, P8, P9 and P10 have scoped reconstructions compiled by Lean. The other **251 are not formalized**; importing their text is not formal verification. The [complete coverage inventory](ethics-coverage.md) is regenerated and checked in CI.
+The catalogue contains 259 numbered propositions. E1 P1–P10 have scoped reconstructions compiled by Lean. The other **249 are not formalized**; importing their text is not formal verification. The [complete coverage inventory](ethics-coverage.md) is regenerated and checked in CI.
 
 ## What the current formal language expresses
 
@@ -32,11 +32,11 @@ Part I still needs a reviewed connection between the attribute, causal and modal
 
 Primary text: [Spinoza, Ethics, Elwes translation](https://www.gutenberg.org/files/3800/3800-h/3800-h.htm). The repository's catalogue retains source references and the imported edition checksum.
 
-## Next-proposition attempts: I P2 and I P4
+## Limits that motivated the I P2 and I P4 reconstructions
 
 The new checks in `SpinozaFoundations.lean` identify precise obstacles rather than adding the target conclusions as premises:
 
 - `disjoint_attributes_do_not_yet_exclude_commonality` constructs two substances with disjoint attribute profiles while primitive commonality still holds. The model satisfies the candidate D3 explanation, conception bridge and A4/A5 readings. Even the stronger disjoint-profile reading of “different attributes” is insufficient in this fragment. Commonality needs a justified semantic connection to essence/attributes; reversing A5 would be an additional principle, not an available inference.
 - `distinct_things_can_have_identical_profiles` constructs two distinct existing substances with identical attribute and mode profiles, under the same candidate assumptions. Definitions alone have not provided a criterion of identity or discernibility. A complete P4 reconstruction must explain that connection and the relevant ontology, rather than assume the desired disjunction.
 
-P2 and P4 therefore retain `source-only` status and do not increase coverage. These are countermodels of our incomplete vocabulary, not counterexamples to the entire historical system. P9 and P10, by contrast, have compiled conditional reconstructions with separately selectable, explicitly interpreted premises; see [the source notes](spinoza-sources.md#extension-attributes-i-p9-and-i-p10).
+These countermodels remain valid for the vocabulary without the new bridges. `SpinozaDistinctions.lean` now supplies conditional P2/P4 reconstructions with those bridges explicitly selectable. P5 has an additional route about sharing one attribute, and P6 follows V, II and III. Preparatory implications toward P14/P15 do not establish existence or necessity and do not increase numbered coverage; see [the distinction extension](spinoza-sources.md#extension-qualitative-distinction-and-the-attribute-route).

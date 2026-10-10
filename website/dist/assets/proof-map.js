@@ -5,10 +5,12 @@
  if(data.conflict){message.textContent='This selection has a known contradiction. Return to axiom selection to inspect its proof.';viewport.hidden=true;PhiloI18n.apply();return;}
  if(!data.roots.length){message.textContent='No starting points selected. Return to axiom selection.';viewport.hidden=true;PhiloI18n.apply();return;}
  const nodes=[...data.roots.map(n=>({...n,level:0})),...data.results];const positions=new Map();
- const width=Math.max(900,Math.max(...[0,1,2].map(l=>nodes.filter(n=>n.level===l).length))*310);
- const height=820;
+ const maxLevel=Math.max(0,...nodes.map(n=>n.level));
+ const levels=Array.from({length:maxLevel+1},(_,i)=>i);
+ const width=Math.max(900,Math.max(...levels.map(l=>nodes.filter(n=>n.level===l).length))*310);
+ const height=280+maxLevel*270;
  world.style.width=width+'px';world.style.height=height+'px';
- for(let level=0;level<=2;level++){const row=nodes.filter(n=>n.level===level);row.forEach((n,i)=>positions.set(n.id,{x:(width-row.length*290)/2+i*290,y:height-230-level*270}));}
+ for(let level=0;level<=maxLevel;level++){const row=nodes.filter(n=>n.level===level);row.forEach((n,i)=>positions.set(n.id,{x:(width-row.length*290)/2+i*290,y:height-230-level*270}));}
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('map-lines');svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('aria-hidden','true');
  const colors=['#3d7056','#986036','#506f9b'];
  const outgoing=new Map();for(const n of data.results)for(const parent of n.parents){if(!outgoing.has(parent))outgoing.set(parent,[]);outgoing.get(parent).push(n.id);}
@@ -35,7 +37,9 @@
   world.querySelectorAll('[data-node]').forEach(card=>{card.classList.toggle('map-dimmed',!!id&&!related.has(card.dataset.node));card.classList.toggle('map-selected',card.dataset.node===id);});
   svg.querySelectorAll('g').forEach(group=>group.classList.toggle('map-dimmed',!!id&&!related.has(group.dataset.result)));
  }
- let scale=1,x=0,y=0;const limit=s=>Math.max(.15,Math.min(3,s));
+ let scale=1,x=0,y=0;
+ const minimumScale=()=>Math.min(.15,Math.max(1,viewport.clientWidth-50)/width,Math.max(1,viewport.clientHeight-50)/height);
+ const limit=s=>Math.max(minimumScale(),Math.min(3,s));
  function apply(){world.style.transform=`translate(${x}px,${y}px) scale(${scale})`;document.querySelector('#zoom-value').textContent=Math.round(scale*100)+'%';}
  function zoom(factor,cx=viewport.clientWidth/2,cy=viewport.clientHeight/2){const next=limit(scale*factor);x=cx-(cx-x)*next/scale;y=cy-(cy-y)*next/scale;scale=next;apply();}
  function fit(){highlight(null);scale=limit(Math.min((viewport.clientWidth-50)/width,(viewport.clientHeight-50)/height));x=(viewport.clientWidth-width*scale)/2;y=(viewport.clientHeight-height*scale)/2;apply();}

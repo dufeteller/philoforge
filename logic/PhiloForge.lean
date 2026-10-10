@@ -7,3 +7,4 @@ import PhiloForge.SpinozaOntology
 
 import PhiloForge.SpinozaFoundations
 import PhiloForge.SpinozaAttributes
+import PhiloForge.SpinozaDistinctions

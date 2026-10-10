@@ -23,3 +23,19 @@ const source=fs.readFileSync('website/dist/assets/ethics.js','utf8');
 assert.ok(source.includes('proof.href=record.proofUrl'));
 assert.ok(!source.includes("proof.href='https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean'"));
 console.log('Exact dossier coverage, explicit review status, proof destinations and optional French dossiers checked.');
+
+for(const result of results.filter(r=>r.leanName.includes('.Distinctions.'))){
+ const dossier=review.items.find(r=>r.id===result.id);
+ assert.ok(dossier.proofUrl.includes('/SpinozaDistinctions.lean#L'));
+ if(result.propositionId){
+  const item=corpus.items.find(i=>i.id===result.propositionId);
+  assert.equal(dossier.sourceStatement.en,item.statement);
+  assert.equal(dossier.sourceStatement.fr,item.translations.fr.statement);
+ }
+}
+for(const id of ['universal-substance-unique','everything-in-universal-substance']){
+ const dossier=review.items.find(r=>r.id===id);
+ assert.equal(dossier.sourceStatement,null);
+ assert.ok(dossier.local.includes('substance'));
+ assert.ok(dossier.limit.includes('not'));
+}

@@ -120,5 +120,17 @@
     "paragraphs": [
       "Démonstration. Un attribut est ce que l’intellect perçoit de la substance comme constituant son essence (définition IV) ; il doit donc se concevoir par soi (définition III). C.Q.F.D."
     ]
+  },
+  "E1-P2": {
+    "statement": "Deux substances ayant des attributs différents n’ont rien de commun entre elles.",
+    "paragraphs": [
+      "Démonstration. Cela est également évident par la définition III. Chacune doit en effet être en soi et se concevoir par soi ; autrement dit, le concept de l’une n’implique pas le concept de l’autre."
+    ]
+  },
+  "E1-P4": {
+    "statement": "Deux ou plusieurs choses distinctes se distinguent par la différence des attributs des substances ou par la différence de leurs affections.",
+    "paragraphs": [
+      "Démonstration. Tout ce qui est, est soit en soi, soit en autre chose (axiome I) ; autrement dit, hors de l’intellect, il n’y a que les substances et leurs affections (définitions III et V). Il n’y a donc hors de l’intellect, pour distinguer plusieurs choses, que les substances, c’est-à-dire leurs attributs (définition IV, selon le texte latin), et leurs affections. C.Q.F.D."
+    ]
   }
 }

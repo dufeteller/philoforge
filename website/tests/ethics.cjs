@@ -12,7 +12,7 @@ assert.equal(corpus.items.filter(i=>i.kind==='Proposition').length,259);
 assert.equal(corpus.items.filter(i=>i.kind==='Lemma').length,7);
 assert.equal(corpus.items.filter(i=>i.kind==='Definition of an emotion').length,48);
 assert.equal(corpus.items.filter(i=>i.kind==='Postulate').length,8);
-assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P1','E1-P3','E1-P5','E1-P6','E1-P7','E1-P8','E1-P9','E1-P10']);
+assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P1','E1-P2','E1-P3','E1-P4','E1-P5','E1-P6','E1-P7','E1-P8','E1-P9','E1-P10']);
 assert.ok(corpus.items.find(i=>i.id==='E1-P6').formalScope.includes('historical')); // no claim of reproducing its historical proof
 for(const item of corpus.items){
  assert.ok(['source-only','lean-checked','encoded-premise'].includes(item.status));
@@ -24,3 +24,6 @@ for(const id of Object.keys(translations))assert.ok(ids.has(id));
 assert.equal(corpus.items.find(i=>i.id==='E2-P1').translations,undefined); // no fallback invented in French
 assert.ok(corpus.items.find(i=>i.id==='E5-P42').paragraphs.some(p=>p.includes('excellent')));
 console.log('Complete numbering, supporting texts, source scope and optional translations checked.');
+
+// Preparatory implications do not certify the full historical propositions.
+for(const id of ['E1-P11','E1-P14','E1-P15'])assert.equal(corpus.items.find(i=>i.id===id).status,'source-only');
