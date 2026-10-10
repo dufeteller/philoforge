@@ -27,11 +27,26 @@
  const library=document.querySelector('#spinoza-library'),graph=document.querySelector('#spinoza-tree');
  function add(parent,tag,text){const el=document.createElement(tag);el.textContent=text;parent.append(el);return el;}
  function cite(parent,entry){const a=add(parent,'a',entry.reference);a.href=entry.source||source;a.target='_blank';a.rel='noopener';a.className='source-citation';}
+ const groups=[];
+ function createGroup(parent,title,ids,key,open=false){
+  const section=add(parent,'section','');section.className='selection-group';
+  const row=add(section,'div','');row.className='selection-group-row';
+  const toggle=add(row,'button','');toggle.type='button';toggle.className='selection-toggle';
+  const arrow=add(toggle,'span',open?'▾':'▸');arrow.setAttribute('aria-hidden','true');arrow.dataset.localised='true';add(toggle,'span',title);
+  const body=add(section,'div','');body.id='selection-'+key;body.className='selection-children';body.hidden=!open;
+  toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-controls',body.id);
+  toggle.addEventListener('click',()=>{body.hidden=!body.hidden;toggle.setAttribute('aria-expanded',String(!body.hidden));arrow.textContent=body.hidden?'▸':'▾';});
+  const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.dataset.selectionGroup=key;checkbox.setAttribute('aria-label','Select all: '+title);row.append(checkbox);
+  checkbox.addEventListener('change',()=>{for(const id of ids)checkbox.checked?selected.add(id):selected.delete(id);render();});
+  groups.push({checkbox,ids});return body;
+ }
+ const theory=createGroup(library,'Ethics — Spinoza',entries.map(e=>e.id),'spinoza',true);
  for(const type of ['Definition','Axiom']){
-  const group=add(library,'fieldset','');group.className='starting-point-group';add(group,'legend',type==='Definition'?'Definitions':'Axioms');
-  for(const entry of entries.filter(e=>e.type===type)){
+  const members=entries.filter(e=>e.type===type);
+  const group=createGroup(theory,type==='Definition'?'Definitions':'Axioms',members.map(e=>e.id),type.toLowerCase());
+  for(const entry of members){
    const card=add(group,'article','');card.className='source-axiom compact-starting-point';
-   const label=add(card,'label','');const input=document.createElement('input');input.type='checkbox';input.checked=selected.has(entry.id);input.dataset.axiom=entry.id;label.append(input);add(label,'strong',entry.title);
+   const label=add(card,'label','');add(label,'strong',entry.title);const input=document.createElement('input');input.type='checkbox';input.checked=selected.has(entry.id);input.dataset.axiom=entry.id;label.append(input);
    const details=add(card,'details','');add(details,'summary','Source and formalization');
    add(details,'p',entry.text);cite(details,entry);add(details,'blockquote',entry.original);add(details,'p','English translation: R. H. M. Elwes. French text on this site is our translation.');add(details,'p',entry.mapping);
    input.addEventListener('change',()=>{input.checked?selected.add(entry.id):selected.delete(entry.id);render();});
@@ -40,6 +55,8 @@
 
  const test=document.querySelector('#test-counterexample');test.checked=selected.has('test-counterexample');test.addEventListener('change',()=>{test.checked?selected.add('test-counterexample'):selected.delete('test-counterexample');render();});
  function render(){
+  for(const input of library.querySelectorAll('[data-axiom]'))input.checked=selected.has(input.dataset.axiom);
+  for(const {checkbox,ids} of groups){const count=ids.filter(id=>selected.has(id)).length;checkbox.checked=count===ids.length;checkbox.indeterminate=count>0&&count<ids.length;}
   const data=derive([...selected]);graph.replaceChildren();
   graph.hidden=!data.conflict;
   document.querySelector('#map-link').hidden=true;graph.className=data.conflict?'contradiction-view':'proof-tree';

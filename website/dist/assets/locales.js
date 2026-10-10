@@ -218,3 +218,10 @@ Object.assign(globalThis.PhiloLocales.fr, {
 });
 
 Object.assign(globalThis.PhiloLocales.fr, {'Axioms':'Axiomes'});
+
+Object.assign(globalThis.PhiloLocales.fr, {
+"Ethics — Spinoza":"Éthique — Spinoza",
+"Select all: Ethics — Spinoza":"Tout sélectionner : Éthique — Spinoza",
+"Select all: Definitions":"Tout sélectionner : Définitions",
+"Select all: Axioms":"Tout sélectionner : Axiomes"
+});
