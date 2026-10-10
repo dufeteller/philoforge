@@ -6,7 +6,7 @@ The five parts of Benedict de Spinoza's *Ethics* are indexed in `website/dist/da
 
 All 259 numbered propositions are present, with their following demonstrations, corollaries, scholia and notes: I (36), II (49), III (59), IV (73), V (42). Definitions, axioms, postulates, the seven physical lemmas, 48 definitions of emotions, prefaces and appendices are included. Supporting paragraphs follow the numbered item to which they belong in the edition. The physical interlude has repeated axiom numbering: unique `Phys-A` identifiers use encounter order and retain the printed number separately. Its unnumbered definition belongs to the surrounding interlude text.
 
-Six encoded starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
+Eight catalogue starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
 
 These are **source records**, not automatic proof rules. No unformalized proposition is promoted to an axiom. No dependency edges are guessed from textual citations. The deduction map uses only the separately maintained, proved reconstructions.
 
@@ -40,7 +40,7 @@ Further work must define and review the ontological, mental, physical and affect
 
 ## Website proof registry
 
-`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is seven reconstructed results, including limited versions of three numbered propositions (I P1, P3, P6), an alternative corollary and intermediate/definitional consequences. It is not 259 verified propositions.
+`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is ten reconstructed results, including limited versions of six numbered propositions (I P1, P3, P5, P6, P7, P8), an alternative corollary and intermediate/definitional consequences. The three newest results depend on additional selectable scholium principles or interpretive premises. It is not 259 verified propositions.
 
 ## Extension: I P1 and I P6
 

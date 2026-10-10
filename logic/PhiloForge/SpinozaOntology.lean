@@ -28,7 +28,7 @@ def ExistenceExplanation {E : Type} (v : Vocabulary E) : Prop :=
   ∀ x, v.actual x → v.essenceInvolvesExistence x ∨
     ∃ c, c ≠ x ∧ v.causes c x
 
--- E1 P8, scholium II, the general rule following the twenty-men exampleOntology.
+-- E1 P8, scholium II, the general rule following the twenty-men example.
 -- This is a separately selected philosophical premise, NOT derived from A1-A7.
 def MultiplicityExplanation {E : Type} (v : Vocabulary E) : Prop :=
   ∀ x y, v.actual x → v.actual y → x ≠ y → v.sameNature x y →
