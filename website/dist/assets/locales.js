@@ -209,3 +209,5 @@ Object.assign(globalThis.PhiloLocales.fr, {
 "Primary source: Benedict de Spinoza, Ethics, all five parts. English translation by R. H. M. Elwes, Project Gutenberg eBook 3800. French passages on this site are our translations.":"Source primaire : Spinoza, Éthique, les cinq parties. Traduction anglaise de R. H. M. Elwes, Project Gutenberg, livre numérique 3800. Les passages français du site sont nos traductions.",
 "The Part III results follow Definitions I and II for the same actor and event. They are definitional consequences, not separately numbered propositions. The complete source library remains distinct from the verified deduction map.":"Les résultats de la partie III suivent des définitions I et II pour le même agent et le même événement. Ce sont des conséquences des définitions, pas des propositions distinctes numérotées. La bibliothèque complète des sources reste distincte de la carte des déductions vérifiées."
 });
+
+Object.assign(globalThis.PhiloLocales.fr, {'Encoded starting point · explicit interpretation':'Point de départ encodé · interprétation explicitée'});

@@ -12,7 +12,7 @@
   for(const item of items.slice(page*pageSize,(page+1)*pageSize)){
    const card=add(container,'article','');card.className='ethics-card';card.dataset.localised='true';
    const label=add(card,'div',`${item.id} · ${t(item.kind)}`);label.className='eyebrow';
-   const badge=add(card,'span',t(item.status==='lean-checked'?'Lean-checked reconstruction':'Source text · not yet formalized'));badge.className='proof-status';
+   const badge=add(card,'span',t(item.status==='lean-checked'?'Lean-checked reconstruction':item.status==='encoded-premise'?'Encoded starting point · explicit interpretation':'Source text · not yet formalized'));badge.className='proof-status';
    add(card,'h3',fr?item.translations.fr.statement:item.statement);
    const cite=add(card,'a',fr?`Éthique ${item.part} · ${t(item.kind)} ${item.number||''}`:item.reference);cite.href=item.source;cite.target='_blank';cite.rel='noopener';
    if(item.formalScope){add(card,'p',t(item.formalScope));const proof=add(card,'a',t('Inspect the Lean formalization ↗'));proof.href='https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean';}

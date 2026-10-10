@@ -6,6 +6,8 @@ The five parts of Benedict de Spinoza's *Ethics* are indexed in `website/dist/da
 
 All 259 numbered propositions are present, with their following demonstrations, corollaries, scholia and notes: I (36), II (49), III (59), IV (73), V (42). Definitions, axioms, postulates, the seven physical lemmas, 48 definitions of emotions, prefaces and appendices are included. Supporting paragraphs follow the numbered item to which they belong in the edition. The physical interlude has repeated axiom numbering: unique `Phys-A` identifiers use encounter order and retain the printed number separately. Its unnumbered definition belongs to the surrounding interlude text.
 
+Five encoded starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
+
 These are **source records**, not automatic proof rules. No unformalized proposition is promoted to an axiom. No dependency edges are guessed from textual citations. The deduction map uses only the separately maintained, proved reconstructions.
 
 Import again with `python scripts/import_ethics.py /path/to/3800-h.htm`. The importer checks continuous numbering in all five parts, uniqueness, and applies the optional translations in `website/dist/data/ethics-fr.json`. HTML tags are removed and whitespace normalized; original spelling is retained. Do not rewrite the source text as modern paraphrases while retaining its source-text label.

@@ -26,8 +26,8 @@ def Passive {Entity Event : Type} (v : Vocabulary Entity Event)
 theorem adequate_not_partial {Entity Event : Type} (v : Vocabulary Entity Event)
     (x : Entity) (e : Event) (h : AdequateCause v x e) :
     ¬ PartialCause v x e := by
-  intro partial
-  exact partial.2 h.2
+  intro hpartial
+  exact hpartial.2 h.2
 
 -- Same event, same actor: activity excludes passivity in this encoding.
 theorem active_not_passive {Entity Event : Type} (v : Vocabulary Entity Event)

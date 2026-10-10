@@ -83,7 +83,7 @@
       "reference": "Ethics 1, Definition 3",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Par substance, j’entends ce qui est en soi et se conçoit par soi : sa conception peut être formée indépendamment de toute autre conception.",
@@ -251,7 +251,7 @@
       "reference": "Ethics 1, Axiom 4",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "La connaissance d’un effet dépend de la connaissance de sa cause et l’enveloppe.",
@@ -269,7 +269,7 @@
       "reference": "Ethics 1, Axiom 5",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Les choses qui n’ont rien de commun ne peuvent être comprises l’une par l’autre ; la conception de l’une n’enveloppe pas la conception de l’autre.",
@@ -2212,7 +2212,7 @@
       "reference": "Ethics 3, Definition 1",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap03",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "J’appelle cause adéquate celle dont l’effet peut être perçu clairement et distinctement par elle seule. J’appelle cause inadéquate ou partielle celle dont l’effet ne peut être compris par elle seule.",
@@ -2230,7 +2230,7 @@
       "reference": "Ethics 3, Definition 2",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap03",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Nous agissons lorsque se produit en nous ou hors de nous quelque chose dont nous sommes la cause adéquate. Nous pâtissons lorsque se produit en nous quelque chose dont nous ne sommes que la cause partielle.",

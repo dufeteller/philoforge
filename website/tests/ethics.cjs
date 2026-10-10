@@ -15,7 +15,7 @@ assert.equal(corpus.items.filter(i=>i.kind==='Postulate').length,8);
 assert.deepEqual(corpus.items.filter(i=>i.status==='lean-checked').map(i=>i.id),['E1-P3']);
 assert.equal(corpus.items.find(i=>i.id==='E1-P6').status,'source-only'); // only its alternative corollary is reconstructed
 for(const item of corpus.items){
- assert.ok(['source-only','lean-checked'].includes(item.status));
+ assert.ok(['source-only','lean-checked','encoded-premise'].includes(item.status));
  if(item.status==='lean-checked')assert.ok(item.theorem&&item.formalScope);
  if(item.translations?.fr)assert.deepEqual(item.translations.fr,translations[item.id]);
  assert.ok(!item.paragraphs.some(p=>p.startsWith('End of the Ethics')));

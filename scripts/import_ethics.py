@@ -79,6 +79,8 @@ assert counts==[36,49,59,73,42], counts
 assert len({i['id'] for i in items})==len(items)
 assert all([i['number'] for i in items if i['part']==n and i['kind']=='Proposition']==list(range(1,c+1)) for n,c in enumerate(counts,1))
 for item in items:
+    if item['id'] in ['E1-D3','E1-A4','E1-A5','E3-D1','E3-D2']:
+        item['status']='encoded-premise'
     if item['id']=='E1-P3':
         item['status']='lean-checked'; item['theorem']='PhiloForge.Spinoza.proposition3';item['formalScope']='Causal and conceptual reconstruction; see the disclosed vocabulary and assumptions.'
 translations = json.loads((Path(__file__).resolve().parents[1]/'website/dist/data/ethics-fr.json').read_text())
