@@ -211,3 +211,10 @@ Object.assign(globalThis.PhiloLocales.fr, {
 });
 
 Object.assign(globalThis.PhiloLocales.fr, {'Encoded starting point · explicit interpretation':'Point de départ encodé · interprétation explicitée'});
+
+Object.assign(globalThis.PhiloLocales.fr, {
+"Definitions":"Définitions",
+"Verified workshop: five reconstructed results. Complete library: one of the 259 numbered propositions has a Lean-checked reconstruction.":"Atelier vérifié : cinq résultats reconstruits. Bibliothèque complète : une des 259 propositions numérotées dispose d’une reconstruction vérifiée par Lean."
+});
+
+Object.assign(globalThis.PhiloLocales.fr, {'Axioms':'Axiomes'});

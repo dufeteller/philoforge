@@ -37,3 +37,7 @@ French passages are our translations, not quotations attributed to a historical 
 Full machine verification of the *Ethics* is unfinished. There is no verified proof of God's existence or monism, the conatus propositions, the theory of knowledge, intellectual love, or blessedness. Those texts remain explicitly `source-only`. The source catalog's I P6 record remains unverified even though an alternative proof of its corollary is separately reconstructed.
 
 Further work must define and review the ontological, mental, physical and affective vocabularies, examine each historical proof's implicit bridges, then prove results without treating their conclusions as hypotheses. Update proof statuses only after the exact encoded theorem compiles and its scope is documented. The bibliographic corpus and its cardinality are not evidence that all 259 propositions have been formalized.
+
+## Website proof registry
+
+`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is five reconstructed results, including one numbered proposition (I P3), an alternative corollary and intermediate/definitional consequences. It is not 259 verified propositions.
