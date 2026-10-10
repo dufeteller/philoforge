@@ -40,7 +40,7 @@ Further work must define and review the ontological, mental, physical and affect
 
 ## Website proof registry
 
-`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is ten reconstructed results, including limited versions of six numbered propositions (I P1, P3, P5, P6, P7, P8), an alternative corollary and intermediate/definitional consequences. The three newest results depend on additional selectable scholium principles or interpretive premises. It is not 259 verified propositions.
+`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is thirteen reconstructed results, including limited versions of eight numbered propositions (I P1, P3, P5, P6, P7, P8, P9, P10), an alternative corollary and intermediate/definitional consequences. The ontology and attribute extensions depend on additional selectable scholium principles or interpretive premises. It is not 259 verified propositions.
 
 ## Extension: I P1 and I P6
 
@@ -60,11 +60,26 @@ Three selectable extra premises have their own categories in the workshop:
 - **Multiplicity explanation**, from the same scholium's general rule following the twenty-men example: distinct actual individuals of the same nature require an external cause. This general rule is assumed explicitly; its preceding prose reasoning is not proved in Lean.
 - **Substance limiter**, an interpretive bridge in the I P8 demonstration: a same-nature limiter of a substance is a substance. This is not a numbered axiom.
 
-With D3/A4, the multiplicity principle proves the **same-nature version of P5** via the alternative scholium argument. It does not establish the version about sharing just one attribute. The explanation principle proves **P7 for an already existing substance**, not existence of any substance or God. P5 plus the limiting bridge proves **P8 as absence of a distinct actual same-nature limiter**. The formal model does not express its modal necessity. These are six numbered scoped reconstructions in total, not six fully faithful historical demonstrations.
+With D3/A4, the multiplicity principle proves the **same-nature version of P5** via the alternative scholium argument. It does not establish the version about sharing just one attribute. The explanation principle proves **P7 for an already existing substance**, not existence of any substance or God. P5 plus the limiting bridge proves **P8 as absence of a distinct actual same-nature limiter**. The formal model does not express its modal necessity. The causal and ontology fragments provide six numbered scoped reconstructions, not six fully faithful historical demonstrations.
 
-The concrete Boolean model in `example_principles` satisfies all the new premises together with A4/A5 and has an existing substance, an existing mode and nonempty causation. It checks satisfiability of this extension; it is not a model of the full Ethics. The website exposes ten results and keeps 253 numbered propositions unformalized.
+The concrete Boolean model in `example_principles` satisfies all the new premises together with A4/A5 and has an existing substance, an existing mode and nonempty causation. It checks satisfiability of this extension; it is not a model of the full Ethics. With the attribute extension below, the website exposes thirteen results and keeps 251 numbered propositions unformalized.
 
 
 ## Fidelity dossier and candidate foundations
 
 See [the candidate foundations and review criteria](spinoza-foundations.md). The site now exposes Latin source passages, exact generated Lean signatures, selected premises, local hypotheses and interpretation limits for every displayed result. All independent philosophical reviews remain pending. Corrected catalogue proof links resolve to the actual theorem file and declaration. The original six scoped reconstructions are retained as partial experiments; the new candidate foundations do not automatically certify or replace their interpretations.
+
+## Extension: attributes, I P9 and I P10
+
+`SpinozaAttributes.lean` supplies a separate typed vocabulary for things, attributes, essential aspects and external conceptual requirements. The D3 selector describes its independence reading alongside the older entity-dependence reading. No automatic correspondence between these vocabularies or the modal foundations is claimed.
+
+- **D4** records perception of an attribute as constituting a substance’s essence. It does not itself assert all the following connections.
+- **Essence representation**, a selectable interpretation of D4, connects that perception to an essential aspect expressed by the attribute, in both directions.
+- **Attribute coverage**, a separate selectable interpretation, provides an attribute for each realized essential aspect. It assumes neither finiteness nor a bijection.
+- **Conceptual inheritance**, the selectable interpretation used for P10, transfers an external conceptual requirement from an attribute to its substance. The fact that a requirement remains external after transfer is part of this premise.
+
+`attributes_monotone` proves that inclusion of essential aspects preserves attributes, without using coverage. `proposition9_attribute_inclusion` then uses an additional aspect and coverage to produce an additional attribute. This is a structural reconstruction of I P9 for substances: strict set inclusion, not greater cardinality for infinite sets, and not a numerical theory of degrees of reality. `proposition10_attribute_independence` derives the absence of external requirements from the transfer principle and D3; it does not formalize P10’s whole scholium.
+
+The historical source and encoded result remain distinct in the bilingual dossiers. The Latin references are I P9 (`sit216`) and I P10 (`sit219`) in the identified ILIESI–CNR edition; the interpretive premises cite D4 as their source context, not as a verbatim statement of those premises.
+
+The module includes a non-vacuous model of the attribute fragment, with strictly nested reality and attribute profiles. It also proves two independence checks: omitting coverage can leave more reality without more attributes; omitting conceptual inheritance can leave an attribute requiring an external concept despite its substance’s independence. These diagnose the encoding, not errors in Spinoza. The model is not asserted to satisfy all other selectable fragments simultaneously.

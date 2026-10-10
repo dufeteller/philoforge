@@ -15,6 +15,7 @@ for(const r of review.items){
  if(r.sourceStatement)assert.ok(r.sourceStatement.fr);
 }
 for(const r of review.items.filter(r=>['E1-P5','E1-P7','E1-P8'].includes(r.id)))assert.ok(r.proofUrl.includes('/SpinozaOntology.lean#L'));
+for(const r of review.items.filter(r=>['attribute-inclusion','E1-P9','E1-P10'].includes(r.id)))assert.ok(r.proofUrl.includes('/SpinozaAttributes.lean#L'));
 assert.equal(review.items.length,results.length);
 for(const item of corpus.items.filter(i=>i.status==='lean-checked'))assert.ok(review.items.some(r=>r.id===item.id));
 for(const entry of entries)assert.ok(sources.passages[entry.id]);

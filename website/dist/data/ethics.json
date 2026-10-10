@@ -101,7 +101,7 @@
       "reference": "Ethics 1, Definition 4",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Par attribut, j’entends ce que l’intellect perçoit de la substance comme constituant son essence.",
@@ -491,7 +491,15 @@
       "reference": "Ethics 1, Proposition 9",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "For two substances, strict inclusion of essential aspects implies strict inclusion of attributes, assuming representation and completeness. This is a structural reading of more reality, not a comparison of infinite cardinalities.",
+      "theorem": "PhiloForge.Spinoza.Attributes.proposition9_attribute_inclusion",
+      "translations": {
+        "fr": {
+          "statement": "Plus une chose possède de réalité ou d’être, plus il lui appartient d’attributs (définition IV).",
+          "paragraphs": []
+        }
+      }
     },
     {
       "id": "E1-P10",
@@ -507,7 +515,17 @@
         "Note—It is thus evident that, though two attributes are, in fact, conceived as distinct—that is, one without the help of the other—yet we cannot, therefore, conclude that they constitute two entities, or two different substances. For it is the nature of substance that each of its attributes is conceived through itself, inasmuch as all the attributes it has have always existed simultaneously in it, and none could be produced by any other; but each expresses the reality or being of substance. It is, then, far from an absurdity to ascribe several attributes to one substance: for nothing in nature is more clear than that each and every entity must be conceived under some attribute, and that its reality or being is in proportion to the number of its attributes expressing necessity or eternity and infinity. Consequently it is abundantly clear, that an absolutely infinite being must necessarily be defined as consisting in infinite attributes, each of which expresses a certain eternal and infinite essence.",
         "If anyone now ask, by what sign shall he be able to distinguish different substances, let him read the following propositions, which show that there is but one substance in the universe, and that it is absolutely infinite, wherefore such a sign would be sought in vain."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "An attribute of a substance has no external conceptual requirement, assuming the selected transfer of requirements to that substance. This is the encoded reading of conceived through itself.",
+      "theorem": "PhiloForge.Spinoza.Attributes.proposition10_attribute_independence",
+      "translations": {
+        "fr": {
+          "statement": "Chaque attribut d’une même substance doit se concevoir par soi.",
+          "paragraphs": [
+            "Démonstration. Un attribut est ce que l’intellect perçoit de la substance comme constituant son essence (définition IV) ; il doit donc se concevoir par soi (définition III). C.Q.F.D."
+          ]
+        }
+      }
     },
     {
       "id": "E1-P11",

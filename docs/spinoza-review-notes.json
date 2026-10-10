@@ -102,5 +102,35 @@
     "local": "A substance already assumed to exist actually.",
     "limit": "Only distinct actual same-nature limiters are excluded. Modal necessity is absent. The limiter classification is used by this proof route but is not a minimal logical requirement of the stronger multiplicity premise.",
     "reviewStatus": "not-reviewed"
+  },
+  "attribute-inclusion": {
+    "sourceIds": [
+      "E1-D4"
+    ],
+    "local": "A substance and another substance whose essential aspects it includes.",
+    "limit": "An intermediate lemma in the attribute vocabulary. Reality inclusion is defined on essential aspects. The selected representation principle connects perception to those aspects; completeness is not needed for this step.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P9": {
+    "sourceIds": [
+      "E1-P9",
+      "E1-D4",
+      "E1-D4-representation",
+      "E1-D4-coverage"
+    ],
+    "local": "Two substances with strictly nested sets of essential aspects. Their existence is not established by this proof.",
+    "limit": "Restricted to substances and a structural reading of more reality. Strict set inclusion does not imply greater infinite cardinality. Representation and coverage are explicit interpretive premises, not the historical proof established from Definition IV alone. This attribute vocabulary has not been identified with the older causal or modal vocabulary.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P10": {
+    "sourceIds": [
+      "E1-P10",
+      "E1-D3",
+      "E1-D4",
+      "E1-D4-conception"
+    ],
+    "local": "An attribute perceived as constituting the essence of a substance.",
+    "limit": "Conceived through itself means absence of external conceptual requirements in this vocabulary. Transferring a requirement from attribute to substance is an additional interpretation; a compiled countermodel shows that D3 and primitive D4 alone do not justify that transfer. The scholium is not formalized.",
+    "reviewStatus": "not-reviewed"
   }
 }

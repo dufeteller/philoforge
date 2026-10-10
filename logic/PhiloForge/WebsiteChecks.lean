@@ -3,6 +3,7 @@
 import PhiloForge.Spinoza
 import PhiloForge.SpinozaAffects
 import PhiloForge.SpinozaOntology
+import PhiloForge.SpinozaAttributes
 
 -- Website node: conceptual-separation
 #check @PhiloForge.Spinoza.conceptual_separation
@@ -43,6 +44,18 @@ import PhiloForge.SpinozaOntology
 -- Website node: E1-P8
 #check @PhiloForge.Spinoza.Ontology.proposition8_no_limiter
 #print axioms PhiloForge.Spinoza.Ontology.proposition8_no_limiter
+
+-- Website node: attribute-inclusion
+#check @PhiloForge.Spinoza.Attributes.attributes_monotone
+#print axioms PhiloForge.Spinoza.Attributes.attributes_monotone
+
+-- Website node: E1-P9
+#check @PhiloForge.Spinoza.Attributes.proposition9_attribute_inclusion
+#print axioms PhiloForge.Spinoza.Attributes.proposition9_attribute_inclusion
+
+-- Website node: E1-P10
+#check @PhiloForge.Spinoza.Attributes.proposition10_attribute_independence
+#print axioms PhiloForge.Spinoza.Attributes.proposition10_attribute_independence
 
 -- The inline contradiction proof is also exposed by the website.
 #check @PhiloForge.Spinoza.proposition3_counterexample_conflict

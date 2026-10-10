@@ -110,5 +110,15 @@
   "E1-P8": {
     "statement": "Toute substance est nécessairement infinie.",
     "paragraphs": []
+  },
+  "E1-P9": {
+    "statement": "Plus une chose possède de réalité ou d’être, plus il lui appartient d’attributs (définition IV).",
+    "paragraphs": []
+  },
+  "E1-P10": {
+    "statement": "Chaque attribut d’une même substance doit se concevoir par soi.",
+    "paragraphs": [
+      "Démonstration. Un attribut est ce que l’intellect perçoit de la substance comme constituant son essence (définition IV) ; il doit donc se concevoir par soi (définition III). C.Q.F.D."
+    ]
   }
 }
