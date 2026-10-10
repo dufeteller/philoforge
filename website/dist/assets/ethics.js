@@ -18,7 +18,7 @@
    if(item.formalScope){add(card,'p',t(item.formalScope));const proof=add(card,'a',t('Inspect the Lean formalization ↗'));proof.href='https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean';}
    const paragraphs=fr?item.translations.fr.paragraphs:item.paragraphs;
    if(paragraphs?.length){const details=add(card,'details','');add(details,'summary',t('Read the demonstration and commentary'));paragraphs.forEach(text=>add(details,'p',text));}
-   else if(fr)add(card,'p',t('The English demonstration is available in the linked source. Its French translation has not been added.'));
+   else if(fr&&item.paragraphs.length)add(card,'p',t('The English demonstration is available in the linked source. Its French translation has not been added.'));
    const permalink=add(card,'a',t('Link to this entry ↗'));permalink.href=`?item=${encodeURIComponent(item.id)}&lang=${PhiloI18n.language}`;permalink.className='entry-link';
    if(['E1-D3','E1-A4','E1-A5','E3-D1','E3-D2'].includes(item.id)){const select=add(card,'a',t('Explore the verified deductions ↗'));select.href=`/philoforge/?lang=${PhiloI18n.language}#spinoza-title`;}
   }
