@@ -1,1 +1,2 @@
 import PhiloForge.Spinoza
+import PhiloForge.SpinozaAffects

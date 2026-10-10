@@ -33,7 +33,7 @@
   document.querySelectorAll('[data-missing-translation]').forEach(element=>{element.hidden=false;delete element.dataset.missingTranslation;});
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   let node;while((node=walker.nextNode())){
-   if(node.parentElement.closest('script,style,input,textarea,[data-language-switch]'))continue;
+   if(node.parentElement.closest('script,style,input,textarea,[data-language-switch],[data-localised]'))continue;
    if(!canDisplay(node.nodeValue,language)){
     const unit=node.parentElement.closest('.axiom,.deduction,.proof-node,.map-node,.contradiction-proof,.steps article,.tags span,#analysis-questions li,#selected li')||node.parentElement;
     if(!unit.hidden){unit.hidden=true;unit.dataset.missingTranslation='fr';}
@@ -41,8 +41,8 @@
    }
    const next=translate(node.nodeValue,language);if(next!==node.nodeValue)node.nodeValue=next;
   }
-  for(const element of document.querySelectorAll('[aria-label],[title],meta[name="description"]')){
-   for(const attr of ['aria-label','title','content'])if(element.hasAttribute(attr))element.setAttribute(attr,translate(element.getAttribute(attr),language));
+  for(const element of document.querySelectorAll('[aria-label],[title],[placeholder],meta[name="description"]')){
+   for(const attr of ['aria-label','title','content','placeholder'])if(element.hasAttribute(attr))element.setAttribute(attr,translate(element.getAttribute(attr),language));
   }
   document.title=translate(document.title,language);
   for(const button of document.querySelectorAll('[data-language]'))button.setAttribute('aria-pressed',String(button.dataset.language===language));
