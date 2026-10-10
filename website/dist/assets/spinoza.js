@@ -13,7 +13,7 @@
  ];
  function derive(ids){const set=new Set(ids);return {results:results.filter(r=>r.requires.every(id=>set.has(id))),conflict:set.has('E1-A4')&&set.has('E1-A5')&&set.has('test-counterexample'),roots:entries.filter(e=>set.has(e.id))};}
  root.SpinozaTheory={entries,results,derive};if(typeof module==='object'&&module.exports)module.exports=root.SpinozaTheory;
- if(typeof document==='undefined')return;
+ if(typeof document==='undefined'||!document.querySelector('#spinoza-library'))return;
  const selected=new Set();try{const saved=JSON.parse(localStorage.getItem('philoforge.spinoza.v1'));if(Array.isArray(saved))for(const id of saved)if([...entries.map(e=>e.id),'test-counterexample'].includes(id))selected.add(id);}catch{}
  const library=document.querySelector('#spinoza-library'),graph=document.querySelector('#spinoza-tree');
  function add(parent,tag,text){const el=document.createElement(tag);el.textContent=text;parent.append(el);return el;}
@@ -21,8 +21,11 @@
  for(const entry of entries){const card=add(library,'article','');card.className='source-axiom';const label=add(card,'label','');const input=document.createElement('input');input.type='checkbox';input.checked=selected.has(entry.id);input.dataset.axiom=entry.id;label.append(input);add(label,'strong',entry.title);add(card,'div',entry.type).className='eyebrow';add(card,'p',entry.text);cite(card,entry);const details=add(card,'details','');add(details,'summary','Source and formalization');add(details,'blockquote',entry.original);add(details,'p','English translation: R. H. M. Elwes. French text on this site is our translation.');add(details,'p',entry.mapping);input.addEventListener('change',()=>{input.checked?selected.add(entry.id):selected.delete(entry.id);render();});}
  const test=document.querySelector('#test-counterexample');test.checked=selected.has('test-counterexample');test.addEventListener('change',()=>{test.checked?selected.add('test-counterexample'):selected.delete('test-counterexample');render();});
  function render(){
-  const data=derive([...selected]);graph.replaceChildren();graph.className=data.conflict?'contradiction-view':'proof-tree';
+  const data=derive([...selected]);graph.replaceChildren();
+  graph.hidden=!data.conflict;graph.className=data.conflict?'contradiction-view':'proof-tree';
   document.querySelector('#spinoza-empty').hidden=data.roots.length>0;
+  document.querySelector('#generate-map').disabled=data.roots.length===0;
+  document.querySelector('.tree-caption').hidden=!!data.conflict;
   if(data.conflict){renderConflict();}else{
    for(let level=2;level>=0;level--){const row=add(graph,'div','');row.className='proof-level';const nodes=level===0?data.roots:data.results.filter(r=>r.level===level);
     if(!nodes.length){row.remove();continue;}
@@ -44,7 +47,15 @@
   for(const node of derive([...selected]).results){const target=graph.querySelector(`[data-node="${node.id}"]`);if(!target||target.hidden)continue;const t=target.getBoundingClientRect();for(const id of node.parents){const sourceNode=graph.querySelector(`[data-node="${id}"]`);if(!sourceNode||sourceNode.hidden)continue;const s=sourceNode.getBoundingClientRect();const x=s.left+s.width/2-origin.left,y=s.top-origin.top,tx=t.left+t.width/2-origin.left,ty=t.bottom-origin.top;const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',`M ${x} ${y} C ${x} ${(y+ty)/2}, ${tx} ${(y+ty)/2}, ${tx} ${ty}`);svg.append(path);}}
   graph.prepend(svg);
  }
- document.querySelector('#select-spinoza').addEventListener('click',()=>{entries.forEach(e=>selected.add(e.id));library.querySelectorAll('input').forEach(i=>i.checked=true);render();});
+ document.querySelector('#generate-map').addEventListener('click',()=>{
+  const data=derive([...selected]);
+  if(data.conflict){render();graph.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  if(!data.roots.length)return;
+  const url=new URL('/philoforge/map/',location.origin);url.searchParams.set('axioms',[...selected].join(','));url.searchParams.set('lang',PhiloI18n.language);
+  const opened=window.open(url.toString(),'_blank');if(opened)opened.opener=null;
+  const fallback=document.querySelector('#map-link');fallback.href=url.toString();fallback.hidden=false;
+});
+document.querySelector('#select-spinoza').addEventListener('click',()=>{entries.forEach(e=>selected.add(e.id));library.querySelectorAll('input').forEach(i=>i.checked=true);render();});
  document.querySelector('#clear-spinoza').addEventListener('click',()=>{selected.clear();library.querySelectorAll('input').forEach(i=>i.checked=false);test.checked=false;render();});
  document.querySelectorAll('[data-language]').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(drawEdges)));window.addEventListener('resize',drawEdges);render();
 })(globalThis);
