@@ -28,7 +28,7 @@ def ExistenceExplanation {E : Type} (v : Vocabulary E) : Prop :=
   ∀ x, v.actual x → v.essenceInvolvesExistence x ∨
     ∃ c, c ≠ x ∧ v.causes c x
 
--- E1 P8, scholium II, the general rule following the twenty-men example.
+-- E1 P8, scholium II, the general rule following the twenty-men exampleOntology.
 -- This is a separately selected philosophical premise, NOT derived from A1-A7.
 def MultiplicityExplanation {E : Type} (v : Vocabulary E) : Prop :=
   ∀ x y, v.actual x → v.actual y → x ≠ y → v.sameNature x y →
@@ -48,9 +48,10 @@ theorem proposition5_same_nature {E : Type} (v : Vocabulary E)
     (sx : Spinoza.Substance v.toVocabulary x)
     (_sy : Spinoza.Substance v.toVocabulary y) (same : v.sameNature x y) : x = y := by
   classical
-  by_contra distinct
-  obtain ⟨c, external, cause⟩ := multiplicity x y hx hy distinct same
-  exact Spinoza.external_cause_excluded v.toVocabulary a4 x c sx external cause
+  by_cases equal : x = y
+  · exact equal
+  · obtain ⟨c, external, cause⟩ := multiplicity x y hx hy equal same
+    exact False.elim (Spinoza.external_cause_excluded v.toVocabulary a4 x c sx external cause)
 
 -- E1 P7: existing substances have essential existence, conditional on the
 -- explicit explanation principle above. No existence witness is manufactured.
@@ -77,7 +78,7 @@ theorem proposition8_no_limiter {E : Type} (v : Vocabulary E)
   exact distinct equality.symm
 
 -- Concrete satisfiability witness: a substance, a distinct mode, and causation.
-def example : Vocabulary Bool where
+def exampleOntology : Vocabulary Bool where
   toVocabulary := Spinoza.exampleVocabulary
   actual _ := True
   sameNature x y := x = y
@@ -85,12 +86,12 @@ def example : Vocabulary Bool where
   essenceInvolvesExistence x := x = true
 
 theorem example_principles :
-    Spinoza.Axiom4 example.toVocabulary ∧ Spinoza.Axiom5 example.toVocabulary ∧
-    ExistenceExplanation example ∧ MultiplicityExplanation example ∧
-    SubstanceLimiter example ∧
-    (example.actual true ∧ Spinoza.Substance example.toVocabulary true) ∧
-    (example.actual false ∧ Spinoza.ModeOf example.toVocabulary false true) ∧
-    example.causes true false := by
+    Spinoza.Axiom4 exampleOntology.toVocabulary ∧ Spinoza.Axiom5 exampleOntology.toVocabulary ∧
+    ExistenceExplanation exampleOntology ∧ MultiplicityExplanation exampleOntology ∧
+    SubstanceLimiter exampleOntology ∧
+    (exampleOntology.actual true ∧ Spinoza.Substance exampleOntology.toVocabulary true) ∧
+    (exampleOntology.actual false ∧ Spinoza.ModeOf exampleOntology.toVocabulary false true) ∧
+    exampleOntology.causes true false := by
   refine ⟨Spinoza.fragment_has_model.1, Spinoza.fragment_has_model.2.1,
     ?_, ?_, ?_, ?_, ?_, ?_⟩
   · intro x _
