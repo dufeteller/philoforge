@@ -9,3 +9,7 @@ Lean checks the reconstruction in `logic/PhiloForge/Spinoza.lean`. The browser s
 Cloudflare Worker: `portefolio`, custom domain `dufetelle.com`. Workers Builds deploys `main` with `npx wrangler@4.149.0 deploy --config website/wrangler.jsonc`. Preview builds are disabled.
 
 Checks: `node website/tests/spinoza.cjs`, `node website/tests/i18n.cjs`, and `lake build` from `logic/`.
+
+## Deduction map
+
+Generate opens `/philoforge/map/` in a new tab with the selected source IDs and language in its URL. The map supports pointer dragging, pinch or wheel zoom, buttons, keyboard navigation, and node details. Known contradictions remain on the selection page; direct contradictory map URLs are rejected. A generated-link fallback is provided when browser popup handling interferes.
