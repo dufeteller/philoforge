@@ -1,0 +1,28 @@
+{
+  "axioms": [
+    {
+      "id": "causality@1",
+      "statement": "Every event has a cause.",
+      "formalization": null
+    }
+  ],
+  "theories": [
+    {
+      "id": "causal-theory@1",
+      "axiom_ids": [
+        "causality@1"
+      ]
+    }
+  ],
+  "universes": [
+    {
+      "id": "causal-universe@1",
+      "theory_ids": [
+        "causal-theory@1"
+      ],
+      "axiom_ids": [],
+      "logic": "pending",
+      "verification": "unverified"
+    }
+  ]
+}
