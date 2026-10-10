@@ -24,6 +24,7 @@
  function render(){
   const choices=selected();graph.replaceChildren();
   const conflict=PhiloConflicts.detect(choices,'preference');
+  document.querySelector('.tree-caption').hidden=!!conflict;
   graph.classList.toggle('proof-tree',!conflict);graph.classList.remove('contradiction-view');
   if(conflict){PhiloConflicts.render(graph,conflict,[...nodes,{id:'cycle',title:'A strict three-option cycle exists.',text:'There are A, B, and C such that A ≻ B, B ≻ C, and C ≻ A.'}],id=>{document.querySelector('#pref-'+id).checked=false;render();});PhiloI18n.apply();renderModel();return;}
 

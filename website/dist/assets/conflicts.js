@@ -1,7 +1,7 @@
 (function(root){
  const proofs={
   alternatives:{id:'alternatives-conflict',axioms:['agency@1','no-alternatives@1'],title:'Incompatible assumptions about alternatives',positive:'Some agent has alternative actions.',negative:'No agent has alternative actions.',steps:['The existence axiom supplies an agent a and a situation s with alternatives.','The exclusion axiom applies to that same agent a and situation s.','The same proposition is both asserted and denied: a contradiction.'],theorem:'alternatives_conflict'},
-  preference:{id:'transitivity-cycle-conflict',axioms:['transitivity','cycle'],title:'Transitivity conflicts with a strict cycle',positive:'Transitivity implies A ≻ C.',negative:'The cycle includes C ≻ A, which excludes A ≽ C.',steps:['The cycle axiom supplies A ≻ B, B ≻ C, and C ≻ A.','Transitivity of strict preference gives A ≻ C, hence A ≽ C.','By definition, C ≻ A implies not A ≽ C.','Therefore A ≽ C and not A ≽ C: a contradiction.'],theorem:'transitivity_cycle_conflict'}
+  preference:{id:'transitivity-cycle-conflict',axioms:['transitivity','cycle'],title:'Transitivity conflicts with a strict cycle',positive:'Given A ≻ B and B ≻ C, transitivity implies A ≻ C.',negative:'The cycle includes C ≻ A, which excludes A ≽ C.',steps:['The cycle axiom supplies A ≻ B, B ≻ C, and C ≻ A.','Transitivity of strict preference gives A ≻ C, hence A ≽ C.','By definition, C ≻ A implies not A ≽ C.','Therefore A ≽ C and not A ≽ C: a contradiction.'],theorem:'transitivity_cycle_conflict'}
  };
  function detect(ids,kind){const proof=proofs[kind];return proof.axioms.every(id=>ids.includes(id))?proof:null;}
  function render(panel,proof,axioms,remove){
