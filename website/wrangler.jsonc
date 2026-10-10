@@ -1,0 +1,15 @@
+{
+  "name": "portefolio",
+  "account_id": "550118bcbb73c6368dcca9be0c756790",
+  "compatibility_date": "2026-10-10",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "dufetelle.com",
+      "custom_domain": true
+    }
+  ]
+}

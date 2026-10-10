@@ -7,3 +7,8 @@ __pycache__/
 .venv/
 dist/
 .lake/
+
+!website/dist/
+!website/dist/**
+.wrangler/
+.dev.vars
