@@ -1,35 +1,11 @@
 # dufetelle.com
 
-Personal journal at `/` and an exploratory PhiloForge workshop at `/philoforge/`.
+The journal lives at `/`; `/philoforge/` presents only a sourced fragment of Spinoza's Ethics I. English is canonical, French optional. Source translations are maintained in `dist/assets/locales.js`; missing French content is hidden.
 
-The journal starts without published posts. Add reviewed article HTML and links to the journal when posts are ready. No content management system is connected.
+The interactive library contains Definition III and Axioms IV and V. Its results are the conceptual-separation step of Proposition III, Proposition III, and a reconstruction of the alternative proof of Proposition VI's corollary. Explicit modeling conventions accompany every source entry.
 
-The workshop supports selecting example axioms, theory presets, browser-local saving, and JSON export. It does not verify proofs or consistency and does not provide accounts or shared storage.
+Lean checks the reconstruction in `logic/PhiloForge/Spinoza.lean`. The browser selects supported results; it does not execute Lean. The optional counterexample test is clearly labeled as user-added, not a Spinoza axiom. Selections are stored under `philoforge.spinoza.v1`; obsolete saved universes are not loaded.
 
-Cloudflare Worker: `portefolio`. Configuration is in `wrangler.jsonc`; assets are in `dist/`. Deploy with Cloudflare's official Wrangler CLI from this directory. Domain remains `dufetelle.com`.
+Cloudflare Worker: `portefolio`, custom domain `dufetelle.com`. Workers Builds deploys `main` with `npx wrangler@4.149.0 deploy --config website/wrangler.jsonc`. Preview builds are disabled.
 
-Previous live version observed before replacement: `1ab33fb5` (dashboard short ID). Previous versions remain in Cloudflare for rollback.
-
-Published on 2026-10-10. Cloudflare deployment version: `67957c16-299e-4a1a-a762-964f737ab7df`. Live blog: https://dufetelle.com/ ; workshop: https://dufetelle.com/philoforge/ . Both routes and live preset selection were verified in the browser.
-
-## Automatic deployment
-
-Cloudflare Workers Builds is connected to `dufeteller/philoforge`, production branch `main`. Each push to `main` triggers `npx wrangler@4.149.0 deploy --config website/wrangler.jsonc` from the repository root. Preview builds are disabled. Changes on feature branches reach production after integration into `main`.
-
-## Consequences
-
-The workshop derives consequences using an explicit, inspectable rule library, with dependency lists and reasoning steps. It does not run Lean or establish consistency. A conflicting no-alternatives axiom is opt-in; combining the theory presets does not select it. The causal-action deduction requires an explicit bridge covering possible actions. Validate with `node website/tests/consequences.cjs`.
-
-## Languages / Langues
-
-English is the default language. The EN / FR selector is available on the journal, PhiloForge, and 404 page, and remembers the visitor's choice in browser storage. `?lang=fr` opens a page in French.
-
-English text remains canonical in HTML and rule data. French translations are maintained in `dist/assets/locales.js`, including axioms, consequence explanations, and interface text. Logical identifiers and dependencies remain identical in both languages; JSON exports retain canonical English content and record the selected display language. User-entered universe names are never automatically translated, except the initial default name.
-
-Pour modifier le français, mettez à jour les traductions dans `dist/assets/locales.js`. Lors de l’ajout d’un contenu anglais, ajoutez sa traduction française et lancez `node website/tests/i18n.cjs`.
-
-## Optional French content / Français facultatif
-
-French translations are optional. Missing or empty translations hide the affected content in French instead of falling back to English. An incomplete axiom or deduction card is hidden as a whole. Switching back to English restores it. Names, logical identifiers, mathematical notation, and user-entered names remain unchanged. Translation tests validate supplied entries without requiring full coverage.
-
-Une traduction française absente ou vide masque le contenu en français. La version anglaise reste disponible. Masquer un axiome ne le désélectionne pas : les choix logiques sont conservés lors du changement de langue.
+Checks: `node website/tests/spinoza.cjs`, `node website/tests/i18n.cjs`, and `lake build` from `logic/`.

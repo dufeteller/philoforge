@@ -1,28 +1,31 @@
 {
   "axioms": [
     {
-      "id": "causality@1",
-      "statement": "Every event has a cause.",
-      "formalization": null
+      "id": "E1-A4",
+      "source": "Spinoza, Ethics I, Axiom IV"
+    },
+    {
+      "id": "E1-A5",
+      "source": "Spinoza, Ethics I, Axiom V"
     }
   ],
   "theories": [
     {
-      "id": "causal-theory@1",
+      "id": "spinoza-ethics-I-fragment@1",
       "axiom_ids": [
-        "causality@1"
+        "E1-A4",
+        "E1-A5"
       ]
     }
   ],
   "universes": [
     {
-      "id": "causal-universe@1",
+      "id": "spinoza-fragment@1",
       "theory_ids": [
-        "causal-theory@1"
+        "spinoza-ethics-I-fragment@1"
       ],
       "axiom_ids": [],
-      "logic": "pending",
-      "verification": "unverified"
+      "verification": "Lean conditional reconstruction"
     }
   ]
 }
