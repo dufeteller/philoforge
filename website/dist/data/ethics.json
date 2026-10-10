@@ -47,7 +47,7 @@
       "reference": "Ethics 1, Definition 1",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Par cause de soi, j’entends ce dont l’essence enveloppe l’existence, autrement dit ce dont la nature ne peut être conçue que comme existante.",
@@ -65,7 +65,7 @@
       "reference": "Ethics 1, Definition 2",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Une chose est dite finie en son genre lorsqu’elle peut être limitée par une autre de même nature. Un corps est limité par un corps, une pensée par une pensée, mais un corps n’est pas limité par une pensée ni une pensée par un corps.",
@@ -397,7 +397,9 @@
       "paragraphs": [
         "Proof.—If several distinct substances be granted, they must be distinguished one from the other, either by the difference of their attributes, or by the difference of their modifications (Prop. iv.). If only by the difference of their attributes, it will be granted that there cannot be more than one with an identical attribute. If by the difference of their modifications—as substance is naturally prior to its modifications (Prop. i.),—it follows that setting the modifications aside, and considering substance in itself, that is truly, (Deff. iii. and vi.), there cannot be conceived one substance different from another,—that is (by Prop. iv.), there cannot be granted several substances, but one substance only. Q.E.D."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "Two existing substances of the same nature are identical, assuming the scholium’s multiplicity principle. This does not establish uniqueness from sharing only one attribute.",
+      "theorem": "PhiloForge.Spinoza.Ontology.proposition5_same_nature"
     },
     {
       "id": "E1-P6",
@@ -434,7 +436,9 @@
       "paragraphs": [
         "Proof.—Substance cannot be produced by anything external (Corollary, Prop vi.), it must, therefore, be its own cause—that is, its essence necessarily involves existence, or existence belongs to its nature."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "An existing substance has essence involving existence, assuming the selected explanation principle. This does not prove that a substance exists.",
+      "theorem": "PhiloForge.Spinoza.Ontology.proposition7_existing_substance"
     },
     {
       "id": "E1-P8",
@@ -455,7 +459,9 @@
         "4. This cause of existence must either be contained in the nature and definition of the thing defined, or must be postulated apart from such definition.",
         "It therefore follows that, if a given number of individual things exist in nature, there must be some cause for the existence of exactly that number, neither more nor less. For example, if twenty men exist in the universe (for simplicity's sake, I will suppose them existing simultaneously, and to have had no predecessors), and we want to account for the existence of these twenty men, it will not be enough to show the cause of human existence in general; we must also show why there are exactly twenty men, neither more nor less: for a cause must be assigned for the existence of each individual. Now this cause cannot be contained in the actual nature of man, for the true definition of man does not involve any consideration of the number twenty. Consequently, the cause for the existence of these twenty men, and, consequently, of each of them, must necessarily be sought externally to each individual. Hence we may lay down the absolute rule, that everything which may consist of several individuals must have an external cause. And, as it has been shown already that existence appertains to the nature of substance, existence must necessarily be included in its definition; and from its definition alone existence must be deducible. But from its definition (as we have shown, notes ii., iii.), we cannot infer the existence of several substances; therefore it follows that there is only one substance of the same nature. Q.E.D."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "An existing substance has no distinct actual limiter of the same nature, under the selected multiplicity principle and limiter bridge. This is a limited sense of infinity, without modal necessity.",
+      "theorem": "PhiloForge.Spinoza.Ontology.proposition8_no_limiter"
     },
     {
       "id": "E1-P9",

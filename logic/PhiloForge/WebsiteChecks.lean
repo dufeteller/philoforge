@@ -2,6 +2,7 @@
 -- These references are elaborated by Lean; none introduces a proof assumption.
 import PhiloForge.Spinoza
 import PhiloForge.SpinozaAffects
+import PhiloForge.SpinozaOntology
 
 -- Website node: conceptual-separation
 #check @PhiloForge.Spinoza.conceptual_separation
@@ -30,6 +31,18 @@ import PhiloForge.SpinozaAffects
 -- Website node: E1-P6
 #check @PhiloForge.Spinoza.proposition6_causal
 #print axioms PhiloForge.Spinoza.proposition6_causal
+
+-- Website node: E1-P5
+#check @PhiloForge.Spinoza.Ontology.proposition5_same_nature
+#print axioms PhiloForge.Spinoza.Ontology.proposition5_same_nature
+
+-- Website node: E1-P7
+#check @PhiloForge.Spinoza.Ontology.proposition7_existing_substance
+#print axioms PhiloForge.Spinoza.Ontology.proposition7_existing_substance
+
+-- Website node: E1-P8
+#check @PhiloForge.Spinoza.Ontology.proposition8_no_limiter
+#print axioms PhiloForge.Spinoza.Ontology.proposition8_no_limiter
 
 -- The inline contradiction proof is also exposed by the website.
 #check @PhiloForge.Spinoza.proposition3_counterexample_conflict
