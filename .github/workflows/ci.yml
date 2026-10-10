@@ -21,3 +21,4 @@ jobs:
           node-version: '22'
       - run: node --check website/dist/assets/forge.js
       - run: node website/tests/consequences.cjs
+      - run: node website/tests/i18n.cjs
