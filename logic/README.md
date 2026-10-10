@@ -7,3 +7,5 @@ Source: Spinoza, Ethics I, Definition III, Axioms IV and V, Proposition III, and
 `Substance` encodes being in itself and conceptual independence from distinct entities. This is an explicit strengthened reading of Definition III. `Axiom4` extracts the causal-to-conceptual implication required by the demonstrations; `Axiom5` excludes conceptual dependence in both directions when nothing is shared.
 
 These assumptions are theorem parameters. Lean proves conditional claims within the reconstruction, not historical fidelity or metaphysical truth. The source contains no admitted proofs or global philosophical axioms. `#print axioms` audits each theorem.
+
+The source library now indexes all five parts of the Ethics. It does **not** mean all proofs are formalized. `SpinozaAffects.lean` adds two definitional consequences of III D1-D2 concerning one actor and one event. Full proof coverage and interpretation limits are recorded in `docs/spinoza-sources.md`.

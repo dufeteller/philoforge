@@ -23,6 +23,8 @@ jobs:
       - run: node --check website/dist/assets/proof-map.js
       - run: node website/tests/spinoza.cjs
       - run: node website/tests/i18n.cjs
+      - run: node --check website/dist/assets/ethics.js
+      - run: node website/tests/ethics.cjs
   lean:
     runs-on: ubuntu-latest
     timeout-minutes: 15
