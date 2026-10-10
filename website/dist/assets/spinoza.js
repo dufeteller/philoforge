@@ -64,7 +64,7 @@
   {
     "id": "E1-D4-conception",
     "type": "Interpretive premise",
-    "title": "Conceptual requirements pass to substance",
+    "title": "Transfer of conceptual requirements",
     "text": "An external conceptual requirement of an attribute is also an external requirement of the substance whose essence it constitutes.",
     "reference": "Interpretation of Ethics I, Proposition X — conceptual bridge",
     "original": "An attribute is that which the intellect perceives of substance, as constituting its essence.",

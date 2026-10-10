@@ -369,7 +369,7 @@ Object.assign(globalThis.PhiloLocales.fr, {
   "Every essential aspect possessed by a substance is expressed by at least one attribute.": "Chaque aspect essentiel possédé par une substance est exprimé par au moins un attribut.",
   "Interpretation of Ethics I, Definition IV — completeness": "Interprétation de l’Éthique I, définition IV — complétude",
   "Selected completeness premise, not a numbered axiom. No finiteness or one-to-one correspondence is assumed. A Lean countermodel shows that representation without completeness does not ensure an additional attribute.": "Hypothèse de complétude sélectionnée, et non axiome numéroté. Aucune finitude ni correspondance bijective n’est supposée. Un contre-modèle Lean montre que la représentation sans complétude ne garantit pas un attribut supplémentaire.",
-  "Conceptual requirements pass to substance": "Les exigences conceptuelles se transmettent à la substance",
+  "Transfer of conceptual requirements": "Transmission des exigences conceptuelles",
   "An external conceptual requirement of an attribute is also an external requirement of the substance whose essence it constitutes.": "Une exigence conceptuelle extérieure d’un attribut est aussi une exigence extérieure de la substance dont il constitue l’essence.",
   "Interpretation of Ethics I, Proposition X — conceptual bridge": "Interprétation de l’Éthique I, proposition X — lien conceptuel",
   "An attribute is that which the intellect perceives of substance, as constituting its essence.": "Un attribut est ce que l’intellect perçoit de la substance comme constituant son essence.",
