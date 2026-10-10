@@ -15,3 +15,7 @@ Published on 2026-10-10. Cloudflare deployment version: `67957c16-299e-4a1a-a762
 ## Automatic deployment
 
 Cloudflare Workers Builds is connected to `dufeteller/philoforge`, production branch `main`. Each push to `main` triggers `npx wrangler@4.149.0 deploy --config website/wrangler.jsonc` from the repository root. Preview builds are disabled. Changes on feature branches reach production after integration into `main`.
+
+## Consequences
+
+The workshop derives consequences using an explicit, inspectable rule library, with dependency lists and reasoning steps. It does not run Lean or establish consistency. A conflicting no-alternatives axiom is opt-in; combining the theory presets does not select it. The causal-action deduction requires an explicit bridge covering possible actions. Validate with `node website/tests/consequences.cjs`.

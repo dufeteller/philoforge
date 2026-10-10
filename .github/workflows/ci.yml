@@ -16,3 +16,8 @@ jobs:
         with:
           python-version: '3.13'
       - run: python scripts/validate.py
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: node --check website/dist/assets/forge.js
+      - run: node website/tests/consequences.cjs
