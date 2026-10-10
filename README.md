@@ -22,3 +22,6 @@ CI runs this same check for pushes and pull requests. Lean compilation, applicat
 
 ## License
 License selection is pending. No open-source license is granted yet.
+
+## Languages / Langues
+English is the primary language; French is supported across the website. French contributions are welcome. See [the language guide](docs/languages.md) for translation conventions.

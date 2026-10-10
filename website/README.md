@@ -19,3 +19,11 @@ Cloudflare Workers Builds is connected to `dufeteller/philoforge`, production br
 ## Consequences
 
 The workshop derives consequences using an explicit, inspectable rule library, with dependency lists and reasoning steps. It does not run Lean or establish consistency. A conflicting no-alternatives axiom is opt-in; combining the theory presets does not select it. The causal-action deduction requires an explicit bridge covering possible actions. Validate with `node website/tests/consequences.cjs`.
+
+## Languages / Langues
+
+English is the default language. The EN / FR selector is available on the journal, PhiloForge, and 404 page, and remembers the visitor's choice in browser storage. `?lang=fr` opens a page in French.
+
+English text remains canonical in HTML and rule data. French translations are maintained in `dist/assets/locales.js`, including axioms, consequence explanations, and interface text. Logical identifiers and dependencies remain identical in both languages; JSON exports retain canonical English content and record the selected display language. User-entered universe names are never automatically translated, except the initial default name.
+
+Pour modifier le français, mettez à jour les traductions dans `dist/assets/locales.js`. Lors de l’ajout d’un contenu anglais, ajoutez sa traduction française et lancez `node website/tests/i18n.cjs`.
