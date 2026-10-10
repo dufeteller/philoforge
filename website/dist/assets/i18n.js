@@ -5,7 +5,7 @@
  function canDisplay(text,language){
   if(language!=='fr')return true;
   const source=reverse[text.trim()]||text.trim();
-  if(!source||neutral.has(source)||/^[\d\s.·↓↗∴+={}₁₂₃ABC,T≽≻¬()]+$/.test(source)||/^[A-Z-]+@\d+$/.test(source))return true;
+  if(!source||neutral.has(source)||/^[\d\s.·↓↗∴+={}₁₂₃ABC,T≽≻¬()—]+$/.test(source)||/^[A-Z-]+@\d+$/.test(source))return true;
   if(/^(\d+) (?:consequences|conséquences) · (\d+) (?:explicit conflicts|conflits explicites)$/.test(source))return true;
   if(/^(Depends on: |Dépend de : )/.test(source))return source.replace(/^(Depends on: |Dépend de : )/,'').split(' + ').every(part=>canDisplay(part,language));
   return typeof translations[source]==='string'&&translations[source].trim().length>0;
@@ -35,7 +35,7 @@
   let node;while((node=walker.nextNode())){
    if(node.parentElement.closest('script,style,input,textarea,[data-language-switch]'))continue;
    if(!canDisplay(node.nodeValue,language)){
-    const unit=node.parentElement.closest('.axiom,.deduction,.steps article,.tags span,#analysis-questions li,#selected li')||node.parentElement;
+    const unit=node.parentElement.closest('.axiom,.deduction,.proof-node,.steps article,.tags span,#analysis-questions li,#selected li')||node.parentElement;
     if(!unit.hidden){unit.hidden=true;unit.dataset.missingTranslation='fr';}
     continue;
    }
