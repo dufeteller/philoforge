@@ -5,7 +5,7 @@
  function canDisplay(text,language){
   if(language!=='fr')return true;
   const source=reverse[text.trim()]||text.trim();
-  if(!source||neutral.has(source)||/^[\d\s.·↓↗∴+={}₁₂₃A,T]+$/.test(source)||/^[A-Z-]+@\d+$/.test(source))return true;
+  if(!source||neutral.has(source)||/^[\d\s.·↓↗∴+={}₁₂₃ABC,T≽≻¬()]+$/.test(source)||/^[A-Z-]+@\d+$/.test(source))return true;
   if(/^(\d+) (?:consequences|conséquences) · (\d+) (?:explicit conflicts|conflits explicites)$/.test(source))return true;
   if(/^(Depends on: |Dépend de : )/.test(source))return source.replace(/^(Depends on: |Dépend de : )/,'').split(' + ').every(part=>canDisplay(part,language));
   return typeof translations[source]==='string'&&translations[source].trim().length>0;
