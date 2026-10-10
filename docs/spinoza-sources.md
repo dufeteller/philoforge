@@ -6,7 +6,7 @@ The five parts of Benedict de Spinoza's *Ethics* are indexed in `website/dist/da
 
 All 259 numbered propositions are present, with their following demonstrations, corollaries, scholia and notes: I (36), II (49), III (59), IV (73), V (42). Definitions, axioms, postulates, the seven physical lemmas, 48 definitions of emotions, prefaces and appendices are included. Supporting paragraphs follow the numbered item to which they belong in the edition. The physical interlude has repeated axiom numbering: unique `Phys-A` identifiers use encounter order and retain the printed number separately. Its unnumbered definition belongs to the surrounding interlude text.
 
-Six encoded starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
+Eight catalogue starting points are labeled `encoded-premise`; this indicates a definition or hypothesis in the reconstruction, not a proved proposition.
 
 These are **source records**, not automatic proof rules. No unformalized proposition is promoted to an axiom. No dependency edges are guessed from textual citations. The deduction map uses only the separately maintained, proved reconstructions.
 
@@ -40,7 +40,7 @@ Further work must define and review the ontological, mental, physical and affect
 
 ## Website proof registry
 
-`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is seven reconstructed results, including limited versions of three numbered propositions (I P1, P3, P6), an alternative corollary and intermediate/definitional consequences. It is not 259 verified propositions.
+`WebsiteChecks.lean` is generated from all proof-backed workshop results. CI first compares it against the JavaScript registry, then Lean elaborates every named proof reference and prints its axiom dependencies. The inline counterexample proof is included. This checks that each displayed proof names a real compiled theorem; it does not automatically verify fidelity of the natural-language paraphrase. Current coverage is ten reconstructed results, including limited versions of six numbered propositions (I P1, P3, P5, P6, P7, P8), an alternative corollary and intermediate/definitional consequences. The three newest results depend on additional selectable scholium principles or interpretive premises. It is not 259 verified propositions.
 
 ## Extension: I P1 and I P6
 
@@ -49,3 +49,17 @@ Further work must define and review the ontological, mental, physical and affect
 `proposition6_causal` applies the already proved external-cause exclusion in both directions to two distinct substances. It is a causal specialization using the alternative corollary argument, not a reproduction of the historical P2/P3/P5 proof and not an identification of every meaning of production with causation.
 
 `fragment_has_model` gives a concrete Bool model with a substance, a mode and a nonempty causal relation satisfying A4 and A5. It establishes satisfiability of the encoded I D3/D5/A4/A5 fragment, not consistency of all the Ethics. This model also prevents interpreting these proofs as mere consequences of a contradictory global context.
+
+## Extension: same nature and essential existence
+
+`SpinozaOntology.lean` adds actual existence, same nature, possible limitation and essence involving existence. D1 defines essential self-causation; it does not identify this with the binary causal relation. D2 is restricted to distinct actual limiters. Absence of those limiters is the encoded infinity in kind; neither cardinal infinity nor modal necessity is claimed.
+
+Three selectable extra premises have their own categories in the workshop:
+
+- **Existence explanation**, from I P8 scholium II, principles 3–4: an existent has an intrinsic explanation or an external cause. Identifying the intrinsic explanation with essence involving existence is a disclosed interpretation.
+- **Multiplicity explanation**, from the same scholium's general rule following the twenty-men example: distinct actual individuals of the same nature require an external cause. This general rule is assumed explicitly; its preceding prose reasoning is not proved in Lean.
+- **Substance limiter**, an interpretive bridge in the I P8 demonstration: a same-nature limiter of a substance is a substance. This is not a numbered axiom.
+
+With D3/A4, the multiplicity principle proves the **same-nature version of P5** via the alternative scholium argument. It does not establish the version about sharing just one attribute. The explanation principle proves **P7 for an already existing substance**, not existence of any substance or God. P5 plus the limiting bridge proves **P8 as absence of a distinct actual same-nature limiter**. The formal model does not express its modal necessity. These are six numbered scoped reconstructions in total, not six fully faithful historical demonstrations.
+
+The concrete Boolean model in `example_principles` satisfies all the new premises together with A4/A5 and has an existing substance, an existing mode and nonempty causation. It checks satisfiability of this extension; it is not a model of the full Ethics. The website exposes ten results and keeps 253 numbered propositions unformalized.

@@ -1,14 +1,14 @@
 # What remains to formalize in Spinoza's Ethics
 
-The catalogue contains 259 numbered propositions. Only E1 P1, P3 and P6 have scoped reconstructions compiled by Lean. The other **256 are not formalized**; importing their text is not formal verification. The [complete coverage inventory](ethics-coverage.md) is regenerated and checked in CI.
+The catalogue contains 259 numbered propositions. E1 P1, P3, P5, P6, P7 and P8 have scoped reconstructions compiled by Lean. The other **253 are not formalized**; importing their text is not formal verification. The [complete coverage inventory](ethics-coverage.md) is regenerated and checked in CI.
 
 ## What the current formal language expresses
 
 `Spinoza.lean` interprets substance using conceptual independence, modes using inherence and dependence, and A4/A5 using causation, dependence and commonality. `SpinozaAffects.lean` encodes adequate/partial causes and activity/passivity for a fixed actor and event.
 
-It does not yet encode attributes, essence, necessary existence, God, ideas, bodies, duration, a theory of knowledge, or the general theory of affects. A proposition using these notions cannot be checked merely by adding its name to the registry.
+The extension in `SpinozaOntology.lean` now introduces essence involving existence as a primitive predicate and actual existence separately. Attributes, modal necessity, God, ideas, bodies, duration, a theory of knowledge and the general theory of affects remain unencoded. A proposition using these notions cannot be checked merely by adding its name to the registry.
 
-## Machine-checkable limits of the current fragment
+## Machine-checkable limits of the original D3/A4/A5 fragment
 
 `logic/PhiloForge/SpinozaLimits.lean` constructs a Boolean model with two substances, no conceptual dependence or causation, and commonality between every pair. It satisfies encoded A4 and A5; both entities satisfy encoded D3.
 
@@ -24,7 +24,7 @@ These results describe limitations of our chosen representation. They neither re
 
 For each historical proposition, an implementation needs its source passage, a typed interpretation of every term, explicit premises, dependency references, and a Lean proof. Where an argument requires an additional interpretive bridge, record that bridge separately. A conclusion must not be introduced as a premise and then labelled verified. Scope notes must distinguish historical statements from weakened or strengthened reconstructions.
 
-Part I must first acquire an explicit account of attributes and essence/existence. Parts II–V require additional semantic structures. Their source texts remain available in the library without a verification badge while this work is incomplete. The existing compiled results and the dependency map retain their current scope.
+Part I still needs an account of attributes and a richer semantics for essence/existence. The new scholium principles are separately disclosed premises, not consequences of the original fragment. Parts II–V require additional semantic structures. Their source texts remain available in the library without a verification badge while this work is incomplete. The existing compiled results and the dependency map retain their current scope.
 
 ## Related work reviewed
 
