@@ -172,7 +172,7 @@
           "id": "E1-D5",
           "title": "Modes of substance",
           "type": "Definition",
-          "interpretation": "Formal convention: ModeOf names a distinct entity in which the mode exists and on which its conception depends. Priority in Proposition I is reconstructed as asymmetric conceptual dependence, not temporal precedence."
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
         }
       ]
     },
@@ -382,7 +382,7 @@
           "id": "E1-D4",
           "title": "Attribute",
           "type": "Definition",
-          "interpretation": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable."
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
         },
         {
           "id": "E1-D4-representation",
@@ -423,7 +423,7 @@
           "id": "E1-D4",
           "title": "Attribute",
           "type": "Definition",
-          "interpretation": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable."
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
         },
         {
           "id": "E1-D4-representation",
@@ -470,13 +470,449 @@
           "id": "E1-D4",
           "title": "Attribute",
           "type": "Definition",
-          "interpretation": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable."
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
         },
         {
           "id": "E1-D4-conception",
           "title": "Transfer of conceptual requirements",
           "type": "Interpretive premise",
           "interpretation": "Selected interpretation of the step from Definition IV to Definition III in P10. External requirements are relative to each conception. Their transfer is assumed explicitly; it is not proved by the perception relation alone."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P2",
+        "E1-D3",
+        "E1-D4",
+        "E1-commonality-bridge"
+      ],
+      "local": "Two substances with no shared attribute.",
+      "limit": "The conclusion follows from the selected semantic bridge. This does not reconstruct the historical claim that Definition III alone suffices, nor infer absence of commonality from absence of dependence. Different profiles with an overlap do not meet the local hypothesis.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P2",
+      "title": "Disjoint attributes exclude commonality",
+      "formalStatement": "Two substances sharing no attribute have nothing in common, under the selected meaning of commonality. Unequal profiles alone do not suffice.",
+      "exactLean": "theorem proposition2_disjoint_attributes {E A M Q : Type} (v : Vocabulary E A M Q)\n    (meaning : CommonalityBridge v) (x y : E)\n    (sx : Spinoza.Substance v.toVocabulary x) (sy : Spinoza.Substance v.toVocabulary y)\n    (disjoint : ¬ SharesAttribute v x y) : ¬ v.common x y",
+      "leanName": "PhiloForge.Spinoza.Distinctions.proposition2_disjoint_attributes",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L59",
+      "sourceStatement": {
+        "en": "Two substances, whose attributes are different, have nothing in common.",
+        "fr": "Deux substances ayant des attributs différents n’ont rien de commun entre elles."
+      },
+      "premises": [
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
+        },
+        {
+          "id": "E1-commonality-bridge",
+          "title": "Shared attributes and commonality",
+          "type": "Interpretive premise",
+          "interpretation": "Explicit semantic interpretation, not the converse of Axiom V. Different attributes in this proof means no shared attribute; merely unequal attribute profiles is insufficient. Definition III alone does not establish this bridge."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P4",
+        "E1-D4",
+        "E1-D5",
+        "E1-qualitative-identity",
+        "E1-quality-exhaustion"
+      ],
+      "local": "Two distinct entities of the qualitative vocabulary.",
+      "limit": "Qualities are represented by attributes or modifications, and matching all qualities implies identity. These are disclosed additions to the primitive vocabulary. The proof obtains a distinguishing attribute or modification, using classical reasoning; it is not just a classification into two kinds of entity.",
+      "reviewStatus": "not-reviewed",
+      "textualNote": "The Latin proof cites Definition IV for attributes. The Elwes English transcription in the library says Axiom IV at that point; the Latin reference is used here.",
+      "id": "E1-P4",
+      "title": "A distinction has a qualitative witness",
+      "formalStatement": "Two distinct entities differ on an attribute or a modification, assuming qualitative identity and the selected classification of qualities.",
+      "exactLean": "theorem proposition4_qualitative_distinction {E A M Q : Type} (v : Vocabulary E A M Q)\n    (identity : QualitativeIdentity v) (exhaustion : QualityExhaustion v) (x y : E)\n    (distinct : x ≠ y) : AttributeDifference v x y ∨ ModificationDifference v x y",
+      "leanName": "PhiloForge.Spinoza.Distinctions.proposition4_qualitative_distinction",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L75",
+      "sourceStatement": {
+        "en": "Two or more distinct things are distinguished one from the other, either by the difference of the attributes of the substances, or by the difference of their modifications.",
+        "fr": "Deux ou plusieurs choses distinctes se distinguent par la différence des attributs des substances ou par la différence de leurs affections."
+      },
+      "premises": [
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
+        },
+        {
+          "id": "E1-qualitative-identity",
+          "title": "Qualities determine identity",
+          "type": "Interpretive premise",
+          "interpretation": "An explicit principle of qualitative individuation. It excludes primitive numerical distinctions invisible to every quality. This additional principle is not proved by the mere classification into substances and modes."
+        },
+        {
+          "id": "E1-quality-exhaustion",
+          "title": "Qualities are attributes or modifications",
+          "type": "Interpretive premise",
+          "interpretation": "Each quality has exactly the same instances as some attribute or modification. Together with qualitative identity, this supplies a distinguishing witness. This interpretation of P4’s argument is stronger than Axiom I alone."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P5",
+        "E1-P5-abstraction",
+        "E1-P4",
+        "E1-D3",
+        "E1-D4",
+        "E1-D5"
+      ],
+      "local": "Two substances sharing at least one attribute.",
+      "limit": "This route addresses sharing one attribute, unlike the older same-nature reconstruction. Its complete-essence and injective-abstraction premises are substantial: compiled countermodels show that removing either can permit distinct substances sharing an attribute. P1 alone has not justified abstraction. This remains a conditional reconstruction.",
+      "reviewStatus": "not-reviewed",
+      "textualNote": "The Latin proof uses Definition III and Axiom VI when setting modifications aside. The Elwes transcription labels the latter Definition VI; our abstraction interpretation is disclosed separately.",
+      "id": "E1-P5-attributes",
+      "title": "Sharing an attribute identifies substances",
+      "formalStatement": "Two substances sharing an attribute are identical, under the complete-essence interpretation, qualitative individuation and the abstraction principle.",
+      "exactLean": "theorem proposition5_shared_attribute {E A M Q : Type} (v : Vocabulary E A M Q)\n    (identity : QualitativeIdentity v) (exhaustion : QualityExhaustion v)\n    (complete : CompleteAttribute v) (abstraction : EssenceAbstraction v) (x y : E)\n    (sx : Spinoza.Substance v.toVocabulary x) (sy : Spinoza.Substance v.toVocabulary y)\n    (shared : SharesAttribute v x y) : x = y",
+      "leanName": "PhiloForge.Spinoza.Distinctions.proposition5_shared_attribute",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L92",
+      "sourceStatement": {
+        "en": "There cannot exist in the universe two or more substances having the same nature or attribute.",
+        "fr": "Il ne peut y avoir dans la nature deux ou plusieurs substances de même nature ou attribut."
+      },
+      "premises": [
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
+        },
+        {
+          "id": "E1-qualitative-identity",
+          "title": "Qualities determine identity",
+          "type": "Interpretive premise",
+          "interpretation": "An explicit principle of qualitative individuation. It excludes primitive numerical distinctions invisible to every quality. This additional principle is not proved by the mere classification into substances and modes."
+        },
+        {
+          "id": "E1-quality-exhaustion",
+          "title": "Qualities are attributes or modifications",
+          "type": "Interpretive premise",
+          "interpretation": "Each quality has exactly the same instances as some attribute or modification. Together with qualitative identity, this supplies a distinguishing witness. This interpretation of P4’s argument is stronger than Axiom I alone."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-complete-attribute",
+          "title": "One attribute expresses the complete essence",
+          "type": "Interpretive premise",
+          "interpretation": "A substantive complete-essence interpretation. It equates attribute profiles, not the substances themselves. It is distinct from the aspect-based vocabulary used for P9. A compiled overlapping-profile countermodel demonstrates why this extra premise matters."
+        },
+        {
+          "id": "E1-essence-abstraction",
+          "title": "Set modifications aside",
+          "type": "Interpretive premise",
+          "interpretation": "An abstraction operation preserves attributes, removes modifications and is injective on substances. Preserving distinctions is an explicit commitment, not a consequence already proved by P1. A countermodel without this commitment admits distinct substances with the same attributes."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P6",
+        "E1-P5",
+        "E1-P2",
+        "E1-P3",
+        "E1-A4",
+        "E1-A5"
+      ],
+      "local": "Two distinct substances in the shared causal and qualitative vocabulary.",
+      "limit": "The compiled argument now follows the dependency route V → II → III → VI. It inherits the disclosed interpretation of each step. The predicate causes represents production in this restricted reconstruction; no full modal theory of production is established.",
+      "reviewStatus": "not-reviewed",
+      "id": "E1-P6-attributes",
+      "title": "From attributes to exclusion of causation",
+      "formalStatement": "Distinct substances cannot cause one another: the new attribute route combines V, II and III under its disclosed interpretations. Production is read as causation.",
+      "exactLean": "theorem proposition6_via_attributes {E A M Q : Type} (v : Vocabulary E A M Q)\n    (identity : QualitativeIdentity v) (exhaustion : QualityExhaustion v)\n    (complete : CompleteAttribute v) (abstraction : EssenceAbstraction v)\n    (meaning : CommonalityBridge v)\n    (a4 : Spinoza.Axiom4 v.toVocabulary) (a5 : Spinoza.Axiom5 v.toVocabulary) (x y : E)\n    (sx : Spinoza.Substance v.toVocabulary x) (sy : Spinoza.Substance v.toVocabulary y)\n    (distinct : x ≠ y) : ¬ v.causes x y ∧ ¬ v.causes y x",
+      "leanName": "PhiloForge.Spinoza.Distinctions.proposition6_via_attributes",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L109",
+      "sourceStatement": {
+        "en": "One substance cannot be produced by another substance.",
+        "fr": "Une substance ne peut être produite par une autre substance."
+      },
+      "premises": [
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
+        },
+        {
+          "id": "E1-qualitative-identity",
+          "title": "Qualities determine identity",
+          "type": "Interpretive premise",
+          "interpretation": "An explicit principle of qualitative individuation. It excludes primitive numerical distinctions invisible to every quality. This additional principle is not proved by the mere classification into substances and modes."
+        },
+        {
+          "id": "E1-quality-exhaustion",
+          "title": "Qualities are attributes or modifications",
+          "type": "Interpretive premise",
+          "interpretation": "Each quality has exactly the same instances as some attribute or modification. Together with qualitative identity, this supplies a distinguishing witness. This interpretation of P4’s argument is stronger than Axiom I alone."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-complete-attribute",
+          "title": "One attribute expresses the complete essence",
+          "type": "Interpretive premise",
+          "interpretation": "A substantive complete-essence interpretation. It equates attribute profiles, not the substances themselves. It is distinct from the aspect-based vocabulary used for P9. A compiled overlapping-profile countermodel demonstrates why this extra premise matters."
+        },
+        {
+          "id": "E1-essence-abstraction",
+          "title": "Set modifications aside",
+          "type": "Interpretive premise",
+          "interpretation": "An abstraction operation preserves attributes, removes modifications and is injective on substances. Preserving distinctions is an explicit commitment, not a consequence already proved by P1. A countermodel without this commitment admits distinct substances with the same attributes."
+        },
+        {
+          "id": "E1-commonality-bridge",
+          "title": "Shared attributes and commonality",
+          "type": "Interpretive premise",
+          "interpretation": "Explicit semantic interpretation, not the converse of Axiom V. Different attributes in this proof means no shared attribute; merely unequal attribute profiles is insufficient. Definition III alone does not establish this bridge."
+        },
+        {
+          "id": "E1-A4",
+          "title": "Knowledge of effect and cause",
+          "type": "Axiom",
+          "interpretation": "Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded."
+        },
+        {
+          "id": "E1-A5",
+          "title": "Nothing in common",
+          "type": "Axiom",
+          "interpretation": "Formal convention: absence of commonality excludes conceptual dependence in both directions."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P14",
+        "E1-P5",
+        "E1-D4"
+      ],
+      "local": "A given substance g having every attribute instantiated by any substance. This existence premise is local to the implication.",
+      "limit": "A preparatory implication, not a proof of XIV. It does not supply P11, God’s existence, absolute infinity, or the exclusion of conceiving another substance. A compiled model satisfies all selected bridges with two substances and no universal substance. XIV therefore remains outside the numbered Lean coverage.",
+      "reviewStatus": "not-reviewed",
+      "id": "universal-substance-unique",
+      "title": "If a universal substance exists, it is unique",
+      "formalStatement": "If a substance has every attribute possessed by any substance, every substance is identical to it. This proves a conditional step toward XIV, not that such a substance exists.",
+      "exactLean": "theorem universal_substance_unique {E A M Q : Type} (v : Vocabulary E A M Q)\n    (identity : QualitativeIdentity v) (exhaustion : QualityExhaustion v)\n    (complete : CompleteAttribute v) (abstraction : EssenceAbstraction v)\n    (witness : AttributeWitness v) (g : E) (universal : UniversalSubstance v g) :\n    ∀ s, Spinoza.Substance v.toVocabulary s → s = g",
+      "leanName": "PhiloForge.Spinoza.Distinctions.universal_substance_unique",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L132",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
+        },
+        {
+          "id": "E1-qualitative-identity",
+          "title": "Qualities determine identity",
+          "type": "Interpretive premise",
+          "interpretation": "An explicit principle of qualitative individuation. It excludes primitive numerical distinctions invisible to every quality. This additional principle is not proved by the mere classification into substances and modes."
+        },
+        {
+          "id": "E1-quality-exhaustion",
+          "title": "Qualities are attributes or modifications",
+          "type": "Interpretive premise",
+          "interpretation": "Each quality has exactly the same instances as some attribute or modification. Together with qualitative identity, this supplies a distinguishing witness. This interpretation of P4’s argument is stronger than Axiom I alone."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-complete-attribute",
+          "title": "One attribute expresses the complete essence",
+          "type": "Interpretive premise",
+          "interpretation": "A substantive complete-essence interpretation. It equates attribute profiles, not the substances themselves. It is distinct from the aspect-based vocabulary used for P9. A compiled overlapping-profile countermodel demonstrates why this extra premise matters."
+        },
+        {
+          "id": "E1-essence-abstraction",
+          "title": "Set modifications aside",
+          "type": "Interpretive premise",
+          "interpretation": "An abstraction operation preserves attributes, removes modifications and is injective on substances. Preserving distinctions is an explicit commitment, not a consequence already proved by P1. A countermodel without this commitment admits distinct substances with the same attributes."
+        },
+        {
+          "id": "E1-attribute-witness",
+          "title": "Every substance has an attribute",
+          "type": "Interpretive premise",
+          "interpretation": "A separate existence requirement for attributes of a given substance. A primitive attribute relation alone need not provide any attribute. This does not assert that a substance exists."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-A1",
+        "E1-D3",
+        "E1-D5",
+        "E1-P4",
+        "E1-P15"
+      ],
+      "local": "An arbitrary entity in the chosen vocabulary.",
+      "limit": "The classification follows by cases on Axiom I after adding the two semantic bridges. Being in itself alone does not formally supply conceptual independence; being in another alone does not identify that other as a substance. These missing links are selectable premises.",
+      "reviewStatus": "not-reviewed",
+      "id": "substance-mode-classification",
+      "title": "Every entity is a substance or a mode",
+      "formalStatement": "Every entity is a substance or a mode of some substance, using Axiom I and the two explicit classification bridges.",
+      "exactLean": "theorem substance_mode_classification {E A M Q : Type} (v : Vocabulary E A M Q)\n    (a1 : Axiom1 v) (bridges : ClassificationBridges v) :\n    ∀ x, Spinoza.Substance v.toVocabulary x ∨\n      ∃ s, Spinoza.Substance v.toVocabulary s ∧ Spinoza.ModeOf v.toVocabulary x s",
+      "leanName": "PhiloForge.Spinoza.Distinctions.substance_mode_classification",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L151",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E1-A1",
+          "title": "In itself or in another",
+          "type": "Axiom",
+          "interpretation": "The quantifier ranges over the entities of this vocabulary. In-itself and in-another are primitive relations; the separate classification bridges supply the links to conceptual independence and modes."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
+        },
+        {
+          "id": "E1-classification-bridges",
+          "title": "From in-itself and in-another to substance and mode",
+          "type": "Interpretive premise",
+          "interpretation": "Two explicit bridges add conceptual independence in the first case, and a distinct substance with inherence and conceptual dependence in the second. Neither bridge follows from the disjunction of Axiom I alone."
+        }
+      ]
+    },
+    {
+      "sourceIds": [
+        "E1-P15",
+        "E1-P14",
+        "E1-A1",
+        "E1-D3",
+        "E1-D5"
+      ],
+      "local": "A given universal substance g, under exactly the same local premise as the conditional uniqueness step.",
+      "limit": "A preparatory classification toward XV. It proves inherence and conceptual dependence of each mode on the assumed universal substance. It does not prove existence of God or the modal impossibility of existence without God. XV remains source-only in the numbered coverage.",
+      "reviewStatus": "not-reviewed",
+      "id": "everything-in-universal-substance",
+      "title": "If it exists, every other entity is its mode",
+      "formalStatement": "Given a universal substance, every entity is either that substance or one of its modes, in it and conceptually dependent on it. This conditional classification does not establish the full statement of XV.",
+      "exactLean": "theorem everything_in_universal_substance {E A M Q : Type} (v : Vocabulary E A M Q)\n    (identity : QualitativeIdentity v) (exhaustion : QualityExhaustion v)\n    (complete : CompleteAttribute v) (abstraction : EssenceAbstraction v)\n    (witness : AttributeWitness v) (a1 : Axiom1 v) (bridges : ClassificationBridges v)\n    (g : E) (universal : UniversalSubstance v g) :\n    ∀ x, x = g ∨ Spinoza.ModeOf v.toVocabulary x g",
+      "leanName": "PhiloForge.Spinoza.Distinctions.everything_in_universal_substance",
+      "proofUrl": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean#L161",
+      "sourceStatement": null,
+      "premises": [
+        {
+          "id": "E1-D4",
+          "title": "Attribute",
+          "type": "Definition",
+          "interpretation": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations."
+        },
+        {
+          "id": "E1-D5",
+          "title": "Modes of substance",
+          "type": "Definition",
+          "interpretation": "ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence."
+        },
+        {
+          "id": "E1-qualitative-identity",
+          "title": "Qualities determine identity",
+          "type": "Interpretive premise",
+          "interpretation": "An explicit principle of qualitative individuation. It excludes primitive numerical distinctions invisible to every quality. This additional principle is not proved by the mere classification into substances and modes."
+        },
+        {
+          "id": "E1-quality-exhaustion",
+          "title": "Qualities are attributes or modifications",
+          "type": "Interpretive premise",
+          "interpretation": "Each quality has exactly the same instances as some attribute or modification. Together with qualitative identity, this supplies a distinguishing witness. This interpretation of P4’s argument is stronger than Axiom I alone."
+        },
+        {
+          "id": "E1-D3",
+          "title": "Substance",
+          "type": "Definition",
+          "interpretation": "Formal convention: the causal fragment excludes dependence on distinct entities. The attribute fragment excludes external conceptual requirements. Both interpret the explanatory clause of Definition III; their vocabularies are not silently identified."
+        },
+        {
+          "id": "E1-complete-attribute",
+          "title": "One attribute expresses the complete essence",
+          "type": "Interpretive premise",
+          "interpretation": "A substantive complete-essence interpretation. It equates attribute profiles, not the substances themselves. It is distinct from the aspect-based vocabulary used for P9. A compiled overlapping-profile countermodel demonstrates why this extra premise matters."
+        },
+        {
+          "id": "E1-essence-abstraction",
+          "title": "Set modifications aside",
+          "type": "Interpretive premise",
+          "interpretation": "An abstraction operation preserves attributes, removes modifications and is injective on substances. Preserving distinctions is an explicit commitment, not a consequence already proved by P1. A countermodel without this commitment admits distinct substances with the same attributes."
+        },
+        {
+          "id": "E1-attribute-witness",
+          "title": "Every substance has an attribute",
+          "type": "Interpretive premise",
+          "interpretation": "A separate existence requirement for attributes of a given substance. A primitive attribute relation alone need not provide any attribute. This does not assert that a substance exists."
+        },
+        {
+          "id": "E1-A1",
+          "title": "In itself or in another",
+          "type": "Axiom",
+          "interpretation": "The quantifier ranges over the entities of this vocabulary. In-itself and in-another are primitive relations; the separate classification bridges supply the links to conceptual independence and modes."
+        },
+        {
+          "id": "E1-classification-bridges",
+          "title": "From in-itself and in-another to substance and mode",
+          "type": "Interpretive premise",
+          "interpretation": "Two explicit bridges add conceptual independence in the first case, and a distinct substance with inherence and conceptual dependence in the second. Neither bridge follows from the disjunction of Axiom I alone."
         }
       ]
     }

@@ -2,7 +2,7 @@
 
 ## Status
 
-This is an implemented research foundation, not a certification of the complete Ethics. `PhiloForge/SpinozaFoundations.lean` compiles alongside the existing reconstructions. The earlier six numbered reconstructions retain their restricted scope. A separate attribute module now adds two scoped reconstructions (P9/P10); the foundations countermodels themselves do not count as historical propositions. Independent philosophical review has not occurred.
+This is an implemented research foundation, not a certification of the complete Ethics. `PhiloForge/SpinozaFoundations.lean` compiles alongside the existing reconstructions. The original reconstructions retain their restricted scope. Separate attribute and qualitative-distinction modules supply scoped reconstructions for I P1–P10; the foundations countermodels and preparatory steps toward P14/P15 do not count as historical propositions. Independent philosophical review has not occurred.
 
 The website's [comparison dossier](https://dufetelle.com/philoforge/review/) distinguishes the historical statement, the encoded conclusion, local hypotheses, selected definitions/premises, interpretation limits, and the exact Lean theorem declaration. The latter and its source link are generated from the actual Lean file, with CI detecting drift. Compilation does not validate the natural-language interpretation.
 
@@ -10,7 +10,7 @@ The website's [comparison dossier](https://dufetelle.com/philoforge/review/) dis
 
 Primary Latin: ILIESI–CNR, *Archivio Testi e Studi Spinoziani*, [Ethica ordine geometrico demonstrata](https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html). The digital edition identifies its source as *Opera*, ed. Carl Gebhardt, Heidelberg, 1972, vol. II, pp. 41–308. This is the selected reference, not a claim of a new critical edition.
 
-`website/dist/data/spinoza-sources.json` records that identification, the fetched HTML SHA-256 and 26 located Latin excerpt records. The excerpts were checked against the downloaded text after collapsing whitespace, preserving spelling and punctuation. Punctuation or transcription problems remain subject to philological review. A concrete discrepancy is recorded for P5: its Latin proof cites Definition III and Axiom VI, whereas the imported Elwes paragraph says Definitions III and VI. The original imported edition is preserved; the dossier exposes the discrepancy rather than silently changing its text. The checksum identifies the downloaded version, not a guarantee about future remote contents. Reproduce the offline check with `python scripts/check-latin-sources.py /path/to/ethica_xhtml.html`.
+`website/dist/data/spinoza-sources.json` records that identification, the fetched HTML SHA-256 and 39 located Latin excerpt records. The excerpts were checked against the downloaded text after collapsing whitespace, preserving spelling and punctuation. Punctuation or transcription problems remain subject to philological review. A concrete discrepancy is recorded for P5: its Latin proof cites Definition III and Axiom VI, whereas the imported Elwes paragraph says Definitions III and VI. The original imported edition is preserved; the dossier exposes the discrepancy rather than silently changing its text. The checksum identifies the downloaded version, not a guarantee about future remote contents. Reproduce the offline check with `python scripts/check-latin-sources.py /path/to/ethica_xhtml.html`.
 
 English passages remain the public-domain Elwes translation already catalogued. French source statements and explanatory prose are our translations, never attributed to a historical translator. French entries remain optional and are hidden when the corresponding translation is absent. Latin is displayed deliberately as the comparison text, never as an unnoticed French fallback.
 
@@ -53,7 +53,7 @@ These are results about the candidate model. None is a counterexample to the com
 
 Each dossier records the premise origins and the actual theorem signature. This does not automatically certify that its prose is faithful to Lean: that comparison remains reviewable work. In particular:
 
-- P5 uses the later scholium's multiplicity principle as a premise; its original demonstration is not reconstructed.
+- The older P5 route uses the later scholium’s multiplicity principle. The added attribute route uses P4, complete-essence and abstraction interpretations. Neither route has been independently certified as historically faithful.
 - P7 uses primitive essential existence and assumes actual existence of a substance. The new candidate semantics is not silently substituted into that older theorem.
 - P8 omits modal necessity. Its selected limiter classification is a premise used by the chosen proof route, but the older P5 theorem never uses its second substance hypothesis (`_sy`). Therefore this route must not be advertised as a minimal dependency analysis. Removing an input hides the available registered proof; it does not establish non-derivability by another proof.
 
@@ -72,4 +72,4 @@ No dossier presently satisfies the independent-review criterion. No person has b
 
 `SpinozaAttributes.lean` is a separate candidate vocabulary, not a silent replacement for this model. Its P9/P10 reconstructions and three explicit interpretive bridges are documented in [the source notes](spinoza-sources.md#extension-attributes-i-p9-and-i-p10).
 
-Two further checks in this foundations module guide the next steps: `disjoint_attributes_do_not_yet_exclude_commonality` for P2, and `distinct_things_can_have_identical_profiles` for P4. They establish insufficiency of the selected candidate assumptions, not failure of Spinoza’s full demonstrations. Neither target is presented as proved or counted in coverage.
+Two further checks in this foundations module guide the next steps: `disjoint_attributes_do_not_yet_exclude_commonality` for P2, and `distinct_things_can_have_identical_profiles` for P4. They establish insufficiency of the selected candidate assumptions, not failure of Spinoza’s full demonstrations. The new `SpinozaDistinctions.lean` addresses these obstacles by disclosing additional semantic bridges. Its P2/P4 reconstructions are now counted with restricted scope; the countermodels continue to document why the bridges were necessary in the earlier vocabulary.

@@ -4,6 +4,7 @@ import PhiloForge.Spinoza
 import PhiloForge.SpinozaAffects
 import PhiloForge.SpinozaOntology
 import PhiloForge.SpinozaAttributes
+import PhiloForge.SpinozaDistinctions
 
 -- Website node: conceptual-separation
 #check @PhiloForge.Spinoza.conceptual_separation
@@ -56,6 +57,34 @@ import PhiloForge.SpinozaAttributes
 -- Website node: E1-P10
 #check @PhiloForge.Spinoza.Attributes.proposition10_attribute_independence
 #print axioms PhiloForge.Spinoza.Attributes.proposition10_attribute_independence
+
+-- Website node: E1-P2
+#check @PhiloForge.Spinoza.Distinctions.proposition2_disjoint_attributes
+#print axioms PhiloForge.Spinoza.Distinctions.proposition2_disjoint_attributes
+
+-- Website node: E1-P4
+#check @PhiloForge.Spinoza.Distinctions.proposition4_qualitative_distinction
+#print axioms PhiloForge.Spinoza.Distinctions.proposition4_qualitative_distinction
+
+-- Website node: E1-P5-attributes
+#check @PhiloForge.Spinoza.Distinctions.proposition5_shared_attribute
+#print axioms PhiloForge.Spinoza.Distinctions.proposition5_shared_attribute
+
+-- Website node: E1-P6-attributes
+#check @PhiloForge.Spinoza.Distinctions.proposition6_via_attributes
+#print axioms PhiloForge.Spinoza.Distinctions.proposition6_via_attributes
+
+-- Website node: universal-substance-unique
+#check @PhiloForge.Spinoza.Distinctions.universal_substance_unique
+#print axioms PhiloForge.Spinoza.Distinctions.universal_substance_unique
+
+-- Website node: substance-mode-classification
+#check @PhiloForge.Spinoza.Distinctions.substance_mode_classification
+#print axioms PhiloForge.Spinoza.Distinctions.substance_mode_classification
+
+-- Website node: everything-in-universal-substance
+#check @PhiloForge.Spinoza.Distinctions.everything_in_universal_substance
+#print axioms PhiloForge.Spinoza.Distinctions.everything_in_universal_substance
 
 -- The inline contradiction proof is also exposed by the website.
 #check @PhiloForge.Spinoza.proposition3_counterexample_conflict

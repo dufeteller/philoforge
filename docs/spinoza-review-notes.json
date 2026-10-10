@@ -132,5 +132,90 @@
     "local": "An attribute perceived as constituting the essence of a substance.",
     "limit": "Conceived through itself means absence of external conceptual requirements in this vocabulary. Transferring a requirement from attribute to substance is an additional interpretation; a compiled countermodel shows that D3 and primitive D4 alone do not justify that transfer. The scholium is not formalized.",
     "reviewStatus": "not-reviewed"
+  },
+  "E1-P2": {
+    "sourceIds": [
+      "E1-P2",
+      "E1-D3",
+      "E1-D4",
+      "E1-commonality-bridge"
+    ],
+    "local": "Two substances with no shared attribute.",
+    "limit": "The conclusion follows from the selected semantic bridge. This does not reconstruct the historical claim that Definition III alone suffices, nor infer absence of commonality from absence of dependence. Different profiles with an overlap do not meet the local hypothesis.",
+    "reviewStatus": "not-reviewed"
+  },
+  "E1-P4": {
+    "sourceIds": [
+      "E1-P4",
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion"
+    ],
+    "local": "Two distinct entities of the qualitative vocabulary.",
+    "limit": "Qualities are represented by attributes or modifications, and matching all qualities implies identity. These are disclosed additions to the primitive vocabulary. The proof obtains a distinguishing attribute or modification, using classical reasoning; it is not just a classification into two kinds of entity.",
+    "reviewStatus": "not-reviewed",
+    "textualNote": "The Latin proof cites Definition IV for attributes. The Elwes English transcription in the library says Axiom IV at that point; the Latin reference is used here."
+  },
+  "E1-P5-attributes": {
+    "sourceIds": [
+      "E1-P5",
+      "E1-P5-abstraction",
+      "E1-P4",
+      "E1-D3",
+      "E1-D4",
+      "E1-D5"
+    ],
+    "local": "Two substances sharing at least one attribute.",
+    "limit": "This route addresses sharing one attribute, unlike the older same-nature reconstruction. Its complete-essence and injective-abstraction premises are substantial: compiled countermodels show that removing either can permit distinct substances sharing an attribute. P1 alone has not justified abstraction. This remains a conditional reconstruction.",
+    "reviewStatus": "not-reviewed",
+    "textualNote": "The Latin proof uses Definition III and Axiom VI when setting modifications aside. The Elwes transcription labels the latter Definition VI; our abstraction interpretation is disclosed separately."
+  },
+  "E1-P6-attributes": {
+    "sourceIds": [
+      "E1-P6",
+      "E1-P5",
+      "E1-P2",
+      "E1-P3",
+      "E1-A4",
+      "E1-A5"
+    ],
+    "local": "Two distinct substances in the shared causal and qualitative vocabulary.",
+    "limit": "The compiled argument now follows the dependency route V → II → III → VI. It inherits the disclosed interpretation of each step. The predicate causes represents production in this restricted reconstruction; no full modal theory of production is established.",
+    "reviewStatus": "not-reviewed"
+  },
+  "universal-substance-unique": {
+    "sourceIds": [
+      "E1-P14",
+      "E1-P5",
+      "E1-D4"
+    ],
+    "local": "A given substance g having every attribute instantiated by any substance. This existence premise is local to the implication.",
+    "limit": "A preparatory implication, not a proof of XIV. It does not supply P11, God’s existence, absolute infinity, or the exclusion of conceiving another substance. A compiled model satisfies all selected bridges with two substances and no universal substance. XIV therefore remains outside the numbered Lean coverage.",
+    "reviewStatus": "not-reviewed"
+  },
+  "substance-mode-classification": {
+    "sourceIds": [
+      "E1-A1",
+      "E1-D3",
+      "E1-D5",
+      "E1-P4",
+      "E1-P15"
+    ],
+    "local": "An arbitrary entity in the chosen vocabulary.",
+    "limit": "The classification follows by cases on Axiom I after adding the two semantic bridges. Being in itself alone does not formally supply conceptual independence; being in another alone does not identify that other as a substance. These missing links are selectable premises.",
+    "reviewStatus": "not-reviewed"
+  },
+  "everything-in-universal-substance": {
+    "sourceIds": [
+      "E1-P15",
+      "E1-P14",
+      "E1-A1",
+      "E1-D3",
+      "E1-D5"
+    ],
+    "local": "A given universal substance g, under exactly the same local premise as the conditional uniqueness step.",
+    "limit": "A preparatory classification toward XV. It proves inherence and conceptual dependence of each mode on the assumed universal substance. It does not prove existence of God or the modal impossibility of existence without God. XV remains source-only in the numbered coverage.",
+    "reviewStatus": "not-reviewed"
   }
 }

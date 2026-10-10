@@ -197,7 +197,7 @@
       "reference": "Ethics 1, Axiom 1",
       "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
       "paragraphs": [],
-      "status": "source-only",
+      "status": "encoded-premise",
       "translations": {
         "fr": {
           "statement": "Tout ce qui est, est soit en soi, soit en autre chose.",
@@ -347,7 +347,17 @@
       "paragraphs": [
         "Proof.—Also evident from Def. iii. For each must exist in itself, and be conceived through itself; in other words, the conception of one does not imply the conception of the other."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "Two substances sharing no attribute have nothing in common, under the selected meaning of commonality. Unequal profiles alone do not suffice.",
+      "theorem": "PhiloForge.Spinoza.Distinctions.proposition2_disjoint_attributes",
+      "translations": {
+        "fr": {
+          "statement": "Deux substances ayant des attributs différents n’ont rien de commun entre elles.",
+          "paragraphs": [
+            "Démonstration. Cela est également évident par la définition III. Chacune doit en effet être en soi et se concevoir par soi ; autrement dit, le concept de l’une n’implique pas le concept de l’autre."
+          ]
+        }
+      }
     },
     {
       "id": "E1-P3",
@@ -383,7 +393,17 @@
       "paragraphs": [
         "Proof.—Everything which exists, exists either in itself or in something else (Ax. i.),—that is (by Deff. iii. and v.), nothing is granted in addition to the understanding, except substance and its modifications. Nothing is, therefore, given besides the understanding, by which several things may be distinguished one from the other, except the substances, or, in other words (see Ax. iv.), their attributes and modifications. Q.E.D."
       ],
-      "status": "source-only"
+      "status": "lean-checked",
+      "formalScope": "Two distinct entities differ on an attribute or a modification, assuming qualitative identity and the selected classification of qualities.",
+      "theorem": "PhiloForge.Spinoza.Distinctions.proposition4_qualitative_distinction",
+      "translations": {
+        "fr": {
+          "statement": "Deux ou plusieurs choses distinctes se distinguent par la différence des attributs des substances ou par la différence de leurs affections.",
+          "paragraphs": [
+            "Démonstration. Tout ce qui est, est soit en soi, soit en autre chose (axiome I) ; autrement dit, hors de l’intellect, il n’y a que les substances et leurs affections (définitions III et V). Il n’y a donc hors de l’intellect, pour distinguer plusieurs choses, que les substances, c’est-à-dire leurs attributs (définition IV, selon le texte latin), et leurs affections. C.Q.F.D."
+          ]
+        }
+      }
     },
     {
       "id": "E1-P5",

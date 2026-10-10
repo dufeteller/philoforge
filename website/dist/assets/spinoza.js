@@ -6,7 +6,7 @@
  {id:'E1-A4',type:'Axiom',title:'Knowledge of effect and cause',text:'Knowing an effect depends on knowing its cause.',reference:'Ethics I, Axiom IV',original:'The knowledge of an effect depends on and involves the knowledge of a cause.',mapping:'Formal convention: if c causes e, the conception of e depends on c. Only the direction needed by the selected proofs is encoded.'},
  {id:'E1-A5',type:'Axiom',title:'Nothing in common',text:'Things with nothing in common cannot be conceived through one another.',reference:'Ethics I, Axiom V',original:'Things which have nothing in common cannot be understood, the one by means of the other.',mapping:'Formal convention: absence of commonality excludes conceptual dependence in both directions.'}
  ];
- entries.push({id:'E1-D5',type:'Definition',title:'Modes of substance',text:'A mode exists in and is conceived through another entity.',reference:'Ethics I, Definition V',original:'By mode, I mean the modifications of substance, or that which exists in, and is conceived through, something other than itself.',mapping:'Formal convention: ModeOf names a distinct entity in which the mode exists and on which its conception depends. Priority in Proposition I is reconstructed as asymmetric conceptual dependence, not temporal precedence.'});
+ entries.push({id:'E1-D5',type:'Definition',title:'Modes of substance',text:'A mode exists in and is conceived through another entity.',reference:'Ethics I, Definition V',original:'By mode, I mean the modifications of substance, or that which exists in, and is conceived through, something other than itself.',mapping:'ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence.'});
  entries.push(
  {id:'E3-D1',type:'Definition',title:'Adequate and partial causes',text:'An adequate cause makes its effect understandable through itself alone; a partial cause does not.',reference:'Ethics III, Definition I',source:'https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap03',original:'I call that an adequate cause, whose effect can be clearly and distinctly perceived through it.',mapping:'Formal convention: adequacy includes causation and intelligibility through this cause alone. Partial causation includes causation and excludes that intelligibility.'},
  {id:'E3-D2',type:'Definition',title:'Activity and passivity',text:'We act when we are the adequate cause of an event; we are passive when we are only a partial cause.',reference:'Ethics III, Definition II',source:'https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap03',original:'I say that we act when anything takes place, either within us or externally to us, whereof we are the adequate cause.',mapping:'Formal convention: activity and passivity are relative to the same actor and event. This does not exclude a person being active in one respect and passive in another.'}
@@ -35,7 +35,7 @@
     "text": "An attribute is what the intellect perceives as constituting the essence of substance.",
     "reference": "Ethics I, Definition IV",
     "original": "By attribute, I mean that which the intellect perceives as constituting the essence of substance.",
-    "mapping": "The attribute vocabulary distinguishes perception, essential aspects and conceptual requirements. Definition IV alone does not identify these relations; the additional interpretations are separately selectable.",
+    "mapping": "The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations.",
     "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
     "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
   },
@@ -150,8 +150,305 @@
     "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaAttributes.lean"
   }
 ]);
+ entries.push(...[
+  {
+    "id": "E1-commonality-bridge",
+    "title": "Shared attributes and commonality",
+    "text": "For substances, having something in common means sharing at least one attribute.",
+    "reference": "Interpretation of Ethics I, Proposition II — commonality",
+    "original": "Two substances, whose attributes are different, have nothing in common.",
+    "mapping": "Explicit semantic interpretation, not the converse of Axiom V. Different attributes in this proof means no shared attribute; merely unequal attribute profiles is insufficient. Definition III alone does not establish this bridge.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-qualitative-identity",
+    "title": "Qualities determine identity",
+    "text": "Things with exactly the same qualities are identical.",
+    "reference": "Interpretation of Ethics I, Proposition IV — individuation",
+    "original": "Two or more distinct things are distinguished one from the other, either by the difference of the attributes of the substances, or by the difference of their modifications.",
+    "mapping": "An explicit principle of qualitative individuation. It excludes primitive numerical distinctions invisible to every quality. This additional principle is not proved by the mere classification into substances and modes.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-quality-exhaustion",
+    "title": "Qualities are attributes or modifications",
+    "text": "Every quality is represented by an attribute or a modification.",
+    "reference": "Interpretation of Ethics I, Proposition IV — qualitative vocabulary",
+    "original": "Two or more distinct things are distinguished one from the other, either by the difference of the attributes of the substances, or by the difference of their modifications.",
+    "mapping": "Each quality has exactly the same instances as some attribute or modification. Together with qualitative identity, this supplies a distinguishing witness. This interpretation of P4’s argument is stronger than Axiom I alone.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-complete-attribute",
+    "title": "One attribute expresses the complete essence",
+    "text": "Substances sharing one attribute have the same complete attribute profile.",
+    "reference": "Interpretation of Ethics I, Definitions IV and Proposition V",
+    "original": "By attribute, I mean that which the intellect perceives as constituting the essence of substance.",
+    "mapping": "A substantive complete-essence interpretation. It equates attribute profiles, not the substances themselves. It is distinct from the aspect-based vocabulary used for P9. A compiled overlapping-profile countermodel demonstrates why this extra premise matters.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-essence-abstraction",
+    "title": "Set modifications aside",
+    "text": "Considering a substance without modifications preserves its attributes and preserves distinctions between substances.",
+    "reference": "Interpretation of Ethics I, Proposition V — abstraction",
+    "original": "If by the difference of their modifications—as substance is naturally prior to its modifications (Prop. i.),—it follows that setting the modifications aside, and considering substance in itself, that is truly, (Deff. iii. and vi.), there cannot be conceived one substance different from another,—that is (by Prop. iv.), there cannot be granted several substances, but one substance only. Q.E.D.",
+    "mapping": "An abstraction operation preserves attributes, removes modifications and is injective on substances. Preserving distinctions is an explicit commitment, not a consequence already proved by P1. A countermodel without this commitment admits distinct substances with the same attributes.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-attribute-witness",
+    "title": "Every substance has an attribute",
+    "text": "Every substance has at least one attribute.",
+    "reference": "Interpretation of Ethics I, Definition IV — attribute witness",
+    "original": "By attribute, I mean that which the intellect perceives as constituting the essence of substance.",
+    "mapping": "A separate existence requirement for attributes of a given substance. A primitive attribute relation alone need not provide any attribute. This does not assert that a substance exists.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-A1",
+    "title": "In itself or in another",
+    "text": "Everything is either in itself or in another thing.",
+    "reference": "Ethics I, Axiom I",
+    "original": "Everything which exists, exists either in itself or in something else.",
+    "mapping": "The quantifier ranges over the entities of this vocabulary. In-itself and in-another are primitive relations; the separate classification bridges supply the links to conceptual independence and modes.",
+    "type": "Axiom",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-classification-bridges",
+    "title": "From in-itself and in-another to substance and mode",
+    "text": "An entity in itself is a substance; an entity in another is a mode of some substance.",
+    "reference": "Interpretation of Ethics I, Axiom I and Definitions III–V",
+    "original": "Everything which exists, exists either in itself or in something else.",
+    "mapping": "Two explicit bridges add conceptual independence in the first case, and a distinct substance with inherence and conceptual dependence in the second. Neither bridge follows from the disjunction of Axiom I alone.",
+    "type": "Interpretive premise",
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  }
+]);
+ results.push(...[
+  {
+    "id": "E1-P2",
+    "title": "Disjoint attributes exclude commonality",
+    "text": "Two substances sharing no attribute have nothing in common, under the selected meaning of commonality. Unequal profiles alone do not suffice.",
+    "reference": "Ethics I, Proposition II — disjoint-attribute reconstruction",
+    "requires": [
+      "E1-D3",
+      "E1-D4",
+      "E1-commonality-bridge"
+    ],
+    "parents": [
+      "E1-D3",
+      "E1-D4",
+      "E1-commonality-bridge"
+    ],
+    "level": 1,
+    "theorem": "proposition2_disjoint_attributes",
+    "steps": [
+      "Suppose two substances share no attribute.",
+      "The selected bridge would turn commonality into a shared attribute.",
+      "This contradicts disjointness, so commonality is excluded."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-P4",
+    "title": "A distinction has a qualitative witness",
+    "text": "Two distinct entities differ on an attribute or a modification, assuming qualitative identity and the selected classification of qualities.",
+    "reference": "Ethics I, Proposition IV — qualitative reconstruction",
+    "requires": [
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion"
+    ],
+    "parents": [
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion"
+    ],
+    "level": 1,
+    "theorem": "proposition4_qualitative_distinction",
+    "steps": [
+      "Suppose no attribute and no modification distinguishes the two entities.",
+      "Every quality is represented by one of these, so every quality agrees.",
+      "Qualitative identity identifies the entities, contradicting their distinctness. A distinguishing witness must exist."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "E1-P5-attributes",
+    "title": "Sharing an attribute identifies substances",
+    "text": "Two substances sharing an attribute are identical, under the complete-essence interpretation, qualitative individuation and the abstraction principle.",
+    "reference": "Ethics I, Proposition V — attribute route",
+    "requires": [
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion",
+      "E1-D3",
+      "E1-complete-attribute",
+      "E1-essence-abstraction"
+    ],
+    "parents": [
+      "E1-P4",
+      "E1-D3",
+      "E1-complete-attribute",
+      "E1-essence-abstraction"
+    ],
+    "level": 2,
+    "theorem": "proposition5_shared_attribute",
+    "steps": [
+      "The shared attribute gives equal complete attribute profiles.",
+      "Abstracting from modifications preserves those profiles and leaves no modification that could distinguish the abstractions.",
+      "The qualitative-distinction result forces the abstractions to be identical. Injectivity of abstraction then identifies the original substances."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean",
+    "propositionId": "E1-P5"
+  },
+  {
+    "id": "E1-P6-attributes",
+    "title": "From attributes to exclusion of causation",
+    "text": "Distinct substances cannot cause one another: the new attribute route combines V, II and III under its disclosed interpretations. Production is read as causation.",
+    "reference": "Ethics I, Proposition VI — route through V, II and III",
+    "requires": [
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion",
+      "E1-D3",
+      "E1-complete-attribute",
+      "E1-essence-abstraction",
+      "E1-commonality-bridge",
+      "E1-A4",
+      "E1-A5"
+    ],
+    "parents": [
+      "E1-P5-attributes",
+      "E1-P2",
+      "E1-P3"
+    ],
+    "level": 3,
+    "theorem": "proposition6_via_attributes",
+    "steps": [
+      "If the distinct substances shared an attribute, the attribute version of V would identify them.",
+      "Their attributes are therefore disjoint; II excludes commonality.",
+      "III, already checked from Axioms IV and V, excludes causation in both directions."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean",
+    "propositionId": "E1-P6"
+  },
+  {
+    "id": "universal-substance-unique",
+    "title": "If a universal substance exists, it is unique",
+    "text": "If a substance has every attribute possessed by any substance, every substance is identical to it. This proves a conditional step toward XIV, not that such a substance exists.",
+    "reference": "Conditional step toward Ethics I, Proposition XIV",
+    "requires": [
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion",
+      "E1-D3",
+      "E1-complete-attribute",
+      "E1-essence-abstraction",
+      "E1-attribute-witness"
+    ],
+    "parents": [
+      "E1-P5-attributes",
+      "E1-attribute-witness"
+    ],
+    "level": 3,
+    "theorem": "universal_substance_unique",
+    "steps": [
+      "Assume a substance with every attribute instantiated by substances. Its existence is a local hypothesis.",
+      "Take any substance and obtain one of its attributes from the selected witness premise.",
+      "The proposed universal substance shares that attribute. The attribute version of V identifies them."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean",
+    "type": "Conditional step"
+  },
+  {
+    "id": "substance-mode-classification",
+    "title": "Every entity is a substance or a mode",
+    "text": "Every entity is a substance or a mode of some substance, using Axiom I and the two explicit classification bridges.",
+    "reference": "Classification used in Ethics I, Propositions IV and XV",
+    "requires": [
+      "E1-A1",
+      "E1-D3",
+      "E1-D5",
+      "E1-classification-bridges"
+    ],
+    "parents": [
+      "E1-A1",
+      "E1-D3",
+      "E1-D5",
+      "E1-classification-bridges"
+    ],
+    "level": 1,
+    "theorem": "substance_mode_classification",
+    "steps": [
+      "Axiom I gives the alternatives: in itself or in another.",
+      "The first selected bridge identifies the in-itself case as substance.",
+      "The second supplies a substance and the relations required for being its mode."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean"
+  },
+  {
+    "id": "everything-in-universal-substance",
+    "title": "If it exists, every other entity is its mode",
+    "text": "Given a universal substance, every entity is either that substance or one of its modes, in it and conceptually dependent on it. This conditional classification does not establish the full statement of XV.",
+    "reference": "Conditional step toward Ethics I, Proposition XV",
+    "requires": [
+      "E1-D4",
+      "E1-D5",
+      "E1-qualitative-identity",
+      "E1-quality-exhaustion",
+      "E1-D3",
+      "E1-complete-attribute",
+      "E1-essence-abstraction",
+      "E1-attribute-witness",
+      "E1-A1",
+      "E1-classification-bridges"
+    ],
+    "parents": [
+      "universal-substance-unique",
+      "substance-mode-classification"
+    ],
+    "level": 4,
+    "theorem": "everything_in_universal_substance",
+    "steps": [
+      "The classification result gives either a substance or a mode of some substance.",
+      "Conditional uniqueness identifies that substance with the assumed universal substance.",
+      "In the mode case, substitute the identical substance; inherence and conceptual dependence are preserved."
+    ],
+    "source": "https://www.gutenberg.org/files/3800/3800-h/3800-h.htm#chap01",
+    "proofSource": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/SpinozaDistinctions.lean",
+    "type": "Conditional step"
+  }
+]);
  function derive(ids){const set=new Set(ids);return {results:results.filter(r=>r.requires.every(id=>set.has(id))),conflict:set.has('E1-A4')&&set.has('E1-A5')&&set.has('test-counterexample'),roots:entries.filter(e=>set.has(e.id))};}
- for(const result of results)result.leanName='PhiloForge.Spinoza.'+(result.proofSource?.includes('SpinozaAffects')?'Affects.':result.proofSource?.includes('SpinozaOntology')?'Ontology.':result.proofSource?.includes('SpinozaAttributes')?'Attributes.':'')+result.theorem;
+ for(const result of results)result.leanName='PhiloForge.Spinoza.'+(result.proofSource?.includes('SpinozaAffects')?'Affects.':result.proofSource?.includes('SpinozaOntology')?'Ontology.':result.proofSource?.includes('SpinozaAttributes')?'Attributes.':result.proofSource?.includes('SpinozaDistinctions')?'Distinctions.':'')+result.theorem;
  root.SpinozaTheory={entries,results,derive};if(typeof module==='object'&&module.exports)module.exports=root.SpinozaTheory;
  if(typeof document==='undefined'||!document.querySelector('#spinoza-library'))return;
  const selected=new Set();try{const saved=JSON.parse(localStorage.getItem('philoforge.spinoza.v1'));if(Array.isArray(saved))for(const id of saved)if([...entries.map(e=>e.id),'test-counterexample'].includes(id))selected.add(id);}catch{}
@@ -195,7 +492,7 @@
   document.querySelector('#generate-map').disabled=data.roots.length===0;
   document.querySelector('.tree-caption').hidden=!!data.conflict;
   if(data.conflict){renderConflict();}else{
-   for(let level=2;level>=0;level--){const row=add(graph,'div','');row.className='proof-level';const nodes=level===0?data.roots:data.results.filter(r=>r.level===level);
+   for(let level=Math.max(0,...data.results.map(r=>r.level));level>=0;level--){const row=add(graph,'div','');row.className='proof-level';const nodes=level===0?data.roots:data.results.filter(r=>r.level===level);
     if(!nodes.length){row.remove();continue;}
     for(const node of nodes){const card=add(row,'article','');card.className='proof-node';card.dataset.node=node.id;add(card,'div',level===0?node.type:'Consequence').className='eyebrow';add(card,'h3',node.title);add(card,'p',node.text);cite(card,node);
      if(node.theorem){const details=add(card,'details','');add(details,'summary','Read the reasoning');const list=add(details,'ol','');node.steps.forEach(step=>add(list,'li',step));const link=add(card,'a','Lean-checked reconstruction ↗');link.href=node.proofSource||proofSource;}

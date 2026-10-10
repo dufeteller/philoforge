@@ -6,7 +6,7 @@ const notes=require('../docs/spinoza-review-notes.json');
 const sources=require('../website/dist/data/spinoza-sources.json');
 const corpus=require('../website/dist/data/ethics.json');
 assert.deepEqual(Object.keys(notes).sort(),results.map(r=>r.id).sort());
-const modules={Spinoza:'logic/PhiloForge/Spinoza.lean',Affects:'logic/PhiloForge/SpinozaAffects.lean',Ontology:'logic/PhiloForge/SpinozaOntology.lean',Attributes:'logic/PhiloForge/SpinozaAttributes.lean'};
+const modules={Spinoza:'logic/PhiloForge/Spinoza.lean',Affects:'logic/PhiloForge/SpinozaAffects.lean',Ontology:'logic/PhiloForge/SpinozaOntology.lean',Attributes:'logic/PhiloForge/SpinozaAttributes.lean',Distinctions:'logic/PhiloForge/SpinozaDistinctions.lean'};
 const items=results.map(result=>{
  const note=notes[result.id];assert.equal(note.reviewStatus,'not-reviewed');
  for(const id of note.sourceIds)assert.ok(sources.passages[id],`Missing Latin source: ${id}`);
@@ -15,8 +15,8 @@ const items=results.map(result=>{
  const marker='theorem '+result.theorem+' ',start=content.indexOf(marker);assert.ok(start>=0,result.id);
  const end=content.indexOf(':=',start);assert.ok(end>start);const signature=content.slice(start,end).trim();
  const line=content.slice(0,start).split('\n').length;
- const item=corpus.items.find(i=>i.id===result.id);
- if(item?.status==='lean-checked')assert.equal(item.theorem,result.leanName);
+ const item=corpus.items.find(i=>i.id===(result.propositionId||result.id));
+ if(item?.status==='lean-checked'&&!result.propositionId)assert.equal(item.theorem,result.leanName);
  return {...note,id:result.id,title:result.title,formalStatement:result.text,exactLean:signature,leanName:result.leanName,
   proofUrl:`https://github.com/dufeteller/philoforge/blob/main/${file}#L${line}`,
   sourceStatement:item?{en:item.statement,fr:item.translations?.fr?.statement||null}:null,

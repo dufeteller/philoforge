@@ -79,7 +79,7 @@ assert counts==[36,49,59,73,42], counts
 assert len({i['id'] for i in items})==len(items)
 assert all([i['number'] for i in items if i['part']==n and i['kind']=='Proposition']==list(range(1,c+1)) for n,c in enumerate(counts,1))
 for item in items:
-    if item['id'] in ['E1-D1','E1-D2','E1-D3','E1-D5','E1-A4','E1-A5','E3-D1','E3-D2']:
+    if item['id'] in ['E1-D1','E1-D2','E1-D3','E1-D4','E1-D5','E1-A1','E1-A4','E1-A5','E3-D1','E3-D2']:
         item['status']='encoded-premise'
     if item['id']=='E1-P1':
         item['status']='lean-checked';item['theorem']='PhiloForge.Spinoza.proposition1';item['formalScope']='Limited reconstruction: priority means asymmetric conceptual dependence, not temporal precedence.'
@@ -87,7 +87,15 @@ for item in items:
         item['status']='lean-checked';item['theorem']='PhiloForge.Spinoza.proposition6_causal';item['formalScope']='Limited reconstruction: distinct substances cannot cause one another. Uses the alternative corollary argument; the historical P2/P3/P5 proof and broader production vocabulary are not formalized.'
     if item['id']=='E1-P3':
         item['status']='lean-checked'; item['theorem']='PhiloForge.Spinoza.proposition3';item['formalScope']='Causal and conceptual reconstruction; see the disclosed vocabulary and assumptions.'
-    extended_scopes = {'E1-P5': ('Two existing substances of the same nature are identical, assuming the scholium’s multiplicity principle. This does not establish uniqueness from sharing only one attribute.', 'PhiloForge.Spinoza.Ontology.proposition5_same_nature'), 'E1-P7': ('An existing substance has essence involving existence, assuming the selected explanation principle. This does not prove that a substance exists.', 'PhiloForge.Spinoza.Ontology.proposition7_existing_substance'), 'E1-P8': ('An existing substance has no distinct actual limiter of the same nature, under the selected multiplicity principle and limiter bridge. This is a limited sense of infinity, without modal necessity.', 'PhiloForge.Spinoza.Ontology.proposition8_no_limiter')}
+    extended_scopes = {
+        'E1-P5': ('Two existing substances of the same nature are identical, assuming the scholium’s multiplicity principle. This does not establish uniqueness from sharing only one attribute.', 'PhiloForge.Spinoza.Ontology.proposition5_same_nature'),
+        'E1-P7': ('An existing substance has essence involving existence, assuming the selected explanation principle. This does not prove that a substance exists.', 'PhiloForge.Spinoza.Ontology.proposition7_existing_substance'),
+        'E1-P8': ('An existing substance has no distinct actual limiter of the same nature, under the selected multiplicity principle and limiter bridge. This is a limited sense of infinity, without modal necessity.', 'PhiloForge.Spinoza.Ontology.proposition8_no_limiter'),
+        'E1-P2': ('Two substances sharing no attribute have nothing in common, under the selected meaning of commonality. Unequal profiles alone do not suffice.', 'PhiloForge.Spinoza.Distinctions.proposition2_disjoint_attributes'),
+        'E1-P4': ('Two distinct entities differ on an attribute or a modification, assuming qualitative identity and the selected classification of qualities.', 'PhiloForge.Spinoza.Distinctions.proposition4_qualitative_distinction'),
+        'E1-P9': ('For two substances, strict inclusion of essential aspects implies strict inclusion of attributes, assuming representation and completeness. This is a structural reading of more reality, not a comparison of infinite cardinalities.', 'PhiloForge.Spinoza.Attributes.proposition9_attribute_inclusion'),
+        'E1-P10': ('An attribute of a substance has no external conceptual requirement, assuming the selected transfer of requirements to that substance. This is the encoded reading of conceived through itself.', 'PhiloForge.Spinoza.Attributes.proposition10_attribute_independence'),
+    }
     if item['id'] in extended_scopes:
         item['formalScope'], item['theorem'] = extended_scopes[item['id']]
         item['status'] = 'lean-checked'

@@ -139,6 +139,71 @@
       "reference": "E1-D4 · interpretation / interprétation",
       "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
       "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-A1": {
+      "reference": "E1-A1",
+      "latin": "Omnia, quae sunt, vel in se, vel in alio sunt.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#46"
+    },
+    "E1-P2": {
+      "reference": "E1-P2",
+      "latin": "Duae substantiae, diversa attributa habentes, nihil inter se commune habent.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit62"
+    },
+    "E1-P4": {
+      "reference": "E1-P4",
+      "latin": "Duae, aut plures res distinctae, vel inter se distinguuntur ex diversitate attributorum substantiarum, vel ex diversitate earundem affectionum.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit72"
+    },
+    "E1-P14": {
+      "reference": "E1-P14",
+      "latin": "Praeter Deum nulla dari, neque concipi potest substantia.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit375"
+    },
+    "E1-P15": {
+      "reference": "E1-P15",
+      "latin": "Quicquid est, in Deo est, et nihil sine Deo esse, neque concipi potest.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit394"
+    },
+    "E1-P5-abstraction": {
+      "reference": "E1-P5 · abstraction context / contexte de l’abstraction",
+      "latin": "At si ex diversitate affectionum, cum substantia fit prior natura suis affectionibus ( per propo. 1. ) depositis ergo affectionibus, et in se considerata, hoc est ( per Defin. 3. et Axiom. 6. ) vere considerata, non poterit concipi ab alia distingui, hoc est ( per Prop. praeced. ) non poterunt dari plures, sed tantum una.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit84"
+    },
+    "E1-commonality-bridge": {
+      "reference": "E1-P2 · interpretation / interprétation",
+      "latin": "Duae substantiae, diversa attributa habentes, nihil inter se commune habent.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit62"
+    },
+    "E1-qualitative-identity": {
+      "reference": "E1-P4 · interpretation / interprétation",
+      "latin": "Duae, aut plures res distinctae, vel inter se distinguuntur ex diversitate attributorum substantiarum, vel ex diversitate earundem affectionum.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit72"
+    },
+    "E1-quality-exhaustion": {
+      "reference": "E1-P4 · interpretation / interprétation",
+      "latin": "Duae, aut plures res distinctae, vel inter se distinguuntur ex diversitate attributorum substantiarum, vel ex diversitate earundem affectionum.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit72"
+    },
+    "E1-complete-attribute": {
+      "reference": "E1-D4 · interpretation / interprétation",
+      "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-essence-abstraction": {
+      "reference": "E1-P5 · interpretation / interprétation",
+      "latin": "At si ex diversitate affectionum, cum substantia fit prior natura suis affectionibus ( per propo. 1. ) depositis ergo affectionibus, et in se considerata, hoc est ( per Defin. 3. et Axiom. 6. ) vere considerata, non poterit concipi ab alia distingui, hoc est ( per Prop. praeced. ) non poterunt dari plures, sed tantum una.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#sit84"
+    },
+    "E1-attribute-witness": {
+      "reference": "E1-D4 · interpretation / interprétation",
+      "latin": "Per attributum intelligo id, quod intellectus de substantia percipit, tanquam ejusdem essentiam constituens.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#def11"
+    },
+    "E1-classification-bridges": {
+      "reference": "E1-A1 · interpretation / interprétation",
+      "latin": "Omnia, quae sunt, vel in se, vel in alio sunt.",
+      "url": "https://www.iliesi.cnr.it/spinoza/ethica/ethica_xhtml.html#46"
     }
   }
 }
