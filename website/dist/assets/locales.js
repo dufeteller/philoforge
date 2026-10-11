@@ -506,3 +506,18 @@ Object.assign(globalThis.PhiloLocales.fr, {
 Object.assign(globalThis.PhiloLocales.fr, {"The aspect vocabulary distinguishes perception, essential aspects and conceptual requirements. The qualitative vocabulary uses attribute profiles. Definition IV alone does not identify these readings or supply their additional, separately selectable interpretations.": "Le vocabulaire par aspects distingue perception, aspects essentiels et exigences conceptuelles. Le vocabulaire qualitatif utilise des profils d’attributs. La définition IV seule n’identifie pas ces lectures et ne fournit pas leurs interprétations supplémentaires, sélectionnables séparément."});
 
 Object.assign(globalThis.PhiloLocales.fr, {"ModeOf m s means that m is distinct from s, is in s and depends conceptually on s. The qualitative modification profiles used in P4/P5 are a separate primitive relation; they are not automatically derived from ModeOf. Priority in P1 means asymmetric conceptual dependence.": "ModeOf m s signifie que m est distinct de s, est en s et dépend conceptuellement de s. Les profils qualitatifs d’affections utilisés dans P4/P5 sont une relation primitive séparée ; ils ne sont pas automatiquement dérivés de ModeOf. La priorité dans P1 signifie une dépendance conceptuelle asymétrique."});
+
+// Personal journal: LSV research paper. The downloadable document is in English.
+Object.assign(globalThis.PhiloLocales.fr, {
+  "RESEARCH PAPER / MATHEMATICS": "ARTICLE DE RECHERCHE / MATHÉMATIQUES",
+  "Weak existence and exact calibration of local stochastic volatility models": "Existence faible et calibration exacte des modèles de volatilité locale stochastique",
+  "Weak solutions, exact calibration and prescribed price marginals in local stochastic volatility models.": "Solutions faibles, calibration exacte et lois marginales de prix prescrites dans les modèles de volatilité locale stochastique.",
+  "Probability": "Probabilités",
+  "Mathematical finance": "Mathématiques financières",
+  "Research": "Recherche",
+  "PDF · 82 pages · English": "PDF · 82 pages · Anglais",
+  "Read the paper (PDF, English, opens in a new tab)": "Lire l’article (PDF en anglais, ouverture dans un nouvel onglet)",
+  "Read the PDF": "Lire le PDF",
+  "Download the PDF": "Télécharger le PDF",
+  "The full paper is available in English.": "L’article complet est disponible en anglais."
+});
