@@ -31,3 +31,9 @@
 
 /* Dense proof maps keep full text in accessible labels and the detail pane. */
 .map-node{gap:8px}.map-node .eyebrow{font-size:9px;letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0}.map-node strong{font-size:22px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;flex-shrink:0}.map-node>span:last-child{line-height:1.4;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;flex-shrink:0}
+
+/* Research paper on the personal journal. */
+.paper-card{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:48px;padding:38px 40px;background:#faf9f4;border:1px solid var(--line)}
+.paper-copy h3{font-size:38px;line-height:1.12;letter-spacing:-.5px;margin:18px 0 16px;max-width:750px}.paper-author{font-size:13px;font-weight:500}.paper-description{font-size:14px;color:var(--muted);margin-top:18px;max-width:650px}.paper-copy .tags{margin-top:22px}
+.paper-access{align-self:center;border-left:1px solid var(--line);padding-left:28px}.paper-format{font-size:11px;color:var(--muted);margin-bottom:18px}.paper-access .button{width:100%;gap:12px}.paper-download{display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid var(--line);padding:15px 0 10px}.paper-language{font-size:11px;color:var(--muted);margin-top:16px}
+@media(max-width:760px){.paper-card{grid-template-columns:1fr;padding:26px;gap:26px}.paper-copy h3{font-size:31px}.paper-access{border-left:0;border-top:1px solid var(--line);padding:22px 0 0}.paper-access .button{max-width:320px}.paper-download{max-width:320px}}
