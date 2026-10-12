@@ -1,16 +1,27 @@
-(()=>{
+(async()=>{
  const viewport=document.querySelector('#map-viewport'),world=document.querySelector('#map-world'),detail=document.querySelector('#node-detail');
- const ids=(new URL(location.href).searchParams.get('axioms')||'').split(',');const data=SpinozaTheory.derive(ids);
- const message=document.querySelector('#map-message');
- if(data.conflict){message.textContent='This selection has a known contradiction. Return to axiom selection to inspect its proof.';viewport.hidden=true;PhiloI18n.apply();return;}
+ const api=globalThis.PhiloTheories,message=document.querySelector('#map-message');
+ const registry=await api.load().catch(()=>null);
+ if(!registry){message.textContent='The theories could not be loaded. Reload the page to try again.';viewport.hidden=true;PhiloI18n.apply();return;}
+ const ids=api.fromQuery(registry,new URL(location.href).searchParams)||[];
+ const data=api.derive(registry,ids);
+ function updateBackLink(){const back=new URL('/philoforge/',location.origin);back.searchParams.set('premises',ids.join(','));back.searchParams.set('lang',PhiloI18n.language);document.querySelector('#back-to-selection').href=back.toString();}
+ updateBackLink();document.querySelectorAll('[data-language]').forEach(b=>b.addEventListener('click',updateBackLink));
+ if(data.conflicts.length){message.textContent='This selection has a known contradiction. Return to axiom selection to inspect its proof.';viewport.hidden=true;PhiloI18n.apply();return;}
  if(!data.roots.length){message.textContent='No starting points selected. Return to axiom selection.';viewport.hidden=true;PhiloI18n.apply();return;}
- const nodes=[...data.roots.map(n=>({...n,level:0})),...data.results];const positions=new Map();
+ const nodes=[...data.roots.map(n=>({...n,level:0})),...data.results],positions=new Map(),lanes=new Map();
  const maxLevel=Math.max(0,...nodes.map(n=>n.level));
- const levels=Array.from({length:maxLevel+1},(_,i)=>i);
- const width=Math.max(900,Math.max(...levels.map(l=>nodes.filter(n=>n.level===l).length))*310);
- const height=280+maxLevel*270;
- world.style.width=width+'px';world.style.height=height+'px';
- for(let level=0;level<=maxLevel;level++){const row=nodes.filter(n=>n.level===level);row.forEach((n,i)=>positions.set(n.id,{x:(width-row.length*290)/2+i*290,y:height-230-level*270}));}
+ const height=350+maxLevel*270;
+ let width=0;
+ for(const theory of registry.theories){
+  const members=nodes.filter(n=>n.theory===theory.id);if(!members.length)continue;
+  const laneWidth=Math.max(900,...Array.from({length:maxLevel+1},(_,level)=>members.filter(n=>n.level===level).length*290+120));
+  lanes.set(theory.id,{x:width,width:laneWidth});
+  for(let level=0;level<=maxLevel;level++){const row=members.filter(n=>n.level===level);row.forEach((n,i)=>positions.set(n.id,{x:width+(laneWidth-row.length*290)/2+i*290,y:height-230-level*270}));}
+  const label=document.createElement('p');label.className='map-theory-label';label.textContent=theory.title;label.style.left=(width+60)+'px';world.append(label);
+  width+=laneWidth+100;
+ }
+ width-=100;world.style.width=width+'px';world.style.height=height+'px';
  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('map-lines');svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('aria-hidden','true');
  const colors=['#3d7056','#986036','#506f9b'];
  const outgoing=new Map();for(const n of data.results)for(const parent of n.parents){if(!outgoing.has(parent))outgoing.set(parent,[]);outgoing.get(parent).push(n.id);}
@@ -21,7 +32,7 @@
   for(const parent of n.parents){const source=positions.get(parent);if(!source)continue;
    const targets=outgoing.get(parent),port=targets.indexOf(n.id),sx=source.x+125+(port-(targets.length-1)/2)*24,sy=source.y;
    const parentNode=nodes.find(node=>node.id===parent);
-   if(n.level-parentNode.level>1){const side=20+index*12;line(`M ${sx} ${sy} V ${sy-22} H ${side} V ${jy} H ${tx}`);}
+   if(n.level-parentNode.level>1){const side=lanes.get(n.theory).x+18+(index%3)*12;line(`M ${sx} ${sy} V ${sy-22} H ${side} V ${jy} H ${tx}`);}
    else line(`M ${sx} ${sy} V ${jy} H ${tx}`);
   }
   line(`M ${tx} ${jy} V ${ty}`);
@@ -30,7 +41,30 @@
  }
  world.append(svg);
  const add=(p,tag,text)=>{const el=document.createElement(tag);el.textContent=text;p.append(el);return el;};
- for(const n of nodes){const pos=positions.get(n.id);const card=add(world,'button','');card.className='map-node';card.dataset.node=n.id;card.style.left=pos.x+'px';card.style.top=pos.y+'px';add(card,'span',n.type||'Consequence').className='eyebrow';add(card,'strong',n.title);add(card,'span',n.reference);card.addEventListener('click',()=>{highlight(n.id);detail.replaceChildren();detail.hidden=false;const close=add(detail,'button','Close');close.className='secondary';close.addEventListener('click',()=>{detail.hidden=true;highlight(null);card.focus();});add(detail,'h2',n.title);add(detail,'p',n.text);const cite=add(detail,'a',n.reference);cite.href=n.source||'https://www.gutenberg.org/cache/epub/919/pg919.html';cite.target='_blank';cite.rel='noopener';if(n.steps){add(detail,'p','Conditional reconstruction · Historical fidelity awaits review');const compare=add(detail,'a','Compare the source and the formalization ↗');compare.href='/philoforge/review/?item='+encodeURIComponent(n.id)+'&lang='+PhiloI18n.language;const list=add(detail,'ol','');n.steps.forEach(s=>add(list,'li',s));}if(n.mapping)add(detail,'p',n.mapping);const proof=add(detail,'a','Inspect the Lean formalization ↗');proof.href=n.proofSource||'https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean';PhiloI18n.apply();close.focus();});}
+ for(const n of nodes){
+  const pos=positions.get(n.id),card=add(world,'button','');card.className='map-node';card.dataset.node=n.id;card.dataset.theory=n.theory;card.style.left=pos.x+'px';card.style.top=pos.y+'px';
+  add(card,'span',n.type||'Consequence').className='eyebrow';add(card,'strong',n.title);add(card,'span',registry.theories.find(theory=>theory.id===n.theory).title);
+  card.addEventListener('click',()=>{
+   highlight(n.id);detail.replaceChildren();detail.hidden=false;
+   const close=add(detail,'button','Close');close.className='secondary';close.addEventListener('click',()=>{detail.hidden=true;highlight(null);card.focus();});
+   add(detail,'h2',n.title);add(detail,'p',n.text);
+   if(n.formula){const formula=add(detail,'pre',n.formula);formula.dataset.localised='';}
+   const cite=add(detail,'a',n.reference);cite.href=n.source||'https://www.gutenberg.org/cache/epub/919/pg919.html';cite.target='_blank';cite.rel='noopener';
+   if(n.requires){add(detail,'h3','Premises used by this result');const premises=add(detail,'ul','');n.requires.forEach(id=>add(premises,'li',registry.nodes.get(id).title));}
+   if(n.steps){
+    if(n.theory==='spinoza'){
+     add(detail,'p','Conditional reconstruction · Historical fidelity awaits review');
+     const compare=add(detail,'a','Compare the source and the formalization ↗');compare.href='/philoforge/review/?item='+encodeURIComponent(n.localId)+'&lang='+PhiloI18n.language;
+    }
+    const list=add(detail,'ol','');n.steps.forEach(step=>add(list,'li',step));
+   }
+   if(n.mapping)add(detail,'p',n.mapping);
+   if(n.limit)add(detail,'p',n.limit);
+   if(n.proof){const disclosure=add(detail,'details','');add(disclosure,'summary','Demonstration and exact Lean proof');const code=add(disclosure,'pre',n.proof.code);code.dataset.localised='';}
+   const proof=add(detail,'a','Inspect the Lean formalization ↗');proof.href=n.proofSource||'https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/Spinoza.lean';PhiloI18n.apply();close.focus();
+  });
+ }
+
  function highlight(id){
   const related=new Set();function visit(nodeId){if(related.has(nodeId))return;related.add(nodeId);const node=nodes.find(n=>n.id===nodeId);for(const parent of node?.parents||[])visit(parent);}
   if(id)visit(id);
