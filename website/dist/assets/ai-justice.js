@@ -58,8 +58,8 @@
   const openProofs = new Set();
   function save() { try { localStorage.setItem(KEY, JSON.stringify([...selection])); } catch {} }
   function premiseList() {
-    for (const kind of ['principle','hypothesis']) {
-      const container = document.getElementById(kind==='principle'?'justice-principles':'justice-hypotheses');
+    for (const kind of ['definition','principle','hypothesis']) {
+      const container = document.getElementById({definition:'justice-definitions',principle:'justice-principles',hypothesis:'justice-hypotheses'}[kind]);
       container.replaceChildren();
       for (const p of data.premises.filter(p=>p.kind===kind)) {
         const label = el('label',undefined,'justice-premise');
@@ -72,6 +72,20 @@
         const body=el('span'); body.append(el('span',p.id,'justice-id'),el('strong',t(p.title)),el('span',t(p.text),'justice-premise-text'));
         label.append(checkbox,body);container.append(label);
       }
+    }
+  }
+  function renderFoundation() {
+    const text=document.getElementById('justice-foundation-text');text.replaceChildren();
+    for(const section of data.foundation){
+      const article=el('article');article.id='foundation-'+section.id;
+      article.append(el('h3',t(section.title)),el('p',t(section.text)));text.append(article);
+    }
+    const coverage=document.getElementById('justice-coverage');coverage.replaceChildren();
+    for(const item of data.coverage){
+      const article=el('article');article.append(el('span',t(item.status),'justice-badge'),el('h3',t(item.title)),el('p',t(item.text)));
+      const links=el('div',undefined,'justice-coverage-links');
+      for(const id of item.results){const result=data.results.find(r=>r.id===id);const link=el('a',t(result.title));link.href='#'+id;links.append(link);}
+      article.append(links);coverage.append(article);
     }
   }
   function renderResults() {
@@ -129,10 +143,11 @@
     document.getElementById('justice-sim-score').textContent=`Q(P) = ${format.format(result.score)} · Q(C) = ${format.format(result.commonScore)} · ${t('Essential-needs threshold:')} ${format.format(result.needs)}`;
     document.getElementById('justice-sim-condition').textContent=`${t('Nonowner improvement condition:')} Yᶜ / Yᴾ > λ + τ(1 − λ) = ${format.format(result.threshold)}`;
   }
-  function refresh(){if(!data)return;premiseList();renderResults();renderSimulation();}
+  function refresh(){if(!data)return;renderFoundation();premiseList();renderResults();renderSimulation();}
   for(const button of document.querySelectorAll('[data-language]'))button.addEventListener('click',refresh);
   for(const key of Object.keys(defaults))document.getElementById('sim-'+key).addEventListener('input',renderSimulation);
   document.getElementById('justice-select-core').addEventListener('click',()=>{if(!data)return;selection=new Set(data.defaultSelection);save();refresh();});
+  document.getElementById('justice-select-all').addEventListener('click',()=>{if(!data)return;selection=new Set(data.premises.filter(p=>p.id!=='H9').map(p=>p.id));save();refresh();});
   document.getElementById('justice-clear').addEventListener('click',()=>{if(!data)return;selection=new Set();save();refresh();});
   document.getElementById('justice-reset-sim').addEventListener('click',()=>{
     for(const [key,value] of Object.entries(defaults))document.getElementById('sim-'+key).value=value;

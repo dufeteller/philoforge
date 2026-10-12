@@ -64,3 +64,63 @@ import PhiloForge.AIJustice
 
 #check @PhiloForge.AIJustice.redistribution_repairs_example
 #print axioms PhiloForge.AIJustice.redistribution_repairs_example
+
+#check @PhiloForge.AIJustice.maximin_implies_sufficiency
+#print axioms PhiloForge.AIJustice.maximin_implies_sufficiency
+
+#check @PhiloForge.AIJustice.sufficient_justice_excludes_deprivation
+#print axioms PhiloForge.AIJustice.sufficient_justice_excludes_deprivation
+
+#check @PhiloForge.AIJustice.sufficiency_does_not_imply_maximin
+#print axioms PhiloForge.AIJustice.sufficiency_does_not_imply_maximin
+
+#check @PhiloForge.AIJustice.division_le_iff
+#print axioms PhiloForge.AIJustice.division_le_iff
+
+#check @PhiloForge.AIJustice.le_division_iff
+#print axioms PhiloForge.AIJustice.le_division_iff
+
+#check @PhiloForge.AIJustice.required_labor_nonnegative
+#print axioms PhiloForge.AIJustice.required_labor_nonnegative
+
+#check @PhiloForge.AIJustice.labor_requirement_characterization
+#print axioms PhiloForge.AIJustice.labor_requirement_characterization
+
+#check @PhiloForge.AIJustice.automation_reduces_required_labor
+#print axioms PhiloForge.AIJustice.automation_reduces_required_labor
+
+#check @PhiloForge.AIJustice.sufficient_automation_needs_no_labor
+#print axioms PhiloForge.AIJustice.sufficient_automation_needs_no_labor
+
+#check @PhiloForge.AIJustice.equal_contribution_ownership_gap
+#print axioms PhiloForge.AIJustice.equal_contribution_ownership_gap
+
+#check @PhiloForge.AIJustice.common_entitlement_secures_independence
+#print axioms PhiloForge.AIJustice.common_entitlement_secures_independence
+
+#check @PhiloForge.AIJustice.security_without_employment_or_wealth
+#print axioms PhiloForge.AIJustice.security_without_employment_or_wealth
+
+#check @PhiloForge.AIJustice.protected_common_access_blocks_veto
+#print axioms PhiloForge.AIJustice.protected_common_access_blocks_veto
+
+#check @PhiloForge.AIJustice.saturated_private_output_bounded
+#print axioms PhiloForge.AIJustice.saturated_private_output_bounded
+
+#check @PhiloForge.AIJustice.common_capacity_dominates_accumulation
+#print axioms PhiloForge.AIJustice.common_capacity_dominates_accumulation
+
+#check @PhiloForge.AIJustice.abundant_solutions_leave_material_and_rights_choices
+#print axioms PhiloForge.AIJustice.abundant_solutions_leave_material_and_rights_choices
+
+#check @PhiloForge.AIJustice.democratic_control_protects_contestation_and_initiative
+#print axioms PhiloForge.AIJustice.democratic_control_protects_contestation_and_initiative
+
+#check @PhiloForge.AIJustice.implemented_economic_choices_respect_rights
+#print axioms PhiloForge.AIJustice.implemented_economic_choices_respect_rights
+
+#check @PhiloForge.AIJustice.common_provision_realizes_democratic_communism
+#print axioms PhiloForge.AIJustice.common_provision_realizes_democratic_communism
+
+#check @PhiloForge.AIJustice.democratic_common_institution_has_model
+#print axioms PhiloForge.AIJustice.democratic_common_institution_has_model

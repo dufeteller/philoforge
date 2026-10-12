@@ -26,11 +26,11 @@ for(const result of registry.results){
  for(const omitted of result.requires)assert.ok(!api.derive(registry,result.requires.filter(id=>id!==omitted)).results.some(r=>r.id===result.id));
  if(result.theory==='justice')assert.ok(result.requires.includes('justice:model'));
 }
-// Exhaust every AI selection and compare isolated/mixed derivation. Spinoza's
-// own exhaustive-per-theorem suite covers its larger starting-point registry.
+// Exhaust the original AI vocabulary for backwards compatibility, then every
+// new theorem's own premise subsets. Avoid an exponential pass over unrelated
+// definitions while checking both isolated and mixed-theory derivations.
 let scenarios=0;
-for(let bits=0;bits<2**(justice.premises.length+1);bits++){
- const selected=['justice:model',...justice.premises.map(p=>'justice:'+p.id)].filter((id,i)=>bits&(1<<i));
+function checkSelection(selected){
  const data=api.derive(registry,selected);
  const expected=selected.includes('justice:model')?justice.results.filter(r=>r.requires.every(id=>selected.includes('justice:'+id))):[];
  assert.deepEqual(data.results.map(r=>r.localId),data.conflicts.length?[]:expected.map(r=>r.id));
@@ -39,6 +39,14 @@ for(let bits=0;bits<2**(justice.premises.length+1);bits++){
  else assert.deepEqual(sorted(mixed.results.map(r=>r.id)),sorted([...data.results.map(r=>r.id),...spinoza.results.map(r=>'spinoza:'+r.id)]));
  scenarios++;
 }
+const legacy=['model','J1','J2',...Array.from({length:9},(_,i)=>'H'+(i+1))].map(id=>'justice:'+id);
+for(let bits=0;bits<2**legacy.length;bits++)checkSelection(legacy.filter((id,i)=>bits&(1<<i)));
+for(const result of registry.results.filter(r=>r.theory==='justice')){
+ for(let bits=0;bits<2**result.requires.length;bits++)checkSelection(result.requires.filter((id,i)=>bits&(1<<i)));
+}
+const every=registry.entries.filter(e=>e.theory==='justice').map(e=>e.id);
+checkSelection(every);
+for(const omitted of every)checkSelection(every.filter(id=>id!==omitted));
 for(const result of spinoza.results){
  const selected=result.requires;
  assert.deepEqual(api.derive(registry,selected.map(id=>'spinoza:'+id)).results.map(r=>r.localId),spinoza.derive(selected).results.map(r=>r.id));

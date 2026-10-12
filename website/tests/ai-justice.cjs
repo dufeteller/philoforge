@@ -6,11 +6,14 @@ const data = require('../dist/data/ai-justice.json');
 require('../dist/assets/locales.js');
 const {canDisplay} = require('../dist/assets/i18n.js');
 const all = data.premises.map(p=>p.id);
-assert.equal(data.premises.filter(p=>p.kind==='principle').length,2);
-assert.ok(!all.includes('J3'));
+assert.equal(data.premises.filter(p=>p.kind==='principle').length,3);
+assert.equal(data.premises.filter(p=>p.kind==='definition').length,8);
+assert.ok(data.defaultSelection.includes('J3'));
+assert.ok(!data.defaultSelection.includes('J2'),'Maximin must remain optional');
 const core=derive(data,data.defaultSelection);
-assert.equal(core.find(r=>r.id==='needs-from-justice').available,true);
-assert.equal(core.find(r=>r.id==='unjust-exclusion').available,true);
+assert.equal(core.find(r=>r.id==='sufficiency-exclusion').available,true);
+assert.equal(core.find(r=>r.id==='needs-from-justice').available,false);
+assert.equal(core.find(r=>r.id==='unjust-exclusion').available,false);
 assert.equal(core.find(r=>r.id==='unique-justice').available,false);
 for(const result of data.results){
   assert.equal(derive(data,all).find(r=>r.id===result.id).available,true);
@@ -50,10 +53,20 @@ for(const output of [50,75,100,200,400])for(const labor of [0,5,50,100])for(cons
   const nonowner=s.groups.find(g=>g.id==='nonowners');
   if(nonowner)assert.equal(nonowner.common>nonowner.after+1e-9,collective/100>s.threshold+1e-9);
 }
+for(const section of data.foundation)for(const key of ['title','text'])assert.ok(canDisplay(section[key],'fr'));
+assert.equal(new Set(data.foundation.map(s=>s.id)).size,data.foundation.length);
+for(const item of data.coverage){
+ assert.ok(data.foundation.some(s=>s.id===item.section));
+ for(const key of ['title','status','text'])assert.ok(canDisplay(item[key],'fr'));
+ for(const id of item.results)assert.ok(data.results.some(r=>r.id===id),'Unknown coverage link '+id);
+}
+const history=data.coverage.find(item=>item.section==='intelligence');
+assert.ok(history);assert.deepEqual(history.results,[],'Historical framing is not a Lean theorem');
+assert.ok(!/OpenAI|ChatGPT|mathematical progress/i.test(JSON.stringify(data.foundation)));
 const html=fs.readFileSync(path.join(__dirname,'../dist/philoforge/ai-justice/index.html'),'utf8');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
 assert.equal(new Set(ids).size,ids.length);
-for(const id of ['justice-principles','justice-hypotheses','justice-results','sim-output','sim-sharing','justice-sim-body'])assert.ok(ids.includes(id));
+for(const id of ['justice-definitions','justice-foundation-text','justice-coverage','justice-select-all','justice-principles','justice-hypotheses','justice-results','sim-output','sim-sharing','justice-sim-body'])assert.ok(ids.includes(id));
 for(const match of html.matchAll(/(?:href|src)="(\/(?!\/)[^"#?]+)(?:[?#][^"]*)?"/g)){
   let target=path.join(__dirname,'../dist',match[1]);if(target.endsWith('/'))target+='index.html';
   assert.ok(fs.existsSync(target),target);
