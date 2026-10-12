@@ -1,0 +1,447 @@
+{
+  "version": 1,
+  "title": "AI, property and democratic justice",
+  "leanVersion": "4.34.1",
+  "numberDomain": "Rat",
+  "defaultSelection": [
+    "J1",
+    "J2",
+    "H1",
+    "H2"
+  ],
+  "premises": [
+    {
+      "id": "J1",
+      "kind": "principle",
+      "title": "Equal liberties and democratic standing",
+      "text": "An admissible regime is feasible, respects equal fundamental liberties and permits effective democratic control. Ownership, employment and cognitive ability do not determine civic standing."
+    },
+    {
+      "id": "J2",
+      "kind": "principle",
+      "title": "Priority to the least advantaged",
+      "text": "A just regime is admissible and maximizes Q, the lowest needs-adjusted access, among admissible regimes. This is a normative choice; existence of a maximum is not assumed."
+    },
+    {
+      "id": "H1",
+      "kind": "hypothesis",
+      "title": "A sufficient admissible alternative",
+      "text": "There is a feasible alternative that respects the same liberties and democratic requirements and covers every person’s essential needs."
+    },
+    {
+      "id": "H2",
+      "kind": "hypothesis",
+      "title": "Actual essential deprivation",
+      "text": "At least one person receives less than their essential-needs threshold in the regime under examination."
+    },
+    {
+      "id": "H3",
+      "kind": "hypothesis",
+      "title": "Strict institutional superiority",
+      "text": "A specified admissible regime has a strictly higher Q than every other admissible regime. This performance hypothesis must be established independently."
+    },
+    {
+      "id": "H4",
+      "kind": "hypothesis",
+      "title": "Rising capital income, fixed ownership",
+      "text": "Capital income rises between two periods, ownership shares stay fixed and there is no collective redistribution. Quantities represent real access, including price effects."
+    },
+    {
+      "id": "H5",
+      "kind": "hypothesis",
+      "title": "Fixed output and divisible resources",
+      "text": "The population is finite and nonempty, needs are positive, total access is bounded by Y and proportional allocations are feasible without changing output."
+    },
+    {
+      "id": "H6",
+      "kind": "hypothesis",
+      "title": "Equal labor income and a nonowner",
+      "text": "Compare a nonowner in a private regime with equal labor incomes and a collective regime with equal allocations. Population and private output are positive; needs are identical for the needs comparison."
+    },
+    {
+      "id": "H7",
+      "kind": "hypothesis",
+      "title": "An effective binary majority vote",
+      "text": "Equal valid ballots exhaust the electorate; more than half support the alternative. Free informed preferences, admissible options and implementation of the result are institutional assumptions."
+    },
+    {
+      "id": "H8",
+      "kind": "hypothesis",
+      "title": "Sustainable collective innovation",
+      "text": "A regime sustains innovation without concentrated private capital, including maintenance, renewal and necessary human work."
+    },
+    {
+      "id": "H9",
+      "kind": "hypothesis",
+      "title": "Every regime can be improved",
+      "text": "For every admissible regime there is another admissible regime with strictly higher Q. This is a separate scenario, not a claim about the present economy."
+    }
+  ],
+  "results": [
+    {
+      "id": "needs-scale",
+      "leanName": "PhiloForge.AIJustice.universal_needs_iff_floor",
+      "requires": [],
+      "parents": [],
+      "title": "Reading the needs threshold",
+      "text": "All essential needs are covered exactly when Q is at least one. The minimum is witnessed in the model.",
+      "formula": "∀ i, cᵢ ≥ bᵢ  ⇔  Q ≥ 1",
+      "steps": [
+        "A witnessed minimum identifies one person at Q. Positive needs allow cancellation of their needs coefficient.",
+        "Conversely, Q ≥ 1 and the lower-bound property give cᵢ ≥ bᵢ for every person."
+      ],
+      "limit": "Exact rational model; needs, access and the minimum must have their stated meaning.",
+      "proof": {
+        "code": "theorem universal_needs_iff_floor {P R : Type} (m : Model P R) (r : R) :\n    UniversalNeeds m r ↔ 1 ≤ m.floor r := by\n  constructor\n  · intro h\n    obtain ⟨i, hi⟩ := m.floor_attained r\n    have hni := h i\n    have hm : 1 * m.needs i ≤ m.floor r * m.needs i := by grind\n    exact Rat.le_of_mul_le_mul_right hm (m.needs_pos i)\n  · intro h i\n    have hm := Rat.mul_le_mul_of_nonneg_right h (show 0 ≤ m.needs i by\n      have := m.needs_pos i; grind)\n    have hl := m.floor_lower r i\n    grind",
+        "line": 37,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L37"
+      }
+    },
+    {
+      "id": "admissibility",
+      "leanName": "PhiloForge.AIJustice.just_is_admissible",
+      "requires": [
+        "J1",
+        "J2"
+      ],
+      "parents": [],
+      "title": "Justice includes admissibility",
+      "text": "A just regime must be feasible and satisfy the stipulated liberty and democracy requirements.",
+      "formula": "Just(r) ⇒ Admissible(r)",
+      "steps": [
+        "Extract the admissibility component from the definition of justice."
+      ],
+      "limit": "A definitional consequence. Lean does not certify that a real institution is democratic.",
+      "proof": {
+        "code": "theorem just_is_admissible {P R : Type} (m : Model P R) (r : R)\n    (justice : Just m r) : Admissible m r := justice.1",
+        "line": 51,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L51"
+      }
+    },
+    {
+      "id": "needs-from-justice",
+      "leanName": "PhiloForge.AIJustice.needs_from_maximin",
+      "requires": [
+        "J1",
+        "J2",
+        "H1"
+      ],
+      "parents": [
+        "needs-scale",
+        "admissibility"
+      ],
+      "title": "Avoidable deprivation is excluded",
+      "text": "If a sufficient admissible alternative exists, every just regime covers everyone’s essential needs. A separate no-deprivation axiom is unnecessary.",
+      "formula": "Just(r) ∧ Admissible(s) ∧ Q(s) ≥ 1 ⇒ Q(r) ≥ 1",
+      "steps": [
+        "The sufficient alternative has Q(s) ≥ 1.",
+        "Maximin justice gives Q(r) ≥ Q(s), hence Q(r) ≥ 1."
+      ],
+      "limit": "The alternative must satisfy the same liberties and democratic requirements. The proof does not establish that it exists.",
+      "proof": {
+        "code": "theorem needs_from_maximin {P R : Type} (m : Model P R) (r s : R)\n    (justice : Just m r) (alternative : Admissible m s)\n    (sufficient : UniversalNeeds m s) : UniversalNeeds m r := by\n  have hs := (universal_needs_iff_floor m s).mp sufficient\n  have hr := justice.2 s alternative\n  apply (universal_needs_iff_floor m r).mpr\n  grind",
+        "line": 55,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L55"
+      }
+    },
+    {
+      "id": "unjust-exclusion",
+      "leanName": "PhiloForge.AIJustice.avoidable_deprivation_not_just",
+      "requires": [
+        "J1",
+        "J2",
+        "H1",
+        "H2"
+      ],
+      "parents": [
+        "needs-from-justice"
+      ],
+      "title": "Exclusion despite feasible sufficiency is unjust",
+      "text": "A regime with essential deprivation is not just if an admissible alternative covers everyone’s needs. This applies even if the deprived group is a minority.",
+      "formula": "Admissible(s) ∧ Q(s) ≥ 1 ∧ (∃ i, cᵢ(r) < bᵢ) ⇒ ¬ Just(r)",
+      "steps": [
+        "Assuming justice would imply universal needs coverage by the preceding theorem.",
+        "The deprived person contradicts that coverage."
+      ],
+      "limit": "Injustice is relative to the declared principles, not a theorem that every form of capitalism is impossible.",
+      "proof": {
+        "code": "theorem avoidable_deprivation_not_just {P R : Type} (m : Model P R) (r s : R)\n    (alternative : Admissible m s) (sufficient : UniversalNeeds m s)\n    (deprivation : ∃ i, m.access r i < m.needs i) : ¬ Just m r := by\n  intro justice\n  obtain ⟨i, hi⟩ := deprivation\n  have hn := needs_from_maximin m r s justice alternative sufficient i\n  grind",
+        "line": 63,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L63"
+      }
+    },
+    {
+      "id": "unique-justice",
+      "leanName": "PhiloForge.AIJustice.unique_best_is_unique_just",
+      "requires": [
+        "J1",
+        "J2",
+        "H3"
+      ],
+      "parents": [],
+      "title": "When one institution is uniquely just",
+      "text": "A strictly best admissible regime is just, and every just regime equals it. A collective regime qualifies only if its strict superiority is independently established.",
+      "formula": "Admissible(s) ∧ (∀ r ≠ s, Admissible(r) ⇒ Q(r) < Q(s)) ⇒ Just(s) ∧ (Just(r) ⇒ r = s)",
+      "steps": [
+        "Strict superiority implies that the candidate maximizes Q.",
+        "Another just regime would have Q at least as high, contradicting strict superiority."
+      ],
+      "limit": "No economic system is assumed to meet this demanding performance condition.",
+      "proof": {
+        "code": "theorem unique_best_is_unique_just {P R : Type} (m : Model P R) (best : R)\n    (admissible : Admissible m best)\n    (strict : ∀ r, Admissible m r → r ≠ best → m.floor r < m.floor best) :\n    Just m best ∧ ∀ r, Just m r → r = best := by\n  classical\n  constructor\n  · refine ⟨admissible, ?_⟩\n    intro r hr\n    by_cases same : r = best\n    · subst r; grind\n    · have := strict r hr same; grind\n  · intro r hr\n    apply Classical.byContradiction\n    intro different\n    have hlt := strict r hr.1 different\n    have hle := hr.2 best admissible\n    grind",
+        "line": 78,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L78"
+      }
+    },
+    {
+      "id": "no-maximum",
+      "leanName": "PhiloForge.AIJustice.no_maximum_no_just",
+      "requires": [
+        "J1",
+        "J2",
+        "H9"
+      ],
+      "parents": [],
+      "title": "A maximum need not exist",
+      "text": "If every admissible regime has a strictly better admissible alternative, no regime satisfies exact maximin justice.",
+      "formula": "(∀ r ∈ A, ∃ s ∈ A, Q(r) < Q(s)) ⇒ ¬ ∃ r, Just(r)",
+      "steps": [
+        "Assume a just regime and select its strictly better admissible alternative.",
+        "The improvement contradicts maximization."
+      ],
+      "limit": "This concerns exact optimization. It does not exclude approximate justice or finite comparisons.",
+      "proof": {
+        "code": "theorem no_maximum_no_just {P R : Type} (m : Model P R)\n    (improvement : ∀ r, Admissible m r →\n      ∃ s, Admissible m s ∧ m.floor r < m.floor s) :\n    ¬ ∃ r, Just m r := by\n  rintro ⟨r, hr⟩\n  obtain ⟨s, hs, better⟩ := improvement r hr.1\n  exact strictly_better_rules_out_justice m r s hs better hr",
+        "line": 96,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L96"
+      }
+    },
+    {
+      "id": "income-change",
+      "leanName": "PhiloForge.AIJustice.income_change_identity",
+      "requires": [],
+      "parents": [],
+      "title": "Separate labor and capital gains",
+      "text": "With fixed ownership and zero redistribution, the change in real access equals the change in labor income plus the owned share of the change in capital income.",
+      "formula": "Δcᵢ = Δℓᵢ + θᵢ ΔΠ  (τ = 0)",
+      "steps": [
+        "Expand the income formula at both dates and subtract."
+      ],
+      "limit": "An identity under fixed shares and zero redistribution, not an empirical wage forecast.",
+      "proof": {
+        "code": "theorem income_change_identity (l0 l1 share p0 p1 n : Rat) :\n    income l1 share p1 0 n - income l0 share p0 0 n =\n      (l1 - l0) + share * (p1 - p0) := by\n  unfold income\n  grind",
+        "line": 115,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L115"
+      }
+    },
+    {
+      "id": "loss-threshold",
+      "leanName": "PhiloForge.AIJustice.loss_threshold",
+      "requires": [
+        "H4"
+      ],
+      "parents": [
+        "income-change"
+      ],
+      "title": "The exact individual loss condition",
+      "text": "When capital income increases, a person loses real access exactly when their ownership share is below the threshold compensating their lost labor income.",
+      "formula": "Δcᵢ < 0  ⇔  θᵢ < (ℓᵢ,₀ − ℓᵢ,₁) / ΔΠ",
+      "steps": [
+        "Rearrange the income inequality.",
+        "Divide by the positive increase in capital income."
+      ],
+      "limit": "A majority loses only if this inequality holds for more than half the population. Concentration alone is insufficient.",
+      "proof": {
+        "code": "theorem loss_threshold (l0 l1 share p0 p1 n : Rat) (growth : 0 < p1 - p0) :\n    income l1 share p1 0 n < income l0 share p0 0 n ↔\n      share < (l0 - l1) / (p1 - p0) := by\n  rw [Rat.lt_div_iff growth]\n  unfold income\n  grind",
+        "line": 121,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L121"
+      }
+    },
+    {
+      "id": "resource-bound",
+      "leanName": "PhiloForge.AIJustice.maximin_resource_bound",
+      "requires": [
+        "H5"
+      ],
+      "parents": [],
+      "title": "The material bound on justice",
+      "text": "If everyone receives at least q times their needs and total access is at most Y, then q times total needs cannot exceed Y.",
+      "formula": "q × Σ bᵢ ≤ Y",
+      "steps": [
+        "Sum the individual lower bounds over the population.",
+        "Apply the aggregate resource constraint."
+      ],
+      "limit": "The list must enumerate the population once for the population interpretation; the algebra holds for any list.",
+      "proof": {
+        "code": "theorem maximin_resource_bound {P : Type} (people : List P) (needs access : P → Rat)\n    (q Y : Rat) (lower : ∀ i, i ∈ people → q * needs i ≤ access i)\n    (budget : total people access ≤ Y) : q * total people needs ≤ Y := by\n  have hsum := total_monotone people (fun i => q * needs i) access lower\n  have hlinear := total_linear people needs (fun _ => 0) q 0\n  simp only [Rat.zero_mul, Rat.add_zero] at hlinear\n  rw [hlinear] at hsum\n  grind",
+        "line": 158,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L158"
+      }
+    },
+    {
+      "id": "proportional-optimum",
+      "leanName": "PhiloForge.AIJustice.proportional_allocation_attains",
+      "requires": [
+        "H5"
+      ],
+      "parents": [
+        "resource-bound"
+      ],
+      "title": "An allocation attaining the bound",
+      "text": "Every feasible lower satisfaction level is at most Y/B. Allocating (Y/B) times each person’s needs spends exactly Y and achieves that common ratio.",
+      "formula": "Q* = Y / B ; cᵢ* = (Y / B)bᵢ ; B = Σ bᵢ > 0",
+      "steps": [
+        "The resource bound implies q ≤ Y/B because B is positive.",
+        "The proportional allocation sums to (Y/B)B = Y; each needs ratio is Y/B."
+      ],
+      "limit": "Requires divisible resources and fixed output. It does not prove that a real collective institution can implement this allocation.",
+      "proof": {
+        "code": "theorem proportional_allocation_attains {P : Type} (people : List P)\n    (needs access : P → Rat) (q Y : Rat)\n    (needsPositive : ∀ i, 0 < needs i)\n    (lower : ∀ i, i ∈ people → q * needs i ≤ access i)\n    (budget : total people access ≤ Y) (positive : 0 < total people needs) :\n    q ≤ Y / total people needs ∧\n    total people (fun i => (Y / total people needs) * needs i) = Y ∧\n    ∀ i, ((Y / total people needs) * needs i) / needs i = Y / total people needs := by\n  have bound := maximin_resource_bound people needs access q Y lower budget\n  have nz : total people needs ≠ 0 := by grind\n  have lin := total_linear people needs (fun _ => 0) (Y / total people needs) 0\n  simp only [Rat.zero_mul, Rat.add_zero] at lin\n  constructor\n  · apply Classical.byContradiction\n    intro h\n    have hlt : Y / total people needs < q := by grind\n    have := (Rat.div_lt_iff positive).mp hlt\n    grind\n  · constructor\n    · rw [lin]\n      grind\n    · intro i\n      have hi : needs i ≠ 0 := by have := needsPositive i; grind\n      grind",
+        "line": 167,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L167"
+      }
+    },
+    {
+      "id": "collective-threshold",
+      "leanName": "PhiloForge.AIJustice.collective_improvement_iff",
+      "requires": [
+        "H6"
+      ],
+      "parents": [],
+      "title": "When collective access improves on private access",
+      "text": "A nonowner is materially better off under equal collective allocation exactly when the collective/private output ratio exceeds the labor-and-redistribution share.",
+      "formula": "cᶜᵢ > cᴾᵢ  ⇔  Yᶜ / Yᴾ > λ + τ(1 − λ)",
+      "steps": [
+        "Insert zero ownership and equal labor income into the income formula.",
+        "Compare with Yᶜ/n and cancel the positive population and private output."
+      ],
+      "limit": "A per-person comparison, not Pareto superiority. Needs coverage additionally requires Yᶜ ≥ Σbᵢ; majority application requires a majority of nonowners.",
+      "proof": {
+        "code": "theorem collective_improvement_iff (privateOutput commonOutput laborShare tax n : Rat)\n    (population : 0 < n) (production : 0 < privateOutput) :\n    income (laborShare * privateOutput / n) 0\n      ((1 - laborShare) * privateOutput) tax n < commonOutput / n ↔\n    laborShare + tax * (1 - laborShare) < commonOutput / privateOutput := by\n  have hn : n ≠ 0 := by grind\n  have identity : income (laborShare * privateOutput / n) 0\n      ((1 - laborShare) * privateOutput) tax n =\n      ((laborShare + tax * (1 - laborShare)) * privateOutput) / n := by\n    unfold income\n    grind\n  rw [identity, Rat.div_lt_iff population]\n  have cancel : (commonOutput / n) * n = commonOutput := by grind\n  rw [cancel, Rat.lt_div_iff production]",
+        "line": 192,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L192"
+      }
+    },
+    {
+      "id": "majority-vote",
+      "leanName": "PhiloForge.AIJustice.majority_choice",
+      "requires": [
+        "H7"
+      ],
+      "parents": [],
+      "title": "A strict majority wins a binary vote",
+      "text": "If yes and no ballots sum to the electorate and yes exceeds half, yes exceeds no.",
+      "formula": "yes + no = n ∧ 2yes > n ⇒ yes > no",
+      "steps": [
+        "Substitute the total number of ballots and rearrange the integer inequality."
+      ],
+      "limit": "Lean checks the vote count, not informed preferences, actual democratic institutions or implementation. Material advantage does not force a political preference.",
+      "proof": {
+        "code": "theorem majority_choice (yes no n : Nat) (ballots : yes + no = n)\n    (majority : n < 2 * yes) : MajorityWins yes no := by\n  unfold MajorityWins\n  omega",
+        "line": 209,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L209"
+      }
+    },
+    {
+      "id": "innovation",
+      "leanName": "PhiloForge.AIJustice.collective_innovation_not_necessary",
+      "requires": [
+        "H8"
+      ],
+      "parents": [],
+      "title": "Private concentration need not be necessary",
+      "text": "A sustainable innovating regime without concentrated private capital refutes the claim that such concentration is necessary for sustainable innovation.",
+      "formula": "Innovation(C) ∧ ¬ Concentration(C) ⇒ ¬ ∀ r, Innovation(r) → Concentration(r)",
+      "steps": [
+        "Apply the proposed necessity claim to the collective counterexample.",
+        "Its absence of private concentration contradicts that claim."
+      ],
+      "limit": "A conditional logical result. The feasibility of that collective infrastructure remains an empirical and institutional question.",
+      "proof": {
+        "code": "theorem collective_innovation_not_necessary {R : Type}\n    (privateConcentration sustainableInnovation : R → Prop) (common : R)\n    (innovation : sustainableInnovation common) (collective : ¬ privateConcentration common) :\n    ¬ (∀ r, sustainableInnovation r → privateConcentration r) := by\n  intro necessary\n  exact collective (necessary common innovation)",
+        "line": 214,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L214"
+      }
+    },
+    {
+      "id": "model-witness",
+      "leanName": "PhiloForge.AIJustice.reduced_principles_have_model",
+      "requires": [],
+      "parents": [],
+      "title": "The reduced principles have a model",
+      "text": "A two-person, two-regime example satisfies the model: equal access is just and covers needs; the alternative deprives one person and is not just.",
+      "formula": "b = (1, 1) ; cᶜ = (1, 1) ; cᴾ = (0, 2)",
+      "steps": [
+        "Construct positive needs, nonnegative access and witnessed minima explicitly.",
+        "Check admissibility, maximin and essential coverage in the finite example."
+      ],
+      "limit": "Liberties and democracy are true by construction in this abstract witness. This is no historical or institutional validation.",
+      "proof": {
+        "code": "theorem reduced_principles_have_model :\n    Just exampleModel true ∧ UniversalNeeds exampleModel true ∧ ¬ Just exampleModel false := by\n  have good : Just exampleModel true := by\n    refine ⟨⟨True.intro, True.intro, True.intro⟩, ?_⟩\n    intro r _\n    cases r <;> decide +kernel\n  have needs : UniversalNeeds exampleModel true := by intro i; cases i <;> decide +kernel\n  refine ⟨good, needs, ?_⟩\n  apply avoidable_deprivation_not_just exampleModel false true good.1 needs\n  exact ⟨false, by decide +kernel⟩",
+        "line": 235,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L235"
+      }
+    },
+    {
+      "id": "majority-example",
+      "leanName": "PhiloForge.AIJustice.majority_loss_example",
+      "requires": [],
+      "parents": [],
+      "title": "Twice the output, 90 people worse off",
+      "text": "In the exact 100-person example, output increases from 100 to 200 while 90 people lose access and fall below the needs threshold of 0.75. Total essential needs are 75.",
+      "formula": "Y₀ = 100 ; Y₁ = 200 ; losers = 90 ; deprived = 90",
+      "steps": [
+        "Evaluate both allocations over all 100 individuals.",
+        "Sum resources and count the individuals who lose access or fall below 3/4."
+      ],
+      "limit": "A kernel-checked counterexample to automatic shared prosperity, not a prediction of the actual economy.",
+      "proof": {
+        "code": "theorem majority_loss_example :\n    total (List.range 100) before = 100 ∧\n    total (List.range 100) after = 200 ∧\n    ((List.range 100).filter (fun i => after i < before i)).length = 90 ∧\n    ((List.range 100).filter (fun i => after i < (3 / 4 : Rat))).length = 90 ∧\n    total (List.range 100) (fun _ => (3 / 4 : Rat)) = 75 := by\n  decide +kernel",
+        "line": 249,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L249"
+      }
+    },
+    {
+      "id": "redistribution-example",
+      "leanName": "PhiloForge.AIJustice.redistribution_repairs_example",
+      "requires": [],
+      "parents": [],
+      "title": "Redistribution can repair the example",
+      "text": "With output and ownership unchanged, redistributing 13/38 of capital income gives each nonowner exactly 0.75 in the automated example.",
+      "formula": "0.1 + (13/38) × 190/100 = 0.75",
+      "steps": [
+        "Evaluate the nonowner income formula with the specified tax and profit pool."
+      ],
+      "limit": "Shows that the exclusion result does not establish communism as the unique solution. Output responses to redistribution are outside this example.",
+      "proof": {
+        "code": "theorem redistribution_repairs_example :\n    income (1 / 10) 0 190 (13 / 38) 100 = (3 / 4 : Rat) := by\n  decide +kernel",
+        "line": 257,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L257"
+      }
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "incompatible-optima",
+      "leanName": "PhiloForge.AIJustice.strict_best_conflicts_with_improvement",
+      "requires": [
+        "H3",
+        "H9"
+      ],
+      "parents": [],
+      "title": "A best regime cannot always be improved",
+      "text": "H3 supplies a strictly best admissible regime. H9 supplies a strictly better admissible alternative to that same regime. These premises cannot hold together in one model.",
+      "formula": "H3 ∧ H9 ⇒ False",
+      "steps": [
+        "Strict superiority makes the candidate a maximin regime.",
+        "Unlimited strict improvement excludes every maximin regime."
+      ],
+      "limit": "Deselect H3 or H9 to continue exploring a compatible set of premises. This check detects this known conflict; it is not a general consistency solver.",
+      "proof": {
+        "code": "theorem strict_best_conflicts_with_improvement {P R : Type} (m : Model P R) (best : R)\n    (admissible : Admissible m best)\n    (strict : ∀ r, Admissible m r → r ≠ best → m.floor r < m.floor best)\n    (improvement : ∀ r, Admissible m r →\n      ∃ s, Admissible m s ∧ m.floor r < m.floor s) : False := by\n  have bestJust := (unique_best_is_unique_just m best admissible strict).1\n  exact no_maximum_no_just m improvement ⟨best, bestJust⟩",
+        "line": 104,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L104"
+      }
+    }
+  ]
+}

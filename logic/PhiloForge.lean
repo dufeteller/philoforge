@@ -8,3 +8,6 @@ import PhiloForge.SpinozaOntology
 import PhiloForge.SpinozaFoundations
 import PhiloForge.SpinozaAttributes
 import PhiloForge.SpinozaDistinctions
+
+import PhiloForge.AIJustice
+import PhiloForge.AIJusticeChecks
