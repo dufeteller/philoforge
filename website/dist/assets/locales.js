@@ -708,3 +708,51 @@ Object.assign(globalThis.PhiloLocales.fr, {
   "Incompatible premises": "Prémisses incompatibles",
   "Resolve the conflict before using these premises together.": "Résoudre le conflit avant d’utiliser ces prémisses ensemble."
 });
+
+/* Common workshop and namespaced theory maps. */
+Object.assign(globalThis.PhiloLocales.fr, {
+ "PHILOFORGE / SHARED UNIVERSE": "PHILOFORGE / UNIVERS COMMUN",
+ "Two theories.": "Deux théories.",
+ "Your starting points.": "Vos points de départ.",
+ "Read Spinoza and AI justice together. Select a complete theory, a family of premises, or individual statements to build one deduction map.": "Réunir Spinoza et la justice à l’ère de l’IA. Choisir une théorie entière, une famille de prémisses ou des énoncés individuels pour construire une même carte de déductions.",
+ "Conditional deductions checked by Lean": "Déductions conditionnelles vérifiées par Lean",
+ "Choose your starting points": "Choisir vos points de départ",
+ "TWO THEORIES / ONE SELECTION": "DEUX THÉORIES / UNE SÉLECTION",
+ "The theories follow one another below. Each checkbox adds or removes its own premises; a partial check marks a selection within that group.": "Les théories se succèdent ci-dessous. Chaque case ajoute ou retire les prémisses correspondantes ; une case partiellement cochée indique une sélection au sein du groupe.",
+ "Select both theories": "Sélectionner les deux théories",
+ "Loading the theories…": "Chargement des théories…",
+ "The theories could not be loaded. Reload the page to try again.": "Les théories n’ont pas pu être chargées. Recharger la page pour réessayer.",
+ "Definitions, axioms and explicit interpretations from the verified fragments of the Ethics.": "Définitions, axiomes et interprétations explicites des fragments vérifiés de l’Éthique.",
+ "AI and democratic justice — Romain Dufetelle": "IA et justice démocratique — Romain Dufetelle",
+ "A common productive infrastructure, two normative principles and conditional results about needs, ownership and democratic choice.": "Une infrastructure productive commune, deux principes normatifs et des résultats conditionnels sur les besoins, la propriété et le choix démocratique.",
+ "Read the theory and explore its economic model ↗": "Lire la théorie et explorer son modèle économique ↗",
+ "People, resources and essential needs": "Personnes, ressources et besoins essentiels",
+ "Positive needs, nonnegative resource access and a witnessed minimum of needs-adjusted access. These definitions fix the meaning of Q and justice.": "Des besoins positifs, un accès aux ressources non négatif et un minimum atteint du rapport entre ressources et besoins. Ces définitions fixent le sens de Q et de la justice.",
+ "Normative principle": "Principe normatif",
+ "Normative principles": "Principes normatifs",
+ "Scenario hypothesis": "Hypothèse de scénario",
+ "Economic and institutional hypotheses": "Hypothèses économiques et institutionnelles",
+ "Select all: AI and democratic justice — Romain Dufetelle": "Tout sélectionner : IA et justice démocratique — Romain Dufetelle",
+ "Select all: Normative principles": "Tout sélectionner : principes normatifs",
+ "Select all: Economic and institutional hypotheses": "Tout sélectionner : hypothèses économiques et institutionnelles",
+ "Statement and formalization": "Énoncé et formalisation",
+ "available results": "résultats accessibles",
+ "The map brings together the results supported by your selection, with each theory identified. Select a node to read its assumptions and proof.": "La carte réunit les résultats accessibles à partir de votre sélection, en identifiant chaque théorie. Sélectionner un nœud pour lire ses hypothèses et sa preuve.",
+ "Crossing the theories is the next step: shared conclusions will require explicit connections between their concepts and new Lean proofs.": "Le croisement des théories constitue la prochaine étape : des conclusions communes nécessiteront des liens explicites entre leurs concepts et de nouvelles preuves Lean.",
+ "Explore alternative assumptions and conflicts": "Explorer les hypothèses alternatives et les conflits",
+ "These optional tests are excluded from the complete-theory presets. Known conflicts display their proof and prevent map generation.": "Ces tests facultatifs sont exclus de la sélection complète des théories. Les conflits connus affichent leur preuve et empêchent la génération de la carte.",
+ "Remove the test assumption": "Retirer l’hypothèse de test",
+ "The two vocabularies remain distinct. Displaying both theories in one map establishes no equivalence between their concepts.": "Les deux vocabulaires restent distincts. Afficher les théories sur une même carte n’établit aucune équivalence entre leurs concepts.",
+ "PhiloForge — Deduction map": "PhiloForge — Carte des déductions",
+ "Shared universe": "Univers commun",
+ "Back to starting-point selection": "Revenir au choix des prémisses",
+ "Each theory has its own proof paths. No cross-theory deduction is registered yet.": "Chaque théorie conserve ses chemins de preuve. Aucune déduction croisée n’est encore enregistrée.",
+ "Conditional result": "Résultat conditionnel"
+});
+Object.assign(globalThis.PhiloLocales.fr, {
+ "Counterexample to Proposition III": "Contre-exemple à la proposition III",
+ "Optional test, not a source axiom": "Test facultatif, absent des axiomes sources",
+ "User test": "Test de l’utilisateur"
+});
+
+Object.assign(globalThis.PhiloLocales.fr, {"Premises used by this result": "Prémisses utilisées par ce résultat"});
