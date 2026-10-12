@@ -1,11 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "title": "AI, property and democratic justice",
   "leanVersion": "4.34.1",
   "numberDomain": "Rat",
   "defaultSelection": [
+    "D1",
     "J1",
-    "J2",
+    "J3",
     "H1",
     "H2"
   ],
@@ -19,8 +20,8 @@
     {
       "id": "J2",
       "kind": "principle",
-      "title": "Priority to the least advantaged",
-      "text": "A just regime is admissible and maximizes Q, the lowest needs-adjusted access, among admissible regimes. This is a normative choice; existence of a maximum is not assumed."
+      "title": "Optional strengthening: priority to the least advantaged",
+      "text": "Maximin justice maximizes Q, the lowest needs-adjusted access, among admissible regimes. This stronger interpretation implies the sufficiency commitment, but is not required by it. Existence of a maximum is not assumed."
     },
     {
       "id": "H1",
@@ -75,6 +76,120 @@
       "kind": "hypothesis",
       "title": "Every regime can be improved",
       "text": "For every admissible regime there is another admissible regime with strictly higher Q. This is a separate scenario, not a claim about the present economy."
+    },
+    {
+      "id": "J3",
+      "kind": "principle",
+      "title": "Essential access whenever it is feasible",
+      "text": "A regime meeting the sufficiency criterion must be admissible and cover everyone’s essential needs whenever an admissible alternative can. Employment, wealth and cognitive performance are not eligibility conditions for this universal requirement."
+    },
+    {
+      "id": "D1",
+      "kind": "definition",
+      "title": "Sufficiency justice and maximin justice",
+      "text": "SufficiencyJust requires admissibility and universal needs coverage whenever a sufficient admissible alternative exists. Just retains the earlier, stronger maximin definition. These are two explicit criteria, not interchangeable meanings of justice."
+    },
+    {
+      "id": "D2",
+      "kind": "definition",
+      "title": "Net production and necessary human work",
+      "text": "Net output is A + pL: automated net output A, positive human productivity p and total remaining human hours L. Necessary work is zero if A covers needs B, otherwise (B − A)/p. Upkeep, energy, renewal and investment are accounted for before net output is measured."
+    },
+    {
+      "id": "D3",
+      "kind": "definition",
+      "title": "Contribution and ownership are distinct",
+      "text": "The same measured individual contribution receives the same labor remuneration through a function pay. Private access also includes the owned share of capital income. The contribution index is a modeling choice, not a measure of human worth."
+    },
+    {
+      "id": "D4",
+      "kind": "definition",
+      "title": "Security independent of employment and wealth",
+      "text": "Independent security means that every person’s needs remain covered at every nonnegative amount of work and private capital. Access is modeled as a common entitlement plus a supplementary amount."
+    },
+    {
+      "id": "D5",
+      "kind": "definition",
+      "title": "Power to cause essential deprivation",
+      "text": "A deprivation veto is the ability to make someone fall below essential needs by a unilateral withdrawal. It is a precise form of economic dependence, narrower than all forms of domination."
+    },
+    {
+      "id": "D6",
+      "kind": "definition",
+      "title": "A bounded private productive technology",
+      "text": "The illustrative private technology produces M·K/(1 + K), with nonnegative capital K and capacity bound M. Common output is measured on the same net resource scale. This saturation model allows arbitrarily large finite capital."
+    },
+    {
+      "id": "D7",
+      "kind": "definition",
+      "title": "Technical solutions and collective priorities",
+      "text": "A project is a complete alternative production, research or investment plan. It is selectable if a technical solution exists, it is materially feasible and it respects rights. Feasibility includes joint budgets and ecological constraints."
+    },
+    {
+      "id": "D8",
+      "kind": "definition",
+      "title": "Collective ownership and economic democracy",
+      "text": "Collective productive ownership combines common title, universal beneficial membership and no unilateral right to privatize. Economic democracy combines equal voting weights, universal contestation, protected personal initiatives, rights-respecting feasible choices and their effective implementation. DemocraticCommunism adds admissibility and universal essential provision to these institutional conditions."
+    },
+    {
+      "id": "H10",
+      "kind": "hypothesis",
+      "title": "More automated output, fixed needs and productivity",
+      "text": "Compare two states with the same essential output target and positive human productivity. Automated net output weakly increases. Remaining human work includes care, maintenance and other tasks within the model’s scope."
+    },
+    {
+      "id": "H11",
+      "kind": "hypothesis",
+      "title": "Automation covers the essential output target",
+      "text": "Automated net output alone reaches the essential output target. This strong scenario must count all necessary inputs and maintenance; aggregate output does not itself guarantee distribution."
+    },
+    {
+      "id": "H12",
+      "kind": "hypothesis",
+      "title": "Equal contribution, unequal ownership",
+      "text": "Two people have the same measured contribution and labor remuneration, but strictly different ownership shares; capital income is positive and redistribution is zero."
+    },
+    {
+      "id": "H13",
+      "kind": "hypothesis",
+      "title": "A sufficient common entitlement at every work and wealth level",
+      "text": "Each person receives a common entitlement covering their needs regardless of employment or wealth, and any supplementary access is nonnegative. Delivery and funding in real resources are required, not merely promised."
+    },
+    {
+      "id": "H14",
+      "kind": "hypothesis",
+      "title": "Common access survives private withdrawal",
+      "text": "After every unilateral private withdrawal considered, the sufficient common entitlement remains available and the remaining private access is nonnegative. Capture or destruction of the common institution is outside this hypothesis."
+    },
+    {
+      "id": "H15",
+      "kind": "hypothesis",
+      "title": "Common capacity reaches the private ceiling",
+      "text": "Private output follows the stated saturation technology with a nonnegative ceiling M, while sustainable common net output is at least M. This is a technological and institutional scenario, not a fact derived from AI alone."
+    },
+    {
+      "id": "H16",
+      "kind": "hypothesis",
+      "title": "Technical solutions exist for the considered plans",
+      "text": "Every alternative plan under consideration has an available technical solution. This local hypothesis does not claim that all scientific questions are solved or that resources are unlimited."
+    },
+    {
+      "id": "H17",
+      "kind": "hypothesis",
+      "title": "Effective democratic economic institutions",
+      "text": "The specified governance satisfies every condition of EconomicDemocracy. Votes have equal weight, contestation and protected initiatives are available, choices respect rights and feasibility, and selected plans are actually implemented."
+    },
+    {
+      "id": "H18",
+      "kind": "hypothesis",
+      "title": "Productive infrastructure belongs to the common",
+      "text": "The specified productive infrastructure has collective title, every person is a beneficiary, and no individual may privatize it unilaterally. This does not require common ownership of personal possessions."
+    },
+    {
+      "id": "H19",
+      "kind": "hypothesis",
+      "title": "A sufficient common provision is actually delivered",
+      "text": "The same candidate institution is feasible, respects equal liberties and democratic control, and delivers to everyone at least a common allocation covering their essential needs. The ownership and governance records describe this candidate."
     }
   ],
   "results": [
@@ -418,6 +533,376 @@
         "line": 257,
         "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L257"
       }
+    },
+    {
+      "id": "maximin-sufficiency",
+      "leanName": "PhiloForge.AIJustice.maximin_implies_sufficiency",
+      "requires": [
+        "D1",
+        "J1",
+        "J2"
+      ],
+      "parents": [
+        "admissibility"
+      ],
+      "title": "Maximin implies the sufficiency commitment",
+      "text": "Every regime just under the earlier maximin criterion satisfies the sufficiency criterion. Existing maximin results remain valid while the foundational argument can use the weaker commitment.",
+      "formula": "Just(r) ⇒ SufficiencyJust(r)",
+      "steps": [
+        "Apply the earlier needs-coverage theorem to any sufficient admissible alternative."
+      ],
+      "limit": "An implication between definitions of justice, not a proof that either moral principle must be accepted.",
+      "proof": {
+        "code": "theorem maximin_implies_sufficiency {P R : Type} (m : Model P R) (r : R)\n    (justice : Just m r) : SufficiencyJust m r := by\n  refine ⟨justice.1, ?_⟩\n  rintro ⟨s, admissible, sufficient⟩\n  exact needs_from_maximin m r s justice admissible sufficient",
+        "line": 267,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L267"
+      }
+    },
+    {
+      "id": "sufficiency-exclusion",
+      "leanName": "PhiloForge.AIJustice.sufficient_justice_excludes_deprivation",
+      "requires": [
+        "D1",
+        "J1",
+        "J3",
+        "H1",
+        "H2"
+      ],
+      "parents": [],
+      "title": "Avoidable deprivation is excluded without maximin",
+      "text": "Under the sufficiency commitment, a regime depriving someone of essential needs is unjust whenever an admissible alternative covers everyone’s needs. No maximization beyond that threshold is required.",
+      "formula": "Admissible(s) ∧ Needs(s) ∧ ¬Needs(r) ⇒ ¬SufficiencyJust(r)",
+      "steps": [
+        "The sufficient alternative activates the universal needs requirement.",
+        "The person deprived in r contradicts that requirement."
+      ],
+      "limit": "This conclusion concerns the stated sufficiency criterion; it does not select a unique ownership system.",
+      "proof": {
+        "code": "theorem sufficient_justice_excludes_deprivation {P R : Type} (m : Model P R) (r s : R)\n    (alternative : Admissible m s) (sufficient : UniversalNeeds m s)\n    (deprivation : ∃ i, m.access r i < m.needs i) : ¬ SufficiencyJust m r := by\n  intro justice\n  have covered := justice.2 ⟨s, alternative, sufficient⟩\n  obtain ⟨i, hi⟩ := deprivation\n  have := covered i\n  grind",
+        "line": 273,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L273"
+      }
+    },
+    {
+      "id": "sufficiency-not-maximin",
+      "leanName": "PhiloForge.AIJustice.sufficiency_does_not_imply_maximin",
+      "requires": [
+        "D1"
+      ],
+      "parents": [],
+      "title": "Covering needs does not impose maximin",
+      "text": "In a two-regime witness, an admissible allocation of one unit per person covers all needs, while another delivers two. The first satisfies sufficiency but fails maximin.",
+      "formula": "∃ r, SufficiencyJust(r) ∧ ¬Just(r)",
+      "steps": [
+        "Both people need one unit and receive one in the first regime.",
+        "The alternative has a strictly higher minimum, so the first is not maximin."
+      ],
+      "limit": "A logical separation of two normative criteria, not a recommendation to stop improving life once essential needs are met.",
+      "proof": {
+        "code": "theorem sufficiency_does_not_imply_maximin :\n    SufficiencyJust sufficientButNotMaximal false ∧ ¬ Just sufficientButNotMaximal false := by\n  constructor\n  · exact ⟨⟨True.intro, True.intro, True.intro⟩, fun _ i => by cases i <;> decide +kernel⟩\n  · intro justice\n    have h := justice.2 true ⟨True.intro, True.intro, True.intro⟩\n    have bad : ¬ sufficientButNotMaximal.floor true ≤ sufficientButNotMaximal.floor false := by\n      decide +kernel\n    exact bad h",
+        "line": 294,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L294"
+      }
+    },
+    {
+      "id": "necessary-work",
+      "leanName": "PhiloForge.AIJustice.labor_requirement_characterization",
+      "requires": [
+        "D2",
+        "H10"
+      ],
+      "parents": [],
+      "title": "The exact amount of necessary work",
+      "text": "In the linear net-production model, nonnegative human work covers the output target exactly when it reaches the stated necessary-work level.",
+      "formula": "B ≤ A + pL ⇔ L ≥ L*(B,A,p)",
+      "steps": [
+        "When automated output covers the target, zero work is enough.",
+        "Otherwise, divide the remaining output requirement by positive human productivity."
+      ],
+      "limit": "Fixed resource composition and linear human productivity. Distribution, quality, ecological constraints and unpaid work must be accounted for in the model’s inputs.",
+      "proof": {
+        "code": "theorem labor_requirement_characterization (needs automated productivity hours : Rat)\n    (positive : 0 < productivity) (nonnegative : 0 ≤ hours) :\n    needs ≤ netOutput automated productivity hours ↔\n      requiredLabor needs automated productivity ≤ hours := by\n  unfold requiredLabor\n  split\n  · rename_i sufficient\n    have product := Rat.mul_nonneg (show 0 ≤ productivity by grind) nonnegative\n    unfold netOutput\n    grind\n  · rw [division_le_iff (needs - automated) productivity hours positive]\n    unfold netOutput\n    grind",
+        "line": 330,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L330"
+      }
+    },
+    {
+      "id": "less-necessary-work",
+      "leanName": "PhiloForge.AIJustice.automation_reduces_required_labor",
+      "requires": [
+        "D2",
+        "H10"
+      ],
+      "parents": [
+        "necessary-work"
+      ],
+      "title": "Automation can reduce necessary work",
+      "text": "At fixed needs and human productivity, increasing automated net output cannot increase necessary human hours. Releasing that time to people remains an institutional choice.",
+      "formula": "A₁ ≥ A₀ ⇒ L*(B,A₁,p) ≤ L*(B,A₀,p)",
+      "steps": [
+        "The old necessary-work level still meets the target after automated output increases.",
+        "The new minimum can therefore be no larger than the old one."
+      ],
+      "limit": "A weak decrease, not guaranteed elimination of work or an observed reduction in working hours.",
+      "proof": {
+        "code": "theorem automation_reduces_required_labor (needs before after productivity : Rat)\n    (positive : 0 < productivity) (growth : before ≤ after) :\n    requiredLabor needs after productivity ≤ requiredLabor needs before productivity := by\n  have nonneg := required_labor_nonnegative needs before productivity positive\n  have initial := (labor_requirement_characterization needs before productivity\n    (requiredLabor needs before productivity) positive nonneg).mpr (Rat.le_refl)\n  have improved : needs ≤ netOutput after productivity (requiredLabor needs before productivity) := by\n    unfold netOutput at *\n    grind\n  exact (labor_requirement_characterization needs after productivity\n    (requiredLabor needs before productivity) positive nonneg).mp improved",
+        "line": 344,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L344"
+      }
+    },
+    {
+      "id": "no-necessary-work",
+      "leanName": "PhiloForge.AIJustice.sufficient_automation_needs_no_labor",
+      "requires": [
+        "D2",
+        "H11"
+      ],
+      "parents": [],
+      "title": "When the essential target needs no human work",
+      "text": "If automated net output alone covers the essential output target, the necessary-work function is zero.",
+      "formula": "A ≥ B ⇒ L*(B,A,p) = 0",
+      "steps": [
+        "Use the sufficient-output branch of the necessary-work definition."
+      ],
+      "limit": "A conditional production result. It neither predicts total automation nor guarantees that the output reaches each person.",
+      "proof": {
+        "code": "theorem sufficient_automation_needs_no_labor (needs automated productivity : Rat)\n    (sufficient : needs ≤ automated) : requiredLabor needs automated productivity = 0 := by\n  simp [requiredLabor, sufficient]",
+        "line": 356,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L356"
+      }
+    },
+    {
+      "id": "contribution-ownership",
+      "leanName": "PhiloForge.AIJustice.equal_contribution_ownership_gap",
+      "requires": [
+        "D3",
+        "H12"
+      ],
+      "parents": [],
+      "title": "An income gap can persist at equal contribution",
+      "text": "With equal measured contribution and labor remuneration, the person holding more capital receives more when capital income is positive and redistribution is zero. The gap therefore need not come from a difference in the modeled contribution.",
+      "formula": "contrib₁ = contrib₂ ∧ θ₁ < θ₂ ∧ Π > 0 ⇒ income₁ < income₂",
+      "steps": [
+        "Equal contribution gives the same labor remuneration through pay.",
+        "Multiplication by positive capital income preserves the strict ownership difference."
+      ],
+      "limit": "The proof does not measure actual merit or refute every possible justification of property. Historical contributions and risk must be modeled separately if invoked.",
+      "proof": {
+        "code": "theorem equal_contribution_ownership_gap (pay : Rat → Rat)\n    (contribution lowShare highShare profits population : Rat)\n    (positive : 0 < profits) (unequal : lowShare < highShare) :\n    income (pay contribution) lowShare profits 0 population <\n      income (pay contribution) highShare profits 0 population := by\n  have := Rat.mul_lt_mul_of_pos_right unequal positive\n  unfold income\n  grind",
+        "line": 362,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L362"
+      }
+    },
+    {
+      "id": "independent-security",
+      "leanName": "PhiloForge.AIJustice.common_entitlement_secures_independence",
+      "requires": [
+        "D4",
+        "H13"
+      ],
+      "parents": [],
+      "title": "A common entitlement secures independent access",
+      "text": "A sufficient common entitlement with nonnegative supplements covers everyone’s needs at every nonnegative work and wealth level.",
+      "formula": "gᵢ ≥ bᵢ ∧ sᵢ(L,K) ≥ 0 ⇒ gᵢ + sᵢ(L,K) ≥ bᵢ",
+      "steps": [
+        "The common entitlement already reaches each person’s needs.",
+        "A nonnegative supplement cannot remove that guarantee."
+      ],
+      "limit": "Actual universal delivery and its sustainable material basis are hypotheses. A legal promise alone does not satisfy them.",
+      "proof": {
+        "code": "theorem common_entitlement_secures_independence {P : Type} (needs common : P → Rat)\n    (supplement : P → Rat → Rat → Rat)\n    (guarantee : ∀ i, needs i ≤ common i)\n    (nonnegative : ∀ i hours capital, 0 ≤ hours → 0 ≤ capital → 0 ≤ supplement i hours capital) :\n    IndependentSecurity needs (fun i hours capital => common i + supplement i hours capital) := by\n  intro i hours capital hoursNonneg capitalNonneg\n  have := guarantee i\n  have := nonnegative i hours capital hoursNonneg capitalNonneg\n  grind",
+        "line": 375,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L375"
+      }
+    },
+    {
+      "id": "access-without-employment",
+      "leanName": "PhiloForge.AIJustice.security_without_employment_or_wealth",
+      "requires": [
+        "D4",
+        "H13"
+      ],
+      "parents": [
+        "independent-security"
+      ],
+      "title": "Essential access without employment or private wealth",
+      "text": "The independence guarantee includes a person supplying zero work and holding zero private capital. Neither employment nor private accumulation is necessary for their essential security in this model.",
+      "formula": "IndependentSecurity ⇒ ∀ i, accessᵢ(0,0) ≥ bᵢ",
+      "steps": [
+        "Apply the universal independence guarantee at zero work and zero capital."
+      ],
+      "limit": "This does not imply that society as a whole requires no human work. Collective provision may still depend on work supplied elsewhere.",
+      "proof": {
+        "code": "theorem security_without_employment_or_wealth {P : Type} (needs : P → Rat)\n    (access : P → Rat → Rat → Rat) (security : IndependentSecurity needs access) :\n    ∀ i, needs i ≤ access i 0 0 := by\n  intro i\n  exact security i 0 0 (Rat.le_refl) (Rat.le_refl)",
+        "line": 385,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L385"
+      }
+    },
+    {
+      "id": "deprivation-veto",
+      "leanName": "PhiloForge.AIJustice.protected_common_access_blocks_veto",
+      "requires": [
+        "D5",
+        "H14"
+      ],
+      "parents": [],
+      "title": "Protected common access limits a form of domination",
+      "text": "A private actor cannot cause essential deprivation by withdrawing the private component if the sufficient common entitlement survives every such withdrawal.",
+      "formula": "g ≥ b ∧ ∀ w, r(w) ≥ 0 ⇒ ¬∃ w, g + r(w) < b",
+      "steps": [
+        "After withdrawal, the protected common entitlement still covers needs.",
+        "The remaining nonnegative access cannot push total access below that threshold."
+      ],
+      "limit": "Only deprivation through the specified withdrawals is excluded. Political capture, violence, prestige and other forms of domination remain outside this result.",
+      "proof": {
+        "code": "theorem protected_common_access_blocks_veto {W : Type} (needs common : Rat)\n    (remainder : W → Rat) (guarantee : needs ≤ common)\n    (nonnegative : ∀ withdrawal, 0 ≤ remainder withdrawal) :\n    ¬ DeprivationVeto needs (fun withdrawal => common + remainder withdrawal) := by\n  rintro ⟨withdrawal, deprived⟩\n  have := nonnegative withdrawal\n  grind",
+        "line": 396,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L396"
+      }
+    },
+    {
+      "id": "common-capacity",
+      "leanName": "PhiloForge.AIJustice.common_capacity_dominates_accumulation",
+      "requires": [
+        "D6",
+        "H15"
+      ],
+      "parents": [],
+      "title": "A common capacity that private accumulation cannot exceed",
+      "text": "In the stated saturation scenario, any nonnegative finite private capital produces at most M. A common infrastructure producing at least M therefore cannot be surpassed by saving and investing more within that private technology.",
+      "formula": "Yᶜ ≥ M ≥ M·K/(1 + K), ∀ K ≥ 0",
+      "steps": [
+        "Since K ≤ 1 + K and the denominator is positive, private output is bounded by M.",
+        "The common output reaches that bound, so transitivity gives the comparison for every K."
+      ],
+      "limit": "An existence scenario under a strong technological assumption. It does not establish real-world saturation, superior quality, equal access, or the disappearance of all private advantages.",
+      "proof": {
+        "code": "theorem common_capacity_dominates_accumulation (cap common : Rat)\n    (capNonneg : 0 ≤ cap) (commonCapacity : cap ≤ common) :\n    ∀ capital, 0 ≤ capital → saturatedPrivateOutput cap capital ≤ common := by\n  intro capital nonnegative\n  have := saturated_private_output_bounded cap capital capNonneg nonnegative\n  grind",
+        "line": 414,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L414"
+      }
+    },
+    {
+      "id": "priorities-after-solutions",
+      "leanName": "PhiloForge.AIJustice.abundant_solutions_leave_material_and_rights_choices",
+      "requires": [
+        "D7",
+        "H16"
+      ],
+      "parents": [],
+      "title": "Available solutions leave collective choices to make",
+      "text": "When every considered plan has a technical solution, eligibility still depends on material feasibility and rights. Technical availability alone does not specify which eligible plan should be pursued.",
+      "formula": "(∀ x, Solution(x)) ⇒ (Selectable(x) ↔ Material(x) ∧ Rights(x))",
+      "steps": [
+        "Substitute the available technical solution into the selection criteria.",
+        "The material and rights requirements remain in both directions of the equivalence."
+      ],
+      "limit": "The theorem simplifies eligibility; it does not prove that several eligible plans exist, rank them, or resolve every future scientific question.",
+      "proof": {
+        "code": "theorem abundant_solutions_leave_material_and_rights_choices {X : Type}\n    (solution material rights : X → Prop) (available : ∀ x, solution x) :\n    ∀ x, Selectable solution material rights x ↔ material x ∧ rights x := by\n  intro x\n  exact ⟨fun h => h.2, fun h => ⟨available x, h⟩⟩",
+        "line": 426,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L426"
+      }
+    },
+    {
+      "id": "democratic-guarantees",
+      "leanName": "PhiloForge.AIJustice.democratic_control_protects_contestation_and_initiative",
+      "requires": [
+        "D8",
+        "J1",
+        "H17"
+      ],
+      "parents": [],
+      "title": "Equal voice, contestation and protected initiatives",
+      "text": "The specified economic democracy gives each person the same voting weight, a right to contest and permission to pursue protected initiatives, including when they are in a minority.",
+      "formula": "EconomicDemocracy ⇒ EqualVoice ∧ Contestation ∧ ProtectedInitiatives",
+      "steps": [
+        "Extract universal contestation and protected initiatives from the institutional requirements.",
+        "Every voting weight equals one, so any two people have equal weights."
+      ],
+      "limit": "These guarantees are explicitly required of the institution. The theorem does not establish their actual enforcement, public funding of every initiative or the absence of informal influence.",
+      "proof": {
+        "code": "theorem democratic_control_protects_contestation_and_initiative {P X : Type}\n    (g : EconomicGovernance P X) (democracy : EconomicDemocracy g) :\n    (∀ i, g.canContest i) ∧\n    (∀ i x, g.protectedInitiative x → g.mayPursue i x) ∧\n    (∀ i j, g.voteWeight i = g.voteWeight j) := by\n  refine ⟨democracy.2.1, democracy.2.2.1, ?_⟩\n  intro i j\n  rw [democracy.1 i, democracy.1 j]",
+        "line": 463,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L463"
+      }
+    },
+    {
+      "id": "rights-before-majority",
+      "leanName": "PhiloForge.AIJustice.implemented_economic_choices_respect_rights",
+      "requires": [
+        "D8",
+        "J1",
+        "H17"
+      ],
+      "parents": [
+        "democratic-guarantees"
+      ],
+      "title": "Implemented choices remain subject to rights",
+      "text": "Under the stated democratic requirements, every implemented economic plan is feasible and respects rights. A majority cannot make a rights-violating plan admissible merely by selecting it.",
+      "formula": "Implemented(x) ⇒ Feasible(x) ∧ Rights(x)",
+      "steps": [
+        "Effective implementation identifies the implemented plan with a collectively selected plan.",
+        "The selection requirements impose feasibility and respect for rights."
+      ],
+      "limit": "A conditional institutional guarantee. The majority-count theorem alone does not provide it; rights and contestation need their own effective institutions.",
+      "proof": {
+        "code": "theorem implemented_economic_choices_respect_rights {P X : Type}\n    (g : EconomicGovernance P X) (democracy : EconomicDemocracy g) :\n    ∀ x, g.implemented x → g.feasible x ∧ g.respectsRights x := by\n  intro x implemented\n  exact democracy.2.2.2.1 x ((democracy.2.2.2.2 x).mp implemented)",
+        "line": 472,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L472"
+      }
+    },
+    {
+      "id": "democratic-communism",
+      "leanName": "PhiloForge.AIJustice.common_provision_realizes_democratic_communism",
+      "requires": [
+        "D1",
+        "D4",
+        "D8",
+        "J1",
+        "J3",
+        "H17",
+        "H18",
+        "H19"
+      ],
+      "parents": [
+        "democratic-guarantees"
+      ],
+      "title": "Conditions for a democratic communist institution",
+      "text": "Collective productive ownership, effective economic democracy and an admissible institution delivering sufficient common resources jointly meet the defined communist ideal and the sufficiency criterion of justice.",
+      "formula": "CollectiveOwnership ∧ EconomicDemocracy ∧ Admissible ∧ DeliveredNeeds ⇒ DemocraticCommunism ∧ SufficiencyJust",
+      "steps": [
+        "Actual access is at least the common allocation, which is at least each person’s needs.",
+        "Combine universal provision with collective title and democratic guarantees.",
+        "Universal needs coverage also satisfies the conditional sufficiency obligation."
+      ],
+      "limit": "A sufficient institutional specification, not proof of historical feasibility, unique superiority or a transition strategy. Personal property is not identified with productive infrastructure.",
+      "proof": {
+        "code": "theorem common_provision_realizes_democratic_communism {P R X : Type}\n    (m : Model P R) (r : R) (c : CommonInfrastructure P) (g : EconomicGovernance P X)\n    (ownership : CollectiveOwnership c) (democracy : EconomicDemocracy g)\n    (admissible : Admissible m r) (common : P → Rat)\n    (sufficient : ∀ i, m.needs i ≤ common i)\n    (delivered : ∀ i, common i ≤ m.access r i) :\n    DemocraticCommunism m r c g ∧ SufficiencyJust m r := by\n  have needs : UniversalNeeds m r := by\n    intro i\n    have := sufficient i\n    have := delivered i\n    grind\n  exact ⟨⟨ownership, democracy, admissible, needs⟩, ⟨admissible, fun _ => needs⟩⟩",
+        "line": 478,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L478"
+      }
+    },
+    {
+      "id": "communist-model",
+      "leanName": "PhiloForge.AIJustice.democratic_common_institution_has_model",
+      "requires": [
+        "D8"
+      ],
+      "parents": [],
+      "title": "The institutional requirements have a common model",
+      "text": "A finite example with two people satisfies collective title, equal voice, contestation, protected initiatives, implementation and universal needs coverage together.",
+      "formula": "∃ institution, DemocraticCommunism(institution)",
+      "steps": [
+        "Every person benefits from the common infrastructure and nobody can privatize it alone.",
+        "The witness stipulates equal voices and the required freedoms, and supplies one unit to each person who needs one."
+      ],
+      "limit": "Shows compatibility of these formal requirements in one abstract model. It establishes no empirical fact about a real political regime or technological system.",
+      "proof": {
+        "code": "theorem democratic_common_institution_has_model :\n    DemocraticCommunism exampleModel true commonWitness governanceWitness := by\n  refine ⟨?_, ?_, ?_, ?_⟩\n  · exact ⟨True.intro, fun _ => True.intro, fun _ h => h⟩\n  · exact ⟨fun _ => rfl, fun _ => True.intro, fun _ _ _ => True.intro,\n      fun _ _ => ⟨True.intro, True.intro⟩, fun _ => Iff.rfl⟩\n  · exact ⟨True.intro, True.intro, True.intro⟩\n  · intro i\n    cases i <;> decide +kernel",
+        "line": 509,
+        "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L509"
+      }
     }
   ],
   "conflicts": [
@@ -442,6 +927,148 @@
         "line": 104,
         "url": "https://github.com/dufeteller/philoforge/blob/main/logic/PhiloForge/AIJustice.lean#L104"
       }
+    }
+  ],
+  "foundation": [
+    {
+      "id": "contribution",
+      "title": "Contribution, merit and property",
+      "text": "I consider that artificial intelligence requires us to re-examine work, ownership and the distribution of wealth. If a growing share of production and innovation can be automated, differences in living conditions become harder to justify by differences in individual skill. Income may increasingly reflect ownership of productive infrastructure. I therefore distinguish productive capacity, personal contribution and the rights attached to property, rather than treating income as a direct measure of merit."
+    },
+    {
+      "id": "work",
+      "title": "A decent life independent of employment",
+      "text": "I question the requirement to work in order to live decently. When collective productive capacity can cover essential needs with less human labor, I defend an unconditional right to that essential provision. Productivity gains should also allow a reduction in necessary work and a general improvement in living conditions. Releasing time, sharing remaining tasks and distributing output are institutional choices: producing more does not by itself ensure that everyone benefits."
+    },
+    {
+      "id": "innovation",
+      "title": "From finding solutions to choosing priorities",
+      "text": "If automated innovation becomes a common infrastructure, a growing share of our choices could concern which technically available projects to pursue. The material resources, ecological constraints and purposes of those projects would still matter. I would then find it harder to justify concentrated private wealth as a necessary condition of scientific and technical progress. A sustainable collective capacity to innovate would make that justification open to challenge."
+    },
+    {
+      "id": "common",
+      "title": "A productive common and material independence",
+      "text": "I envisage common productive infrastructure sufficiently capable that saving and investing privately would no longer provide a decisive productive advantage. If everyone can access quality goods and services, personal accumulation ceases to be necessary for essential security. A protected common provision could also weaken the power to impose deprivation by withholding employment or privately controlled resources. This ambition concerns both production and effective access to its benefits."
+    },
+    {
+      "id": "democracy",
+      "title": "Economic democracy and its guarantees",
+      "text": "I defend extending democracy to the major choices of production, research and investment. Collective priorities should be decided through equal political standing and effective control of institutions, rather than mainly by ownership of capital. This requires a right to contest, protection of individual liberties and space for minority initiatives. Majority decisions must remain subject to these guarantees, and common ownership must come with actual accountability and implementation."
+    },
+    {
+      "id": "communism",
+      "title": "The communist ideal I defend",
+      "text": "This is the sense in which I find the communist ideal relevant: collective ownership of productive infrastructure whose benefits serve everyone’s needs, under effective democratic control and with individual freedoms protected. I distinguish this institutional ideal from a redistribution formula alone. AI could strengthen its material conditions by enabling production and innovation with less human labor, provided the common institution can maintain and renew its productive capacity."
+    },
+    {
+      "id": "intelligence",
+      "title": "Reconsidering the human intellectual starting point",
+      "text": "This possibility is difficult to conceive because humanity built its institutions in a world where it was the most accomplished form of intelligence it knew. Knowledge, invention and social organization relied on human capacities. I envisage a change in those conditions if artificial systems take on a large share of these functions. To assess the collective ideal in that setting, I do not treat the constraints that shaped earlier societies as immutable."
+    },
+    {
+      "id": "viability",
+      "title": "A conditional possibility with explicit commitments",
+      "text": "I maintain that AI could make a collective economic organization more viable if intellectual gains become sustainable material capacities accessible to everyone, accompanied by freedom and genuine democratic control. My minimum commitment is universal essential provision whenever an admissible institution can achieve it. Maximizing the situation of the least advantaged is an optional stronger interpretation. The formal results below specify what follows from these choices and from explicit assumptions about technology, resources and institutions."
+    }
+  ],
+  "coverage": [
+    {
+      "section": "contribution",
+      "title": "Equal contribution and unequal income",
+      "status": "Conditional model",
+      "text": "The ownership gap is proved at equal modeled contribution. Moral merit itself is not measured.",
+      "results": [
+        "contribution-ownership"
+      ]
+    },
+    {
+      "section": "work",
+      "title": "Work, time and essential security",
+      "status": "Conditional model",
+      "text": "Necessary work decreases in the production model; a protected common entitlement covers needs even at zero work and wealth. Actual working-time policy remains a collective decision.",
+      "results": [
+        "less-necessary-work",
+        "no-necessary-work",
+        "access-without-employment"
+      ]
+    },
+    {
+      "section": "work",
+      "title": "Sharing automation gains with the majority",
+      "status": "Conditional model",
+      "text": "The existing 100-person witness shows that output can double while 90 people lose access. The comparative threshold states when collective allocation improves a nonowner’s position; majority support needs additional preference and voting assumptions.",
+      "results": [
+        "majority-example",
+        "collective-threshold",
+        "majority-vote"
+      ]
+    },
+    {
+      "section": "innovation",
+      "title": "Innovation and the choice of priorities",
+      "status": "Conditional model",
+      "text": "Sustainable collective innovation challenges the necessity of private concentration. Available solutions leave material and rights criteria to satisfy.",
+      "results": [
+        "innovation",
+        "priorities-after-solutions"
+      ]
+    },
+    {
+      "section": "common",
+      "title": "A common capacity beyond private accumulation",
+      "status": "Illustrative scenario",
+      "text": "A saturating private technology has a bound that common output can reach. Its applicability, resource quality and sustainable delivery must be established separately.",
+      "results": [
+        "common-capacity"
+      ]
+    },
+    {
+      "section": "common",
+      "title": "Security and economic domination",
+      "status": "Scoped guarantee",
+      "text": "Protected common access blocks deprivation through the modeled private withdrawals. The result covers that particular power, not every form of domination.",
+      "results": [
+        "independent-security",
+        "deprivation-veto"
+      ]
+    },
+    {
+      "section": "democracy",
+      "title": "Democratic control, rights and minorities",
+      "status": "Institutional specification",
+      "text": "Equal voices, contestation, protected initiatives and rights-constrained implementation are explicit requirements. Enforcement and resistance to capture remain institutional questions.",
+      "results": [
+        "democratic-guarantees",
+        "rights-before-majority"
+      ]
+    },
+    {
+      "section": "communism",
+      "title": "Collective ownership and communist institutions",
+      "status": "Institutional specification",
+      "text": "Collective productive ownership is defined independently of redistribution. A conditional assembly theorem and an abstract witness show how it can coexist with rights and universal provision.",
+      "results": [
+        "democratic-communism",
+        "communist-model"
+      ]
+    },
+    {
+      "section": "intelligence",
+      "title": "The change in humanity’s intellectual position",
+      "status": "Philosophical framing",
+      "text": "This motivates reopening institutional possibilities. It is stated in the founding text; it is not presented as a Lean theorem or a prediction of AI capabilities.",
+      "results": []
+    },
+    {
+      "section": "viability",
+      "title": "Universal needs and optional maximin",
+      "status": "Normative choice and logical relation",
+      "text": "Sufficiency excludes avoidable deprivation. Maximin implies this commitment, while a counterexample proves that sufficiency does not require maximin.",
+      "results": [
+        "sufficiency-exclusion",
+        "maximin-sufficiency",
+        "sufficiency-not-maximin"
+      ]
     }
   ]
 }

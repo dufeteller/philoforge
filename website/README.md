@@ -2,7 +2,7 @@
 
 The journal lives at `/`; `/philoforge/` presents Spinoza and AI justice as consecutive theory groups in a shared workshop. English is canonical, French optional. Source translations are maintained in `dist/assets/locales.js`; missing French content is hidden.
 
-The workshop supports complete theories, premise groups and individual statements with tri-state checkboxes. Spinoza has 20 conditional results; AI justice has 16 (15 in its complete preset, one in the alternative H9 scenario). Explicit modeling conventions accompany the source entries.
+The workshop supports complete theories, premise groups and individual statements with tri-state checkboxes. Spinoza has 20 conditional results; AI justice has 32 (31 in its complete preset, one in the alternative H9 scenario). Explicit modeling conventions accompany the source entries.
 
 Lean checks the reconstruction in `logic/PhiloForge/Spinoza.lean`. The browser selects supported results; it does not execute Lean. The optional counterexample test is clearly labeled as user-added, not a Spinoza axiom. Shared selections use `philoforge.universe.v1`. On first use, the two older theory-specific selections are migrated without overwriting them. An explicit URL selection wins over storage, and saved empty selections remain empty.
 
@@ -22,4 +22,4 @@ The complete Ethics library is served at `/philoforge/ethics/`. Its versioned so
 
 ## AI, property and democratic justice
 
-`/philoforge/ai-justice/` offers a separate bilingual theory, premise selection, a known-conflict check, exact Lean proofs and an illustrative distribution simulator. State is scoped to `philoforge.ai-justice.v1`. The English registry is `dist/data/ai-justice.json`; French translations use `locales.js`. Run `node scripts/check-ai-justice.cjs`, `node website/tests/ai-justice.cjs` and `lake build` from `logic/`. See `docs/ai-justice.md`.
+`/philoforge/ai-justice/` offers a bilingual founding text and argument-to-proof correspondence, selectable definitions and premises, a known-conflict check, exact Lean proofs and an illustrative distribution simulator. Its default uses sufficiency justice; maximin remains optional. State is scoped to `philoforge.ai-justice.v1`. The English registry is `dist/data/ai-justice.json`; French translations use `locales.js`. Run `node scripts/check-ai-justice.cjs`, `node website/tests/ai-justice.cjs` and `lake build` from `logic/`. See `docs/ai-justice.md`.

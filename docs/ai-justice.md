@@ -1,20 +1,27 @@
 # AI, property and democratic justice
 
-The bilingual theory is at `/philoforge/ai-justice/`. This is a new theory,
-separate from the Spinoza reconstruction and its selection state.
+The bilingual theory is at `/philoforge/ai-justice/`. Its detail page has its own
+selection state; the shared workshop also offers it beside Spinoza with
+namespaced premises and a common deduction map.
 
-## Two normative principles
+## Founding text and normative choices
 
-1. **Equal liberties and democratic standing:** an admissible institution is
-   feasible, respects equal fundamental liberties and allows effective democratic
-   control. Liberties and democracy remain distinct commitments grouped together.
-2. **Maximin justice:** among admissible institutions, maximize the lowest
-   needs-adjusted resource access. This normative choice is not proved true by Lean.
+The founding text covers contribution and property, access independent of
+employment, necessary work, innovation priorities, common productive capacity,
+economic dependence, democracy, the communist ideal, and humanity's historical
+intellectual position. The coverage section links each argument to scoped results.
+Historical framing remains prose. The requested mathematics example is omitted.
 
-The rejection of avoidable deprivation is derived: a just institution must cover
-everyone's needs if an admissible alternative can. Both institutions are compared
-under the same liberty and democracy requirements. Existence of an optimizer is
-not assumed; another theorem shows that unlimited strict improvement excludes one.
+The minimal commitments are **J1** (equal liberties and effective democracy) and
+**J3** (universal essential provision whenever a sufficient admissible alternative
+exists). `SufficiencyJust` names this criterion. **J2** maximin is an optional
+strengthening; `Just` retains its earlier meaning and every previous result.
+Lean proves `Just → SufficiencyJust` and a counterexample to the converse.
+The default selects D1, J1, J3, H1 and H2 without automatically adopting maximin.
+Existing saved choices are preserved. No moral principle is proved true by Lean.
+
+Definitions D1–D8 and hypotheses H10–H19 expose the additional models. The full
+preset includes both compatible criteria and excludes H9, which conflicts with H3.
 
 ## Exact formal scope
 
@@ -96,3 +103,45 @@ licenses violating a minority's fundamental liberties.
 Selecting H3 (strictly best admissible regime) with H9 (every admissible regime
 can be strictly improved) replaces the result list with their compiled conflict
 proof. This detects one known incompatibility, not arbitrary model consistency.
+
+## Additional models and limits
+
+- Necessary work: net output is `A + pL`. With positive human productivity,
+  required work is zero when A covers B, otherwise `(B-A)/p`. The exact threshold
+  and weak decrease with increased automation are proved at fixed needs and
+  productivity. Net output must include upkeep, energy, renewal, investment and
+  all remaining human tasks. Actual working-time policy and distribution remain
+  institutional choices.
+- Contribution and property: the same modeled contribution is paid through the
+  same function. Positive capital income and unequal ownership still produce an
+  income gap. This neither measures moral merit nor exhausts property arguments.
+- Independent security: a sufficient common entitlement and nonnegative
+  supplements cover needs for every nonnegative work/capital choice, including
+  zero work and zero wealth. Society may still require work from others.
+- Deprivation veto: protected common access excludes specified private withdrawals
+  causing essential deprivation. Capture, violence and other domination are not
+  covered. The entitlement must actually survive every modeled withdrawal.
+- Productive dominance: `M*K/(1+K)` is bounded by M for every nonnegative finite K.
+  Common output at least M is therefore never exceeded in that scenario. This
+  saturation law, quality, sustainability and common capacity are not inferred
+  from AI. The comparison is of output, not every person's utility or privilege.
+- Priorities: available technical solutions remove only one eligibility condition.
+  Material feasibility and rights remain. The result does not rank alternatives,
+  prove that several eligible plans exist or solve all scientific problems.
+- Collective ownership: common title, universal beneficiary status and no
+  unilateral privatization concern productive infrastructure. Personal possessions
+  are outside the definition; redistribution alone does not imply common title.
+- Economic democracy: equal voting weights, universal contestation, protected
+  initiatives, feasible rights-respecting choices and implementation exactly of
+  selected plans are explicit institutional requirements. This ideal specification
+  is not a voting algorithm, a guarantee of funding every initiative, a proof of
+  real enforcement or the absence of informal influence.
+- Democratic communism: common title, specified governance, admissibility and
+  actual universal provision satisfy `DemocraticCommunism` and `SufficiencyJust`.
+  These records must describe the same candidate institution. A finite witness
+  shows the requirements coexist abstractly, without proving real feasibility,
+  a transition strategy or unique superiority.
+
+The automation-to-work and common-provision-to-security arguments have distinct
+premises. Knowledge gains do not automatically imply material abundance, effective
+access, rights or democratic institutions.
