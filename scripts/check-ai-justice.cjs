@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const sourcePath = path.join(root, 'logic/PhiloForge/AIJustice.lean');
 const source = fs.readFileSync(sourcePath, 'utf8');
-const dataPath = path.join(root, 'website/dist/data/ai-justice.json');
+const dataPath = path.join(root, 'website/archive/ai-justice/data/ai-justice.json');
 const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 const write = process.argv.includes('--write');
 assert.equal(data.leanVersion, fs.readFileSync(path.join(root, 'logic/lean-toolchain'), 'utf8').trim().split(':v')[1]);
@@ -45,7 +45,7 @@ const checks = [
 ].join('\n');
 const artifacts = [
   [path.join(root, 'logic/PhiloForge/AIJusticeChecks.lean'), checks],
-  [path.join(root, 'website/dist/proofs/AIJustice.lean'), source]
+  [path.join(root, 'website/archive/ai-justice/proofs/AIJustice.lean'), source]
 ];
 if (write) fs.writeFileSync(dataPath, JSON.stringify(data, null, 2) + '\n');
 for (const [filename, expected] of artifacts) {

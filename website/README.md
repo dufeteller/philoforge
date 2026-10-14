@@ -12,9 +12,9 @@ Checks: `node website/tests/spinoza.cjs`, `node website/tests/i18n.cjs`, and `la
 
 ## Deduction map
 
-Generate opens `/philoforge/map/` in a new tab with namespaced premise IDs (`spinoza:*`, `justice:*`) and language in its URL. Both theories appear in separate lanes of the same map. The return link restores the exact selection. Legacy `?axioms=` map links still load as Spinoza selections. The map supports pointer dragging, pinch or wheel zoom, buttons, keyboard navigation, and node details. Known contradictions remain on the selection page; direct contradictory map URLs are rejected. A generated-link fallback is provided when browser popup handling interferes.
+Generate opens `/philoforge/map/` in a new tab with namespaced premise IDs (`spinoza:*`, `justice:*`) and language in its URL. Only Spinoza is exposed in the public map. The return link restores the exact selection. Legacy `?axioms=` map links still load as Spinoza selections. The map supports pointer dragging, pinch or wheel zoom, buttons, keyboard navigation, and node details. Known contradictions remain on the selection page; direct contradictory map URLs are rejected. A generated-link fallback is provided when browser popup handling interferes.
 
-`dist/assets/theories.js` combines the existing proof registries and completes the AI graph ancestry with the explicit `justice:model` definition root. The browser only selects registered theorems. Known conflicts suppress results from the whole selection. Whole-theory presets exclude the optional Spinoza counterexample and the alternative H9 improvement scenario. Run `node website/tests/theories.cjs` for selection, ancestry, namespace, migration and URL checks.
+`dist/assets/theories.js` loads Spinoza for the public workshop; its optional second registry remains covered by archive tests. The browser only selects registered theorems. Known conflicts suppress results from the whole selection. Whole-theory presets exclude the optional Spinoza counterexample and the alternative H9 improvement scenario. Run `node website/tests/theories.cjs` for selection, ancestry, namespace, migration and URL checks.
 
 The bridge registry is intentionally empty. A future cross-theory result requires an explicit mapping of concepts, named premises from both theories, a compiled Lean theorem and synchronized proof metadata. Displaying both theories together does not establish philosophical compatibility or derive a new theorem.
 
@@ -22,4 +22,4 @@ The complete Ethics library is served at `/philoforge/ethics/`. Its versioned so
 
 ## AI, property and democratic justice
 
-`/philoforge/ai-justice/` offers a bilingual founding text and argument-to-proof correspondence, selectable definitions and premises, a known-conflict check, exact Lean proofs and an illustrative distribution simulator. Its default uses sufficiency justice; maximin remains optional. State is scoped to `philoforge.ai-justice.v1`. The English registry is `dist/data/ai-justice.json`; French translations use `locales.js`. Run `node scripts/check-ai-justice.cjs`, `node website/tests/ai-justice.cjs` and `lake build` from `logic/`. See `docs/ai-justice.md`.
+The personal AI justice page and assets are archived in `archive/ai-justice/`, outside the deployed `dist/` directory. Their source checks remain available. The live registry loads only Spinoza and filters archived IDs out of saved selections and shared map links.

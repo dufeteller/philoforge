@@ -1,8 +1,8 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { derive, cleanSelection, conflicts, simulate } = require('../dist/assets/ai-justice.js');
-const data = require('../dist/data/ai-justice.json');
+const { derive, cleanSelection, conflicts, simulate } = require('../archive/ai-justice/assets/ai-justice.js');
+const data = require('../archive/ai-justice/data/ai-justice.json');
 require('../dist/assets/locales.js');
 const {canDisplay} = require('../dist/assets/i18n.js');
 const all = data.premises.map(p=>p.id);
@@ -63,12 +63,13 @@ for(const item of data.coverage){
 const history=data.coverage.find(item=>item.section==='intelligence');
 assert.ok(history);assert.deepEqual(history.results,[],'Historical framing is not a Lean theorem');
 assert.ok(!/OpenAI|ChatGPT|mathematical progress/i.test(JSON.stringify(data.foundation)));
-const html=fs.readFileSync(path.join(__dirname,'../dist/philoforge/ai-justice/index.html'),'utf8');
+const html=fs.readFileSync(path.join(__dirname,'../archive/ai-justice/philoforge/ai-justice/index.html'),'utf8');
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
 assert.equal(new Set(ids).size,ids.length);
 for(const id of ['justice-definitions','justice-foundation-text','justice-coverage','justice-select-all','justice-principles','justice-hypotheses','justice-results','sim-output','sim-sharing','justice-sim-body'])assert.ok(ids.includes(id));
 for(const match of html.matchAll(/(?:href|src)="(\/(?!\/)[^"#?]+)(?:[?#][^"]*)?"/g)){
-  let target=path.join(__dirname,'../dist',match[1]);if(target.endsWith('/'))target+='index.html';
+  const archived=/ai-justice|AIJustice/.test(match[1]);
+  let target=path.join(__dirname,archived?'../archive/ai-justice':'../dist',match[1]);if(target.endsWith('/'))target+='index.html';
   assert.ok(fs.existsSync(target),target);
 }
 console.log('AI justice: premise dependencies and conflict, bilingual results, exact example, redistribution boundary, 960 distribution scenarios and local links checked.');
