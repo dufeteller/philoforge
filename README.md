@@ -29,4 +29,4 @@ English is the primary language; French is supported across the website. French 
 
 ## AI and democratic justice
 
-The theory at [dufetelle.com/philoforge/ai-justice/](https://dufetelle.com/philoforge/ai-justice/) explores two normative principles, explicit economic hypotheses, sixteen conditional results and a verified conflict between optimization scenarios. See [the formalization notes](docs/ai-justice.md) for scope and checks.
+The personal AI justice theory is archived outside the published website in `website/archive/ai-justice/`. Its Lean sources and checks remain in the repository. The public workshop presents only Spinoza.

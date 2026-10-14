@@ -3,12 +3,14 @@
  const KEY='philoforge.universe.v1';
  const prefix=(theory,id)=>theory+':'+id;
  function createRegistry(spinoza,justice){
+  const includeJustice=!!justice;
+  justice=justice||{premises:[],results:[],conflicts:[]};
   const spEntries=spinoza.entries.map(e=>({...e,id:prefix('spinoza',e.id),localId:e.id,theory:'spinoza'}));
   const spResults=spinoza.results.map(r=>({...r,id:prefix('spinoza',r.id),localId:r.id,theory:'spinoza',requires:r.requires.map(id=>prefix('spinoza',id)),parents:r.parents.map(id=>prefix('spinoza',id))}));
   const model={id:'justice:model',localId:'model',theory:'justice',type:'Definition',title:'People, resources and essential needs',text:'Positive needs, nonnegative resource access and a witnessed minimum of needs-adjusted access. These definitions fix the meaning of Q and justice.',reference:'AI, property and democratic justice',source:'/philoforge/ai-justice/',proofSource:'/proofs/AIJustice.lean'};
   const aiEntries=justice.premises.map(p=>({...p,id:prefix('justice',p.id),localId:p.id,theory:'justice',type:{definition:'Definition',principle:'Normative principle',hypothesis:'Scenario hypothesis'}[p.kind],reference:'AI, property and democratic justice',source:'/philoforge/ai-justice/',proofSource:'/proofs/AIJustice.lean',test:p.id==='H9'}));
   const aiResults=justice.results.map(r=>({...r,id:prefix('justice',r.id),localId:r.id,theory:'justice',type:'Conditional result',theorem:r.leanName.split('.').pop(),requires:['justice:model',...r.requires.map(id=>prefix('justice',id))],parents:r.parents.map(id=>prefix('justice',id)),reference:'AI, property and democratic justice',source:'/philoforge/ai-justice/#'+r.id,proofSource:r.proof.url}));
-  const entries=[...spEntries,model,...aiEntries];
+  const entries=[...spEntries,...(includeJustice?[model,...aiEntries]:[])];
   const results=[...spResults,...aiResults];
   const nodes=new Map([...entries,...results].map(node=>[node.id,node]));
   // Complete ancestry with every actual premise, including the shared model.
@@ -36,7 +38,7 @@
   const theories=[
    {id:'spinoza',title:'Ethics — Spinoza',description:'Definitions, axioms and explicit interpretations from the verified fragments of the Ethics.',href:'/philoforge/ethics/',link:'Explore the complete Ethics ↗',groups:[['Definitions','Definition'],['Axioms','Axiom'],['Principles from the scholium','Scholium principle'],['Interpretive premises','Interpretive premise']]},
    {id:'justice',title:'AI and democratic justice — Romain Dufetelle',description:'Work, collective ownership, universal essential provision and economic democracy, with optional maximin justice.',href:'/philoforge/ai-justice/',link:'Read the theory and explore its economic model ↗',groups:[['Definitions','Definition'],['Normative principles','Normative principle'],['Economic and institutional hypotheses','Scenario hypothesis']]}
-  ].map(theory=>({...theory,ids:entries.filter(e=>e.theory===theory.id&&!e.test).map(e=>e.id)}));
+  ].filter(theory=>includeJustice||theory.id==='spinoza').map(theory=>({...theory,ids:entries.filter(e=>e.theory===theory.id&&!e.test).map(e=>e.id)}));
   // Future bridges belong here only after an explicit vocabulary mapping,
   // cross-theory premises and a compiled Lean theorem have been registered.
   return {version:1,theories,entries,results,conflicts,bridges:[],nodes};
@@ -66,7 +68,7 @@
  }
  let pending;
  function load(){
-  if(!pending)pending=fetch('/data/ai-justice.json').then(r=>{if(!r.ok)throw new Error('Theory unavailable');return r.json();}).then(justice=>createRegistry(root.SpinozaTheory,justice));
+  if(!pending)pending=Promise.resolve(createRegistry(root.SpinozaTheory));
   return pending;
  }
  root.PhiloTheories={KEY,createRegistry,sanitize,derive,fromQuery,restore,mapURL,load};

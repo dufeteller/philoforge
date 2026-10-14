@@ -948,3 +948,23 @@ Object.assign(globalThis.PhiloLocales.fr, {
   "Sharing automation gains with the majority": "Partager les gains de l’automatisation avec la majorité",
   "The existing 100-person witness shows that output can double while 90 people lose access. The comparative threshold states when collective allocation improves a nonowner’s position; majority support needs additional preference and voting assumptions.": "Le modèle existant à 100 personnes montre que la production peut doubler tandis que 90 personnes perdent de l’accès. Le seuil comparatif indique quand l’allocation collective améliore la situation d’une personne sans capital ; le soutien majoritaire exige des hypothèses supplémentaires sur les préférences et le vote."
 });
+
+Object.assign(globalThis.PhiloLocales.fr, {
+  "Mathematics and philosophy": "Mathématiques et philosophie",
+  "Research papers and a project on Spinoza’s Ethics.": "Articles de recherche et projet sur l’Éthique de Spinoza.",
+  "Research papers": "Articles de recherche",
+  "Read Spinoza’s Ethics, select definitions and axioms, and explore the dependencies of formalized results.": "Consultez l’Éthique de Spinoza, sélectionnez des définitions et des axiomes, puis explorez les dépendances des résultats formalisés.",
+  "The site includes the complete text and a selection of conditional deductions checked by Lean.": "Le site propose le texte complet et une sélection de déductions conditionnelles vérifiées par Lean.",
+  "Open PhiloForge ↗": "Ouvrir PhiloForge ↗",
+  "Contact": "Contact",
+  "Mathematics · Philosophy": "Mathématiques · Philosophie",
+  "Research papers by Romain Dufetelle and a project on Spinoza’s Ethics.": "Articles de recherche de Romain Dufetelle et projet sur l’Éthique de Spinoza.",
+  "Read Spinoza’s Ethics and explore formalized deductions.": "Consultez l’Éthique de Spinoza et explorez des déductions formalisées.",
+  "Select definitions and axioms from Spinoza’s Ethics to view the formalized results that depend on them.": "Sélectionnez des définitions et des axiomes de l’Éthique de Spinoza pour voir les résultats formalisés qui en dépendent.",
+  "DEFINITIONS AND AXIOMS": "DÉFINITIONS ET AXIOMES",
+  "Expand a group to read its premises. The checkbox selects the whole group; a dash indicates a partial selection.": "Dépliez un groupe pour lire ses prémisses. La case sélectionne le groupe entier ; un tiret indique une sélection partielle.",
+  "Select all starting points": "Sélectionner tous les points de départ",
+  "Loading Spinoza’s starting points…": "Chargement des points de départ de Spinoza…",
+  "The map shows results supported by your selection. Select a node to read its assumptions and proof.": "La carte affiche les résultats qui découlent de votre sélection. Cliquez sur un nœud pour lire ses hypothèses et sa preuve.",
+  "This optional test is excluded from the full selection. A known conflict displays its proof and prevents map generation.": "Ce test facultatif est exclu de la sélection complète. Un conflit connu affiche sa preuve et empêche la génération de la carte."
+});

@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict');
 const spinoza=require('../dist/assets/spinoza.js');
-const justice=require('../dist/data/ai-justice.json');
+const justice=require('../archive/ai-justice/data/ai-justice.json');
 const api=require('../dist/assets/theories.js');
 const registry=api.createRegistry(spinoza,justice);
 const ids=registry.theories.flatMap(t=>t.ids);
@@ -70,3 +70,11 @@ assert.deepEqual(api.fromQuery(registry,new URLSearchParams('premises=justice:E1
 require('../dist/assets/locales.js');const {canDisplay}=require('../dist/assets/i18n.js');
 for(const node of [...registry.entries,...registry.results,...registry.conflicts])for(const key of ['title','text','reference','type','mapping','limit'])if(node[key])assert.ok(canDisplay(node[key],'fr'),node.id+' untranslated '+key);
 console.log(`${registry.results.length} namespaced proofs, ${scenarios} mixed selections, exact ancestry, conflicts and persistence checked.`);
+
+// Public registry excludes the archived theory, including old saved/shared selections.
+const publicRegistry=api.createRegistry(spinoza);
+assert.deepEqual(publicRegistry.theories.map(t=>t.id),['spinoza']);
+assert.ok(publicRegistry.entries.every(e=>e.theory==='spinoza'));
+assert.equal(publicRegistry.results.length,spinoza.results.length);
+assert.deepEqual(api.fromQuery(publicRegistry,new URLSearchParams('premises=justice:model,justice:J1,spinoza:E1-A4')),['spinoza:E1-A4']);
+assert.deepEqual(api.restore(publicRegistry,storage({'philoforge.universe.v1':'["justice:model","justice:J1","spinoza:E1-A4"]'}),new URLSearchParams()),['spinoza:E1-A4']);

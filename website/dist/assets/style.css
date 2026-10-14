@@ -40,3 +40,21 @@
 
 /* One selection, with independent theory groups and proof lanes. */
 #theory-library{margin:30px 0 45px}#theory-library>.selection-group+ .selection-group{margin-top:28px}.theory-description{padding:14px 14px 22px}.theory-description p{font-size:14px;color:var(--muted);max-width:800px;margin:0 0 12px}.theory-description .text-link{font-size:13px;margin:0}.universe-summary{display:flex;flex-wrap:wrap;gap:10px 24px;margin:20px 0;font-size:13px;color:var(--accent)}.bridge-note{font-size:14px;color:var(--muted);border-left:2px solid var(--line);padding-left:16px;max-width:850px}.universe-actions{display:flex;align-items:center;flex-wrap:wrap;gap:20px}.universe-actions #map-link{margin:0}.map-theory-label{position:absolute;top:15px;font:28px Georgia;color:var(--accent);white-space:nowrap}.map-node[data-theory="justice"]{border-color:#a48868}.map-node[data-theory="justice"].map-selected{border-color:var(--accent)}#node-detail pre,#universe-conflicts pre{white-space:pre;overflow:auto;font-size:11px;line-height:1.6;padding:14px;background:var(--soft)}#node-detail details{margin:18px 0}#node-detail summary{cursor:pointer;font-size:13px}#workshop-tests{display:grid;gap:16px}#workshop-tests label{display:flex;justify-content:space-between}#workshop-tests .source-axiom{padding:16px}.map-theory-note{margin-top:0;font-style:italic}.map-theory-label{pointer-events:none}@media(max-width:600px){.theory-description{padding-left:6px}.universe-summary{flex-direction:column;gap:6px}.map-theory-note{font-size:10px}}
+
+/* Descriptive, compact presentation; map geometry is unchanged. */
+body:not(.map-page) header{height:96px}
+.personal-page .hero{padding:48px 0 40px}
+.personal-page .hero h1,.workshop-page .forge-hero h1{font-family:inherit;font-size:clamp(30px,4vw,46px);font-weight:500;line-height:1.2;letter-spacing:-1px;margin:0 0 18px}
+.personal-page .hero p{font-size:17px;color:var(--muted);max-width:760px}
+.personal-page .journal{padding:34px 0}
+.personal-page .section-title h2,.personal-page .project h2,.personal-page .about h2{font-family:inherit;font-size:25px;font-weight:500;letter-spacing:0;margin:0 0 18px}
+.personal-page .section-title{margin-bottom:20px}
+.personal-page .paper-card{padding:26px;gap:32px;background:transparent}
+.personal-page .paper-copy h3{font-family:inherit;font-size:24px;line-height:1.4;letter-spacing:0}
+.personal-page .project{display:block;padding:34px 0;border-top:1px solid var(--line)}
+.personal-page .project p{max-width:760px;margin:12px 0;font-size:16px}
+.personal-page .project .text-link{margin-top:16px}
+.personal-page .about{display:block;padding:28px 0}.personal-page .about a{font-size:15px}
+.workshop-page .forge-hero{padding:44px 0 32px}.workshop-page .forge-hero p{font-size:17px}
+.workshop-page h2{font-family:inherit;font-size:27px;font-weight:500;letter-spacing:0}
+@media(max-width:760px){body:not(.map-page) header{height:auto;min-height:100px}.personal-page .paper-card{padding:20px;gap:22px}.personal-page .paper-copy h3{font-size:21px}.personal-page .hero{padding-top:30px}}
