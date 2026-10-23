@@ -968,3 +968,9 @@ Object.assign(globalThis.PhiloLocales.fr, {
   "The map shows results supported by your selection. Select a node to read its assumptions and proof.": "La carte affiche les résultats qui découlent de votre sélection. Cliquez sur un nœud pour lire ses hypothèses et sa preuve.",
   "This optional test is excluded from the full selection. A known conflict displays its proof and prevents map generation.": "Ce test facultatif est exclu de la sélection complète. Un conflit connu affiche sa preuve et empêche la génération de la carte."
 });
+
+Object.assign(globalThis.PhiloLocales.fr, {
+  "Zenodo · English": "Zenodo · Anglais",
+  "View on Zenodo": "Consulter sur Zenodo",
+  "Read the paper on Zenodo (English, opens in a new tab)": "Lire l’article sur Zenodo (en anglais, ouverture dans un nouvel onglet)"
+});
